@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ACL SIG-FinTech - FinEval</title>
+		<meta charset="utf-8" />
+		<link rel="shortcut icon"  href="images/logo.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="left-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="index.html">SIG-FinTech</a></li>
+									<li><a href="finnlp.html">FinNLP Workshop</a></li>
+									<li><a href="fineval.html">FinEval Shared Tasks</a></li>
+									<li><a href="members.html">Members</a></li>
+									<li><a href="resources.html">Resources</a></li>
+									<li><a href="youtube.html">Youtube</a></li>
+									<li><a href="links.html">Related Links</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+						<div class="row gtr-150">
+							<div class="col-4 col-12-narrower">
+
+								<!-- Sidebar -->
+									<section id="sidebar">
+										<section>
+											<header>
+												<h3>Previous Tasks</h3>
+											</header>
+												<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-fnp-llmfinlegal/shared-tasks"> FinEval-Pilot (5 Tasks) - COLING-2025 </a>
+												<br>
+												<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-agentscen/shared-task-finllm"> Financial Challenges in Large Language Models - IJCAI-2024 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-agentscen/shared-task-mqg"> Multiple Question Generation from Presentation Transcripts - IJCAI-2024 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-kdf-2024/shared-task-ml-esg-3"> ML-ESG-3 - LREC-COLING-2024 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2023/shared-task-esg-impact"> ML-ESG-2 - IJCNLP-AACL-2023 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-2023/shared-task-esg-issue"> Multi-Lingual ESG Issue Identification (ML-ESG) - IJCAI-2023 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-2022-emnlp/erai-shared-task"> Evaluating the Rationales of Amateur Investors (ERAI)  - EMNLP-2022 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-2022/shared-task-finsim4-esg"> FinSim-4 - IJCAI-ECAI-2022 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2021/"> FinSim-3 - IJCAI-2021 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2021/shared-task-finsim"> FinSBD-2 - IJCAI-2020 </a>
+        											<br>
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2020/shared-task-finsim"> Learning Semantic Representations for the Financial Domain (FinSim) - IJCAI-2020 </a>
+        											<br> 
+        											<a href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp/shared-task-finsbd"> Sentence Boundary Detection in PDF Noisy Text in the Financial Domain (FinSBD) - IJCAI-2019 </a>
+										</section>
+										<section>
+											<header>
+												<h3>Proceedings</h3>
+											</header>
+											<p>All Proceedings are on ACL Anthology</p>
+											<ul class="actions">
+												<li><a href="https://aclanthology.org/venues/finnlp/" class="button">Proceedings</a></li>
+											</ul>
+										</section>
+										<section>
+											<header>
+												<h3>Google Scholar</h3>
+											</header>
+											<p>Citation Statistics</p>
+											<ul class="actions">
+												<li><a href="https://scholar.google.com/citations?hl=en&authuser=1&user=Nnbpt6QAAAAJ" class="button">Google Scholar</a></li>
+											</ul>
+										</section>
+									</section>
+
+							</div>
+							<div class="col-8 col-12-narrower imp-narrower">
+
+								<!-- Content -->
+									<article id="content">
+										<header>
+											<h2>Earnings2Insights: Analyst Report Generation for Investment Guidance</h2>
+											<p>FinNLP @ EMNLP-2025, Nov. 5th-9th, 2025, Suzhou, China</p>
+										</header>
+
+										<b><h3>Introduction</h3></b>
+										<p>With the advent of large language models (LLMs), many studies have begun to explore simulations of more specialized professional scenarios. In addition to improvements in automatic text comprehension, the ability to automatically generate analytical reports has also advanced [1]. In the Earnings2Insights shared task, we aim to generate investment guidance based on earnings call transcripts. This task can be approached in two settings: one uses only the earnings call transcript, while the other enriches the content by retrieving additional relevant information based on timestamps. This shared task encourages exploration of both approaches.</p>
+										<p>In terms of evaluation, previous studies [1,2] have noted that using traditional metrics to compare with ground truth answers may not be meaningful, and that current LLMs are not yet suitable to serve as judges. Therefore, we adopt an evaluation method in [3], where annotators are asked to make investment decisions based on the generated reports. The correctness of these decisions will serve as the evaluation metric. As a result, the generated reports not only need to point in the right direction, but also must be persuasive enough to convince investors to follow their guidance. We believe this presents an exciting opportunity to explore human-AI interaction.</p>
+										
+										<p>[1] Goldsack, Tomas, et al. From Facts to Insights: A Study on the Generation and Evaluation of Analytical Reports for Deciphering Earnings Calls. Proceedings of the 31st International Conference on Computational Linguistics. 2025.</p>
+										<p>[2] Chen, Chung-Chi, et al. Semeval-2024 Task 7: Numeral-Aware Language Understanding and Generation. Proceedings of the 18th International Workshop on Semantic Evaluation (SemEval-2024). 2024.</p>
+										<p>[3] Takayanagi, Takehiro, et al. Can GPT-4 Sway Experts' Decisions?. Findings of the Association for Computational Linguistics: NAACL 2025. 2025.</p>
+										
+										<b><h3>Dataset</h3></b>
+                                        <p>We provide two sets of Earnings Call Transcripts. The first set contains 40 transcripts that correspond to ECTSum [4], and the second set includes 24 transcripts that are matched with professional analyst reports, referred to as the "Professional" subset. In the ECTSum subset, each folder includes a “ref” file, which represents the corresponding summary. Participants may choose whether or not to utilize this information. In the Professional subset, only the transcripts are provided; comparisons with the analyst reports will be conducted later by the organizers. All participating teams are required to submit reports generated for all 64 earnings calls.</p>
+                                            
+                                        <b><h3>Registration</h3></b>
+                                        <p>Please fill out this form to access the data: <a href="https://forms.gle/k8Nzk2ganbURbzcv9">https://forms.gle/k8Nzk2ganbURbzcv9 </a> </p>
+                                        
+                                        <b><h3>Evaluation</h3></b>
+                                        <p>In [1], several automatic evaluation methods are mentioned. Participants are welcome to use the prompts and LLM-based evaluations provided in the reference to assess the quality of their generated reports. We encourage participants to propose a variety of evaluation methods in their papers. However, the official ranking will ultimately be based on the results of human evaluation, with a primary focus on whether the report can effectively guide and persuade investors to make correct decisions. Annotators will be asked to make investment choices (Long or Short) for the next day, week, and month based on the provided report. Each report will be evaluated according to the accuracy of these investment decisions. The final score will be the average accuracy across the three different time frames.</p>
+                                              
+                                        <b><h3>Important Dates</h3></b>
+                                        <li><strong>Data Release: </strong> 15 April, 2025</li>
+                                        <li><strong>Registration Start: </strong> 15 April 2025</li>
+                                        <li><strong>System Output Submission Deadline: </strong> 31 July 2025</li>
+                                        <li><strong>Evaluation Results Release: </strong> 15 Augest 2025</li>
+                                        <li><strong>Paper Submission Deadline: </strong> 31 Augest 2025</li>
+                                        <li><strong>Notification to Authors: </strong> 10 September 2025</li>
+                                        <li><strong>Camera-Ready Papers Due: </strong> 19 September 2025</li>
+                                        <li><strong>FinNLP Workshop: 5-9 November (TBD) </strong>EMNLP-2025</li>
+                                        
+                                        <br>
+                                        
+                                        <b><h3>System Output Submission Guidelines</h3></b>
+                                        <p>Each team is allowed to submit only one JSON file. Each entry in the file should include two keys: <code>"ECC"</code> and <code>"Report"</code>. The value of <code>"ECC"</code> should correspond to the name of the relevant folder, such as <code>"ABM_q3_2021"</code>, while the value of <code>"Report"</code> should be the model-generated report. Please send the results to <b>takayanagi-takehiro590@g.ecc.u-tokyo.ac.jp</b> with the subject line: "[TeamName] - Earnings2Insights Submission"</p>
+
+                                          <h3>Example:</h3>
+                                          <pre>
+                                        [
+                                          {
+                                            "ECC": "ABM_q3_2021",
+                                            "Report": "This is an analytical report generated for the ABM_q3_2021 dataset."
+                                          },
+                                          {
+                                            "ECC": "XYZ_q1_2022",
+                                            "Report": "This is the model-generated analysis report for the XYZ_q1_2022 dataset."
+                                          }
+                                        ]
+                                          </pre>
+                                        
+                                        
+                                        <b><h3>Paper Submission Guidelines</h3></b>
+                                            <p>The <a href="https://github.com/acl-org/acl-style-files">ACL Template</a> MUST be used for your submission(s). Each may consist of up to 5 pages of content, plus unlimited references and appendix. Accepted papers proceedings will be published at ACL Anthology.</p>
+                                            <b>Submission Link</b>
+                                            <p><a href="">TBA</a></p>
+                                            
+                                        <b><h3>Organizers - Contact: takayanagi-takehiro590@g.ecc.u-tokyo.ac.jp</h3></b>
+                                        <ul>
+                                           <li>Takehiro Takayanagi - The University of Tokyo, Japan</li>
+                                           <li>Tomas Goldsack - University of Sheffield, UK</li>
+                                           <li>Kiyoshi Izumi - The University of Tokyo, Japan</li>
+                                           <li>Chenghua Lin - University of Manchester, UK</li>
+                                           <li>Hiroya Takamura - AIST, Japan</li>
+                                           <li>Chung-Chi Chen - AIST, Japan</li>
+                                        </ul>
+										<br>
+										<br>
+									</article>
+
+							</div>
+
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
+						<header class="major">
+							<h2>Contact ACL SIG-FinTech</h2>
+							<p>aclsigfintech@gmail.com</p>
+						</header>
+					</div>
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; ACL SIG-FinTech. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
