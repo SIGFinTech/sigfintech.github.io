@@ -104,14 +104,17 @@
 
 										<b><h3>Introduction</h3></b>
 										<p>With the advent of large language models (LLMs), many studies have begun to explore simulations of more specialized professional scenarios. In addition to improvements in automatic text comprehension, the ability to automatically generate analytical reports has also advanced [1]. In the Earnings2Insights shared task, we aim to generate investment guidance based on earnings call transcripts. This task can be approached in two settings: one uses only the earnings call transcript, while the other enriches the content by retrieving additional relevant information based on timestamps. This shared task encourages exploration of both approaches.</p>
-										<p>In terms of evaluation, previous studies [1,2] have noted that using traditional metrics to compare with ground truth answers may not be meaningful, and that current LLMs are not yet suitable to serve as judges. Therefore, we adopt an evaluation method in [3], where annotators are asked to make investment decisions based on the generated reports. The correctness of these decisions will serve as the evaluation metric. As a result, the generated reports not only need to point in the right direction, but also must be persuasive enough to convince investors to follow their guidance. We believe this presents an exciting opportunity to explore human-AI interaction.</p>
+										<p>In terms of evaluation, previous studies [1,2] have noted that using traditional metrics to compare with ground truth answers may not be meaningful, and that current LLMs are not yet suitable to serve as judges. Therefore, we adopt an evaluation method in [3,4], where annotators are asked to make investment decisions based on the generated reports. The correctness of these decisions will serve as the evaluation metric. As a result, the generated reports not only need to point in the right direction, but also must be persuasive enough to convince investors to follow their guidance. We believe this presents an exciting opportunity to explore human-AI interaction.</p>
 										
 										<p>[1] Goldsack, Tomas, et al. From Facts to Insights: A Study on the Generation and Evaluation of Analytical Reports for Deciphering Earnings Calls. Proceedings of the 31st International Conference on Computational Linguistics. 2025.</p>
 										<p>[2] Chen, Chung-Chi, et al. Semeval-2024 Task 7: Numeral-Aware Language Understanding and Generation. Proceedings of the 18th International Workshop on Semantic Evaluation (SemEval-2024). 2024.</p>
 										<p>[3] Takayanagi, Takehiro, et al. Can GPT-4 Sway Experts' Decisions?. Findings of the Association for Computational Linguistics: NAACL 2025. 2025.</p>
-										
+										<p>[4] Yu-Shiang Huang et al. Decision-oriented Text Evaluation. arXiv. 2025.</p>
+										<p>[5] Rajdeep Mukherjee et al. ECTSum: A New Benchmark Dataset For Bullet Point Summarization of Long Earnings Call Transcripts. Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing 2022</p>
+
+
 										<b><h3>Dataset</h3></b>
-                                        <p>We provide two sets of Earnings Call Transcripts. The first set contains 40 transcripts that correspond to ECTSum [4], and the second set includes 24 transcripts that are matched with professional analyst reports, referred to as the "Professional" subset. In the ECTSum subset, each folder includes a “ref” file, which represents the corresponding summary. Participants may choose whether or not to utilize this information. In the Professional subset, only the transcripts are provided; comparisons with the analyst reports will be conducted later by the organizers. All participating teams are required to submit reports generated for all 64 earnings calls.</p>
+                                        <p>We provide two sets of Earnings Call Transcripts. The first set contains 40 transcripts that correspond to ECTSum [5], and the second set includes 24 transcripts that are matched with professional analyst reports, referred to as the "Professional" subset. In the ECTSum subset, each folder includes a “ref” file, which represents the corresponding summary. Participants may choose whether or not to utilize this information. In the Professional subset, only the transcripts are provided; comparisons with the analyst reports will be conducted later by the organizers. All participating teams are required to submit reports generated for all 64 earnings calls.</p>
                                             
                                         <b><h3>Registration</h3></b>
                                         <p>Please fill out this form to access the data: <a href="https://forms.gle/k8Nzk2ganbURbzcv9">https://forms.gle/k8Nzk2ganbURbzcv9 </a> </p>
@@ -196,4 +199,5 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
+
 </html>
