@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FinNLP 2026 — The 11th Workshop on Financial Technology and Natural Language Processing</title>
+<meta name="description" content="The 11th Workshop on Financial Technology and Natural Language Processing (FinNLP-2026), co-located with EMNLP 2026 in Budapest, Hungary, October 24–29, 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --panel: #ffffff;
+    --text: #1a1f2e;
+    --text-dim: #525a6b;
+    --text-faint: #8a90a0;
+    --border: #e6e8ee;
+    --border-soft: #eef0f4;
+    --accent: #1d4ed8;
+    --accent-soft: #e8efff;
+    --accent-dark: #1e40af;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- NAV ---------- */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--text); letter-spacing: 0.02em;
+  }
+  .brand .accent-text { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--text-dim); font-weight: 500; font-size: 0.9rem;
+  }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+  /* ---------- HEADER ---------- */
+  header.hero {
+    max-width: 920px; margin: 0 auto;
+    padding: 72px 28px 48px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  header.hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    color: var(--text);
+  }
+  .event-line {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0 0 24px;
+  }
+  .event-line strong { color: var(--text); font-weight: 600; }
+
+  .meta-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 8px;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    background: var(--bg-soft);
+  }
+  .pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .hero-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -6px rgba(29, 78, 216, 0.45);
+    text-decoration: none;
+  }
+  .hero-cta svg { width: 14px; height: 14px; }
+  .hero-cta-note {
+    margin: 10px 0 0;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  section.block {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  section.block:last-of-type { border-bottom: none; }
+  section.block > h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--text);
+    margin: 0 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+    letter-spacing: -0.005em;
+  }
+  section.block p {
+    margin: 0 0 14px;
+    color: var(--text);
+    line-height: 1.72;
+  }
+  section.block p.lead {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- TOPICS ---------- */
+  ul.topics-list {
+    columns: 2;
+    column-gap: 36px;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+  ul.topics-list li {
+    padding: 7px 0 7px 18px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    break-inside: avoid;
+  }
+  ul.topics-list li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 7px;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  /* ---------- DATES TABLE ---------- */
+  .dates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+  .dates-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .dates-table td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    width: 60%;
+  }
+  .dates-table td:last-child {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    text-align: right;
+  }
+  .dates-table tr.highlight td:last-child {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .tz-note {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- SUB-HEADINGS ---------- */
+  h3.sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text);
+    margin: 26px 0 10px;
+    letter-spacing: 0;
+  }
+  h3.sub::before {
+    content: "// ";
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 0.88rem;
+  }
+
+  /* ---------- ORGANIZER GRID ---------- */
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  a.org {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: border-color 0.18s, background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  a.org:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -8px rgba(29, 78, 216, 0.25);
+    text-decoration: none;
+  }
+  a.org .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    flex-shrink: 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    transition: border-color 0.18s;
+  }
+  a.org:hover .avatar { border-color: var(--accent); }
+  a.org .info { min-width: 0; flex: 1; }
+  a.org .name {
+    font-weight: 600; color: var(--text);
+    font-size: 0.98rem;
+    margin-bottom: 2px;
+  }
+  a.org .aff {
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+  a.org .aff + .aff { color: var(--text-faint); font-size: 0.82rem; margin-top: 1px; }
+  a.org .ext {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 14px; height: 14px;
+    color: var(--text-faint);
+    opacity: 0;
+    transition: opacity 0.18s, color 0.18s, transform 0.18s;
+  }
+  a.org:hover .ext {
+    opacity: 1;
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+
+  /* ---------- PREVIOUS EDITIONS ---------- */
+  ul.prev-list {
+    list-style: none; padding: 0;
+    margin: 12px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 24px;
+    font-size: 0.92rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  ul.prev-list li {
+    padding: 5px 0;
+    color: var(--text-dim);
+  }
+  ul.prev-list li strong {
+    color: var(--text);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  /* ---------- CTA cards ---------- */
+  .cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .cta-card {
+    display: block;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 18px 20px;
+    border-radius: 8px;
+    transition: all 0.15s;
+  }
+  .cta-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .cta-card .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .cta-card .title {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin-bottom: 4px;
+  }
+  .cta-card .desc {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-line {
+    display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+  }
+  .contact-line a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  /* ---------- POLICY LIST ---------- */
+  ul.policy-list {
+    list-style: none; padding: 0; margin: 10px 0 0;
+  }
+  ul.policy-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: "—";
+    position: absolute; left: 0; top: 8px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 700px) {
+    ul.topics-list, ul.prev-list, .org-grid, .cta-row {
+      grid-template-columns: 1fr;
+      columns: 1;
+    }
+    header.hero { padding: 48px 24px 36px; }
+    main { padding: 0 24px; }
+    section.block { padding: 36px 0; }
+    .dates-table td { padding: 10px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">FinNLP <span class="accent-text">2026</span></a>
+    <div class="nav-links">
+      <a href="#dates">Dates</a>
+      <a href="call-for-papers.html">Papers</a>
+      <a href="call-for-challenges.html">Challenges</a>
+      <a href="call-for-sponsors.html">Sponsors</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">// ACL SIG-FinTech · 11th edition</div>
+  <h1>The 11th Workshop on Financial Technology and Natural Language Processing</h1>
+  <p class="event-line"><strong>FinNLP-2026 @ EMNLP-2026</strong> · October 24–29, 2026 · Budapest, Hungary</p>
+  <div class="meta-pills">
+    <span class="pill"><span class="dot"></span>Co-located with EMNLP 2026</span>
+    <span class="pill"><span class="dot"></span>ACL Anthology</span>
+    <span class="pill"><span class="dot"></span>Double-blind review</span>
+  </div>
+  <a class="hero-cta" href="https://openreview.net/group?id=EMNLP/2026/Workshop/FinNLP" target="_blank" rel="noopener">
+    Submit on OpenReview
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+  </a>
+  <p class="hero-cta-note">// Direct submission deadline: Aug 11, 2026 (AoE) · ARR commitment: Aug 27</p>
+</header>
+
+<main>
+
+<section class="block" id="about">
+  <h2>About</h2>
+  <p>The FinNLP workshop, as the annual event of <a href="https://sigfintech.github.io/" target="_blank" rel="noopener">ACL SIG-FinTech</a>, focuses on applying NLP, Machine Learning, and Large Language Models to <strong>finance, economics, and law</strong>, aiming to drive interdisciplinary innovation and address unique challenges in these fields. Since 2019, FinNLP has served as a bridge between AI and NLP communities by collocating with major conferences. Its proceedings are available on the <a href="https://aclanthology.org/venues/finnlp/" target="_blank" rel="noopener">ACL Anthology</a>.</p>
+  <p>FinNLP addresses the complexities of financial documents, which often contain tables and diverse multimodal data, as well as legal and compliance challenges in the financial industry. Key workshop topics include financial language modeling, multi-modal and graph representation learning, conversational agents, financial search and question answering, event discovery, compliance, and responsible AI practices in finance and law.</p>
+  <p>We have several interesting shared tasks in the collocated event, <strong>FinEval</strong>. Please refer to the <a href="call-for-challenges.html">Call for Challenges</a> for more details.</p>
+
+  <div class="cta-row">
+    <a href="call-for-papers.html" class="cta-card">
+      <div class="kicker">// For Researchers</div>
+      <div class="title">Call for Papers →</div>
+      <div class="desc">Long, short, and demo paper submissions. Published in the ACL Anthology.</div>
+    </a>
+    <a href="call-for-challenges.html" class="cta-card">
+      <div class="kicker">// For Practitioners</div>
+      <div class="title">Call for Challenges →</div>
+      <div class="desc">FinEval shared tasks — datasets, baselines, and leaderboards.</div>
+    </a>
+  </div>
+</section>
+
+<section class="block" id="topics">
+  <h2>Topics of Interest</h2>
+  <p class="lead">We invite submissions of original contributions on methods, theories, applications, and systems on artificial intelligence, machine learning, natural language processing &amp; understanding, big data, statistical learning, data analytics, and deep learning, with a focus on knowledge discovery in the financial services domain. The scope of the workshop includes, but is not limited to, the following areas:</p>
+  <ul class="topics-list">
+    <li>Language modeling on financial corpora, including tabular and numerical data, and multi-modal modeling</li>
+    <li>Graph representation learning and mining on financial data</li>
+    <li>Multi-source knowledge integration and fusion</li>
+    <li>Synthetic and genuine financial datasets and benchmarks</li>
+    <li>Transfer learning applications for financial data</li>
+    <li>Financial search and question answering systems</li>
+    <li>Event discovery and impact on organizational equity price</li>
+    <li>ESG event discovery, evaluation, and impact assessment</li>
+    <li>Compliance monitoring</li>
+    <li>Cross-disciplinary LLM-based methodologies for financial and legal domains</li>
+    <li>Applications of LLMs in financial auditing and regulatory reporting</li>
+    <li>Ethical implications and bias mitigation in AI applications</li>
+    <li>Hallucination mitigation and evaluation in LLMs</li>
+    <li>Privacy concerns and data protection strategies</li>
+    <li>Enhancing interpretability and explainability of LLM models</li>
+    <li>Responsible AI practices and governance</li>
+    <li>Methods, evaluation metrics, benchmarks, and datasets for LLMs in finance and law</li>
+  </ul>
+</section>
+
+<section class="block" id="dates">
+  <h2>Important Dates</h2>
+  <table class="dates-table">
+    <tbody>
+      <tr><td>Submission system opens</td><td>July 1, 2026</td></tr>
+      <tr><td>Direct paper submission deadline</td><td>August 11, 2026</td></tr>
+      <tr><td>Pre-reviewed ARR commitment deadline</td><td>August 27, 2026</td></tr>
+      <tr><td>Author notification</td><td>September 1, 2026</td></tr>
+      <tr><td>Camera-ready deadline</td><td>September 10, 2026</td></tr>
+      <tr><td>Proceedings due to EMNLP workshop chairs</td><td>September 25, 2026</td></tr>
+      <tr class="highlight"><td>FinNLP-2026 @ EMNLP (workshop day)</td><td>October 28, 2026</td></tr>
+      <tr><td>Location</td><td>Budapest, Hungary</td></tr>
+      <tr><td>Submission system</td><td><a href="https://openreview.net/group?id=EMNLP/2026/Workshop/FinNLP" target="_blank" rel="noopener">OpenReview</a></td></tr>
+    </tbody>
+  </table>
+  <p class="tz-note">// All deadlines are 11:59 PM Anywhere on Earth (AoE, UTC-12)</p>
+</section>
+
+<section class="block" id="submission">
+  <h2>Submission</h2>
+
+  <h3 class="sub">How to Submit</h3>
+  <p>FinNLP 2026 accepts two types of submissions, both through <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/FinNLP" target="_blank" rel="noopener">OpenReview</a>:</p>
+  <ul class="policy-list">
+    <li><strong>Direct submission</strong> — anonymized PDF reviewed by our program committee. Submit via <em>EMNLP 2026 Workshop FinNLP Submission</em>. Deadline: <strong>August 11, 2026 (AoE)</strong>.</li>
+    <li><strong>Pre-reviewed ARR commitment</strong> — papers already reviewed via <a href="https://aclrollingreview.org/" target="_blank" rel="noopener">ACL Rolling Review</a>. Submit via the <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/FinNLP_ARR_Commitment" target="_blank" rel="noopener">FinNLP ARR Commitment form</a> on OpenReview. Deadline: <strong>August 27, 2026 (AoE)</strong>.</li>
+  </ul>
+  <p>See the <a href="call-for-papers.html">Call for Papers</a> for full submission instructions, formatting requirements, and policies.</p>
+
+  <h3 class="sub">Format</h3>
+  <p>The <strong>ACL Template</strong> MUST be used for your submission(s). Accepted papers' proceedings will be published at the <a href="https://aclanthology.org/venues/finnlp/" target="_blank" rel="noopener">ACL Anthology</a>.</p>
+  <ul class="policy-list">
+    <li><strong>Long Paper:</strong> up to 8 pages, excluding references.</li>
+    <li><strong>Short Paper:</strong> up to 4 pages, excluding references.</li>
+    <li><strong>Demo Paper:</strong> up to 4 pages, excluding references.</li>
+  </ul>
+
+  <h3 class="sub">Review &amp; Presentation</h3>
+  <ul class="policy-list">
+    <li><strong>Direct submissions</strong> will be reviewed through a double-blind review process by the FinNLP Program Chairs, Area Chairs, and Reviewers. There will be <strong>no author rebuttal period</strong>.</li>
+    <li><strong>Pre-reviewed ARR commitments</strong> will be checked by the Program Chairs / Area Chairs for eligibility, scope, and final acceptance.</li>
+    <li>All direct submissions must be <strong>anonymized</strong>.</li>
+    <li>At least one author of each accepted paper should register and present their work at FinNLP 2026.</li>
+  </ul>
+
+  <h3 class="sub">Open Research Policy</h3>
+  <p>As part of ACL SIG-FinTech's reproducibility and transparency initiative, we will pilot an open research policy for accepted papers.</p>
+  <ul class="policy-list">
+    <li>Authors of accepted papers are strongly encouraged to publicly release their implementation code, model inputs, and model outputs to support reproducibility and future re-evaluation.</li>
+    <li>For LLM-based approaches, authors are encouraged to release prompts, inference configurations, generated outputs, and evaluation artifacts associated with their experiments whenever possible.</li>
+    <li>Exceptions may be granted in cases involving legal, licensing, privacy, commercial, or security constraints. Authors requesting exceptions should discuss their situation with the organizers.</li>
+    <li>Presentation videos from the workshop will be uploaded to the ACL SIG-FinTech YouTube channel for public access and long-term educational use.</li>
+  </ul>
+</section>
+
+<section class="block" id="organizers">
+  <h2>Organizers</h2>
+
+  <h3 class="sub">General Chairs</h3>
+  <div class="org-grid">
+    <a class="org" href="https://nlpfin.github.io/" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/organizers/chung-chi-chen.jpg" alt="Chung-Chi Chen" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Chung-Chi Chen</div>
+        <div class="aff">National Institute of Informatics (NII), Japan</div>
+      </div>
+      <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+    <a class="org" href="https://scholar.google.com/citations?user=dAMXPRcAAAAJ" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/organizers/yongjae-lee.jpg" alt="Yongjae Lee" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Yongjae Lee</div>
+        <div class="aff">UNIST, South Korea</div>
+      </div>
+      <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+    <a class="org" href="https://scholar.google.com/citations?user=SnQ_CycAAAAJ" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/organizers/jimin-huang.jpg" alt="Jimin Huang" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Jimin Huang</div>
+        <div class="aff">University of Manchester, UK</div>
+        <div class="aff">The FinAI, US</div>
+      </div>
+      <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+    <a class="org" href="https://www.nactem.ac.uk/profile.php?member=sananiadou" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/organizers/sophia-ananiadou.jpg" alt="Sophia Ananiadou" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Sophia Ananiadou</div>
+        <div class="aff">University of Manchester, UK</div>
+      </div>
+      <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+    <a class="org" href="https://www.csie.ntu.edu.tw/en/member/Faculty/Hsin-Hsi-Chen-52075551" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/organizers/hsin-hsi-chen.jpg" alt="Hsin-Hsi Chen" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Hsin-Hsi Chen</div>
+        <div class="aff">National Taiwan University, Taiwan</div>
+      </div>
+      <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+    <a class="org" href="https://sites.google.com/view/hjtakamura/home" target="_blank" rel="noopener">
+      <img class="avatar" src="assets/organizers/hiroya-takamura.jpg" alt="Hiroya Takamura" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Hiroya Takamura</div>
+        <div class="aff">AIST, Japan</div>
+      </div>
+      <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+
+  <h3 class="sub">Program Committee (Reviewers)</h3>
+  <p style="color: var(--text-dim);">To Be Announced (TBA)</p>
+</section>
+
+<section class="block" id="previous">
+  <h2>Previous Editions</h2>
+  <ul class="prev-list">
+    <li><strong>10th</strong> EMNLP-2025</li>
+    <li><strong>9th</strong> COLING-2025</li>
+    <li><strong>8th</strong> IJCAI-2024</li>
+    <li><strong>7th</strong> LREC-COLING-2024</li>
+    <li><strong>6th</strong> IJCNLP-AACL-2023</li>
+    <li><strong>5th</strong> IJCAI-2023</li>
+    <li><strong>4th</strong> EMNLP-2022</li>
+    <li><strong>4th</strong> IJCAI-ECAI-2022</li>
+    <li><strong>3rd</strong> IJCAI-2021</li>
+    <li><strong>2nd</strong> IJCAI-2020</li>
+    <li><strong>1st</strong> IJCAI-2019</li>
+  </ul>
+  <p style="margin-top: 18px;">All proceedings are available on the <a href="https://aclanthology.org/venues/finnlp/" target="_blank" rel="noopener">ACL Anthology</a>. Citation statistics: <a href="https://scholar.google.com/citations?hl=en&user=2cVMu5MAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
+</section>
+
+<section class="block" id="contact">
+  <h2>Contact</h2>
+  <p class="contact-line">
+    ACL SIG-FinTech ·
+    <a href="mailto:aclsigfintech@gmail.com">aclsigfintech@gmail.com</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <div>© ACL SIG-FinTech · FinNLP 2026</div>
+  <div>
+    <a href="call-for-papers.html">Papers</a> ·
+    <a href="call-for-challenges.html">Challenges</a> ·
+    <a href="call-for-sponsors.html">Sponsors</a> ·
+    <a href="https://sigfintech.github.io/" target="_blank" rel="noopener">SIG-FinTech</a> ·
+    <a href="https://aclanthology.org/venues/finnlp/" target="_blank" rel="noopener">Anthology</a> ·
+    <a href="https://www.aclweb.org/portal/content/acl-code-ethics" target="_blank" rel="noopener">Code of Conduct</a>
+  </div>
+</footer>
+
+</body>
+</html>

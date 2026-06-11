@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Call for Challenges · FinNLP 2026</title>
+<meta name="description" content="Call for FinEval 2026 task proposals — proposal deadline June 20, 2026. Task list announced July 1. Co-located with EMNLP 2026 in Budapest, Hungary." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --text: #1a1f2e;
+    --text-dim: #525a6b;
+    --text-faint: #8a90a0;
+    --border: #e6e8ee;
+    --border-soft: #eef0f4;
+    --accent: #1d4ed8;
+    --accent-soft: #e8efff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.65; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .brand { font-weight: 700; font-size: 0.95rem; color: var(--text); letter-spacing: 0.02em; }
+  .brand .accent-text { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-links a { color: var(--text-dim); font-weight: 500; font-size: 0.9rem; }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+  .nav-links a.active { color: var(--accent); }
+
+  header.page-head {
+    max-width: 920px; margin: 0 auto;
+    padding: 60px 28px 36px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 500;
+  }
+  header.page-head h1 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: clamp(1.7rem, 3.6vw, 2.2rem);
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  header.page-head .sub {
+    color: var(--text-dim); font-size: 1rem; margin: 0;
+  }
+  header.page-head .sub strong { color: var(--text); font-weight: 600; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .hero-cta:hover {
+    background: #1e40af;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -6px rgba(29, 78, 216, 0.45);
+    text-decoration: none;
+  }
+  .hero-cta svg { width: 14px; height: 14px; }
+  .hero-cta-note {
+    margin: 10px 0 0;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+  .phase-label {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 28px 0 10px;
+    padding: 4px 10px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  .phase-note {
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    margin: 6px 0 12px;
+    font-style: italic;
+  }
+
+  main { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+  section.block {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  section.block:last-of-type { border-bottom: none; }
+  section.block > h2 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 1.3rem; color: var(--text);
+    margin: 0 0 20px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+  }
+  section.block p {
+    margin: 0 0 14px; color: var(--text); line-height: 1.72;
+  }
+  section.block p.lead { color: var(--text-dim); }
+
+  h3.sub {
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 1.02rem; color: var(--text);
+    margin: 26px 0 10px;
+  }
+  h3.sub::before {
+    content: "// "; color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400; font-size: 0.88rem;
+  }
+
+  ul.policy-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  ul.policy-list li {
+    padding: 8px 0 8px 22px; position: relative;
+    color: var(--text); font-size: 0.95rem; line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: "—"; position: absolute; left: 0; top: 8px; color: var(--text-faint);
+  }
+
+  ul.prev-tasks {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    display: grid; grid-template-columns: 1fr; gap: 4px;
+    font-size: 0.92rem;
+  }
+  ul.prev-tasks li {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border-soft);
+    display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    align-items: baseline;
+  }
+  ul.prev-tasks li:hover { background: var(--bg-soft); }
+  ul.prev-tasks .task-name { color: var(--text); font-weight: 500; }
+  ul.prev-tasks .task-venue {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+  }
+
+  .dates-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 8px; font-size: 0.95rem;
+  }
+  .dates-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .dates-table td:first-child {
+    color: var(--text); font-weight: 500; width: 60%;
+  }
+  .dates-table td:last-child {
+    color: var(--text-dim); font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem; text-align: right;
+  }
+  .dates-table tr.highlight td:last-child {
+    color: var(--accent); font-weight: 500;
+  }
+  .tz-note {
+    margin-top: 10px; font-size: 0.82rem;
+    color: var(--text-faint); font-family: 'JetBrains Mono', monospace;
+  }
+
+  .callout {
+    border: 1px solid var(--accent); background: var(--accent-soft);
+    padding: 16px 18px; border-radius: 6px;
+    margin-top: 20px;
+  }
+  .callout .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem; color: var(--accent);
+    margin-bottom: 4px; font-weight: 500;
+  }
+  .callout p { margin: 0; color: var(--text); font-size: 0.93rem; }
+
+  footer {
+    max-width: 920px; margin: 0 auto;
+    padding: 32px 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--text-faint);
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  @media (max-width: 700px) {
+    header.page-head { padding: 40px 24px 28px; }
+    main { padding: 0 24px; }
+    section.block { padding: 32px 0; }
+    .dates-table td { padding: 10px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">FinNLP <span class="accent-text">2026</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="call-for-papers.html">Papers</a>
+      <a href="call-for-challenges.html" class="active">Challenges</a>
+      <a href="call-for-sponsors.html">Sponsors</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="eyebrow">// Call for Task Proposals · FinEval 2026</div>
+  <h1>Call for Challenges</h1>
+  <p class="sub"><strong>FinNLP-2026 @ EMNLP-2026</strong> · October 24–29, 2026 · Budapest, Hungary</p>
+  <a class="hero-cta" href="mailto:aclsigfintech@gmail.com?subject=FinEval%202026%20Task%20Proposal">
+    Submit a Proposal
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+  </a>
+  <p class="hero-cta-note">// Proposal deadline: June 20, 2026 (AoE) · Task list announcement: July 1</p>
+</header>
+
+<main>
+
+<section class="block">
+  <h2>About FinEval</h2>
+  <p>Shared tasks are collaborative initiatives where researchers and practitioners work together to address a common challenge using shared datasets and evaluation metrics. <strong>FinEval</strong> — Financial Information Access and Evaluation — aims to foster competition while providing a community venue, with new editions called annually alongside the FinNLP workshop.</p>
+  <p>For 2026, we are currently <strong>calling for task proposals</strong>. Once selected, accepted tasks will be announced here and on the official <a href="https://sigfintech.github.io/fineval.html" target="_blank" rel="noopener">FinEval page</a> in early July.</p>
+</section>
+
+<section class="block">
+  <h2>What We Look For</h2>
+  <p class="lead">A strong FinEval task proposal addresses an open problem in financial AI with a concrete, evaluable design. Reviewers will assess proposals on the following:</p>
+  <ul class="policy-list">
+    <li><strong>Problem definition.</strong> Clear, well-motivated open challenge in FinNLP / FinAI / financial law. Why now, why this task.</li>
+    <li><strong>Dataset.</strong> A high-quality, openly accessible dataset, or a concrete plan to construct one before training data release (July 1). License must permit research use and redistribution.</li>
+    <li><strong>Evaluation.</strong> Well-defined metrics, reproducible baselines, and a description of expected difficulty range.</li>
+    <li><strong>Reproducibility.</strong> A commitment to releasing starter kits, baselines, evaluation scripts, and (where applicable) training code as open-source.</li>
+    <li><strong>Organizing team.</strong> Minimum two committed organizers covering data, evaluation, and communication. Diversity across institutions and career stages is encouraged.</li>
+    <li><strong>Timeline feasibility.</strong> A realistic plan to deliver data, baselines, and run evaluation within the FinEval 2026 calendar.</li>
+  </ul>
+  <p>Organizing roles typically include: <strong>Lead Organizer</strong> (oversees task and deliverables), <strong>Co-Organizers</strong> (data preparation, evaluation, communication), and <strong>Advisory Organizers</strong> (guidance without daily involvement).</p>
+</section>
+
+<section class="block">
+  <h2>How to Submit a Proposal</h2>
+  <p>Send proposals as a single PDF to <a href="mailto:aclsigfintech@gmail.com?subject=FinEval%202026%20Task%20Proposal">aclsigfintech@gmail.com</a> with the subject line "<strong>FinEval 2026 Task Proposal — &lt;Task Name&gt;</strong>".</p>
+
+  <h3 class="sub">Required components</h3>
+  <ul class="policy-list">
+    <li><strong>Task title and one-line description</strong> (≤ 25 words).</li>
+    <li><strong>Motivation and problem definition</strong> (½–1 page).</li>
+    <li><strong>Dataset description</strong> — source, size, splits, licensing, status (existing / to-be-built), and access plan.</li>
+    <li><strong>Evaluation metrics</strong> and at least one baseline result (or a plan to provide one by July 1).</li>
+    <li><strong>Organizing team</strong> — names, affiliations, roles, brief bios.</li>
+    <li><strong>Timeline</strong> aligned with the FinEval 2026 schedule below.</li>
+    <li><strong>Expected number of participants</strong> and any prior community traction (workshops, leaderboards, etc.).</li>
+  </ul>
+  <p>Proposals are typically 2–4 pages. There is no template requirement at the proposal stage.</p>
+
+  <div class="callout">
+    <div class="lbl">// Proposal deadline</div>
+    <p><strong>June 20, 2026 (AoE)</strong>. Proposals submitted later may still be considered if review capacity remains.</p>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Important Dates</h2>
+
+  <span class="phase-label">Phase 1 · Proposal</span>
+  <table class="dates-table">
+    <tbody>
+      <tr><td>Call for task proposals</td><td>June 6, 2026</td></tr>
+      <tr class="highlight"><td>Proposal submission deadline</td><td>June 20, 2026 (AoE)</td></tr>
+      <tr><td>Final task list announced</td><td>July 1, 2026</td></tr>
+    </tbody>
+  </table>
+
+  <span class="phase-label">Phase 2 · Participation</span>
+  <p class="phase-note">Activated once the task list is announced. Per-task pages will publish detailed schedules.</p>
+  <table class="dates-table">
+    <tbody>
+      <tr><td>Training data &amp; starter kits release</td><td>July 1, 2026</td></tr>
+      <tr><td>Test phase / final predictions</td><td>August 4, 2026 (AoE)</td></tr>
+      <tr><td>System paper submission</td><td>August 11, 2026 (AoE)</td></tr>
+      <tr><td>Author notification</td><td>September 1, 2026</td></tr>
+      <tr><td>Camera-ready deadline</td><td>September 10, 2026 (AoE)</td></tr>
+      <tr class="highlight"><td>Workshop &amp; awards @ EMNLP</td><td>October 28, 2026</td></tr>
+    </tbody>
+  </table>
+  <p class="tz-note">// All deadlines are 11:59 PM Anywhere on Earth (AoE, UTC-12)</p>
+  <p class="phase-note">System papers follow the main <a href="call-for-papers.html">Call for Papers</a> timeline. Final proceedings are due to the EMNLP workshop chairs by <strong>September 25, 2026</strong> (hard deadline).</p>
+</section>
+
+<section class="block">
+  <h2>Previous FinEval Tasks</h2>
+  <ul class="prev-tasks">
+    <li><span class="task-name">Earnings2Insights</span><span class="task-venue">EMNLP-2025</span></li>
+    <li><span class="task-name">FinEval-Pilot (5 tasks)</span><span class="task-venue">COLING-2025</span></li>
+    <li><span class="task-name">Financial Challenges in Large Language Models</span><span class="task-venue">IJCAI-2024</span></li>
+    <li><span class="task-name">Multiple Question Generation from Presentation Transcripts</span><span class="task-venue">IJCAI-2024</span></li>
+    <li><span class="task-name">ML-ESG-3</span><span class="task-venue">LREC-COLING-2024</span></li>
+    <li><span class="task-name">ML-ESG-2</span><span class="task-venue">IJCNLP-AACL-2023</span></li>
+    <li><span class="task-name">Multi-Lingual ESG Issue Identification</span><span class="task-venue">IJCAI-2023</span></li>
+    <li><span class="task-name">ERAI</span><span class="task-venue">EMNLP-2022</span></li>
+    <li><span class="task-name">FinSim-4</span><span class="task-venue">IJCAI-ECAI-2022</span></li>
+    <li><span class="task-name">FinSim-3</span><span class="task-venue">IJCAI-2021</span></li>
+    <li><span class="task-name">FinSBD-2</span><span class="task-venue">IJCAI-2020</span></li>
+    <li><span class="task-name">FinSim</span><span class="task-venue">IJCAI-2020</span></li>
+    <li><span class="task-name">FinSBD</span><span class="task-venue">IJCAI-2019</span></li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2>Contact</h2>
+  <p>For questions about FinEval shared tasks, contact <a href="mailto:aclsigfintech@gmail.com">aclsigfintech@gmail.com</a>.</p>
+</section>
+
+</main>
+
+<footer>
+  <div>© ACL SIG-FinTech · FinNLP 2026</div>
+  <div>
+    <a href="index.html">Home</a> ·
+    <a href="call-for-papers.html">Papers</a> ·
+    <a href="call-for-sponsors.html">Sponsors</a> ·
+    <a href="https://sigfintech.github.io/fineval.html" target="_blank" rel="noopener">FinEval (Official)</a> ·
+    <a href="https://www.aclweb.org/portal/content/acl-code-ethics" target="_blank" rel="noopener">Code of Conduct</a>
+  </div>
+</footer>
+
+</body>
+</html>
