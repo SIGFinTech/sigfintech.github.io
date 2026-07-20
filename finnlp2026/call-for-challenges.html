@@ -233,6 +233,37 @@
     padding: 3px 10px;
   }
 
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; border-radius: 6px;
+    font-weight: 600; font-size: 0.94rem; text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1e40af; transform: translateY(-1px); box-shadow: 0 6px 18px -6px rgba(29,78,216,.45); text-decoration: none; }
+  .btn svg { width: 14px; height: 14px; }
+
+  .subtasks { display: grid; gap: 14px; margin-top: 16px; }
+  .subtask {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 22px; background: var(--bg);
+  }
+  .subtask .st-idx {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 8px; font-weight: 500;
+  }
+  .subtask h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 0 0 8px; }
+  .subtask p { font-size: 0.93rem; color: var(--text-dim); margin: 0 0 12px; line-height: 1.6; }
+  .subtask .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .subtask .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem;
+    color: var(--text-dim); background: var(--bg-soft);
+    border: 1px solid var(--border); border-radius: 4px; padding: 3px 9px;
+  }
+  .subtask .tag strong { color: var(--text); font-weight: 600; }
+
   footer {
     max-width: 920px; margin: 0 auto;
     padding: 32px 28px 48px;
@@ -277,28 +308,68 @@
 <section class="block">
   <h2>About FinEval</h2>
   <p>Shared tasks are collaborative initiatives where researchers and practitioners work together to address a common challenge using shared datasets and evaluation metrics. <strong>FinEval</strong> — Financial Information Access and Evaluation — aims to foster competition while providing a community venue, with new editions called annually alongside the FinNLP workshop.</p>
-  <p>For 2026, the call for task proposals is now <strong>closed</strong>. The accepted tasks are listed below; each task is run by its own organizing team, with its own webpage, dataset, and schedule. See also the official <a href="https://sigfintech.github.io/fineval.html" target="_blank" rel="noopener">FinEval page</a>.</p>
+  <p>For 2026, the call for task proposals is now <strong>closed</strong>. The FinEval 2026 shared task is detailed below. Participants submit a system description paper (see the <a href="call-for-papers.html">Call for Papers</a>), published in the ACL Anthology and presented at the workshop. See also the official <a href="https://sigfintech.github.io/fineval.html" target="_blank" rel="noopener">FinEval page</a>.</p>
 </section>
 
 <section class="block">
-  <h2>Accepted Tasks</h2>
-  <p class="lead">The following shared tasks have been accepted for FinEval 2026. Each task maintains its own webpage with registration, data, baselines, and schedule — task pages will be linked here as they become available.</p>
-  <div class="task-cards">
-    <a class="task-card" href="shared-task.html" style="display:block; text-decoration:none;">
-      <div class="t-title">Multilingual Financial Language Understanding</div>
-      <div class="t-org">Greek financial NER · Japanese implicit communication · multilingual financial QA</div>
-      <span class="t-soon" style="border-color: var(--accent); color: var(--accent);">View task &rarr;</span>
+  <h2>Shared Task: Multilingual Financial Language Understanding</h2>
+  <p class="lead">The FinEval 2026 shared task advances <strong>multilingual financial language understanding</strong> across three complementary phenomena: entity extraction in Greek, pragmatic intent recognition in Japanese, and cross-document multilingual financial question answering. Participants may take part in one, two, or all three subtasks.</p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="https://forms.gle/vUbtvxeARR7rYfkK6" target="_blank" rel="noopener">
+      Register
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
     </a>
   </div>
-  <p style="margin-top: 16px; color: var(--text-dim); font-size: 0.92rem;">Organizer credits and additional tasks will be added as they are confirmed. Participants of any FinEval 2026 task may submit a system description paper (see the <a href="call-for-papers.html">Call for Papers</a>), published in the ACL Anthology.</p>
+
+  <div class="subtasks">
+    <div class="subtask">
+      <div class="st-idx">// Subtask 1</div>
+      <h3>Greek Financial NER</h3>
+      <p>Numeric and textual named-entity recognition over company filings from Athens Stock Exchange firms.</p>
+      <div class="meta">
+        <span class="tag"><strong>Data:</strong> GRFinNUM &amp; GRFinNER</span>
+        <span class="tag">500 instances (320 / 80 / 100)</span>
+        <span class="tag"><strong>Metric:</strong> Entity F1</span>
+      </div>
+    </div>
+    <div class="subtask">
+      <div class="st-idx">// Subtask 2</div>
+      <h3>Japanese Implicit Communication Recognition (JF-ICR)</h3>
+      <p>Classify implicit intent — such as commitment, non-commitment, risk signaling, or refusal — in Japanese company Q&amp;A.</p>
+      <div class="meta">
+        <span class="tag">94 expert-annotated JP Q&amp;A instances</span>
+        <span class="tag"><strong>Metric:</strong> Accuracy</span>
+      </div>
+    </div>
+    <div class="subtask">
+      <div class="st-idx">// Subtask 3</div>
+      <h3>Multilingual Financial Q&amp;A</h3>
+      <p>Cross-document multilingual financial QA combining SEC filing statements with news, based on MultiFinBen / PolyFiQA.</p>
+      <div class="meta">
+        <span class="tag"><strong>Data:</strong> PolyFiQA-Easy &amp; PolyFiQA-Expert</span>
+        <span class="tag">172 QA examples</span>
+        <span class="tag">EN · ZH · JA · ES · EL</span>
+        <span class="tag"><strong>Metric:</strong> ROUGE-1</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub">How to Participate</h3>
+  <ul class="policy-list">
+    <li><strong>Register</strong> your team via the <a href="https://forms.gle/vUbtvxeARR7rYfkK6" target="_blank" rel="noopener">registration form</a>.</li>
+    <li><strong>Access data &amp; baselines</strong> — the practice set, datasets, and starter kits are released to registered participants on the schedule below.</li>
+    <li><strong>Submit predictions</strong> during the test phase, following the instructions shared with participants.</li>
+    <li><strong>Write a system paper</strong> using the ACL template, published in the ACL Anthology.</li>
+    <li><strong>Present in person</strong> at FinNLP @ EMNLP 2026 in Budapest.</li>
+  </ul>
 </section>
 
 <section class="block">
   <h2>Important Dates</h2>
-  <p class="lead">The following shared deadlines apply to all FinEval 2026 tasks. Each task sets its own <strong>training-data release and evaluation schedule</strong> on its own task page.</p>
   <table class="dates-table">
     <tbody>
-      <tr><td>Training data &amp; starter kits release</td><td>Set by each task</td></tr>
+      <tr><td>Practice set release</td><td>July 1, 2026</td></tr>
+      <tr><td>Dataset release</td><td>July 16, 2026</td></tr>
       <tr><td>Test phase / final predictions</td><td>August 4, 2026 (AoE)</td></tr>
       <tr><td>System paper submission</td><td>August 11, 2026 (AoE)</td></tr>
       <tr><td>Author notification</td><td>September 1, 2026</td></tr>
