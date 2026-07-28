@@ -304,6 +304,40 @@
     transform: translate(2px, -2px);
   }
 
+  /* ---------- ORGANIZING COMMITTEE ---------- */
+  .committee-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .committee {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    transition: border-color 0.18s, background 0.18s;
+  }
+  .committee:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .committee .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .committee .cname {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .committee .caff {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 3px;
+  }
+
   /* ---------- INVITED SPEAKERS (TBA) ---------- */
   .speakers-tba {
     margin-top: 12px;
@@ -637,6 +671,40 @@
       </div>
       <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
     </a>
+  </div>
+
+  <h3 class="sub">Organizing Committee</h3>
+  <div class="committee-grid">
+    <div class="committee">
+      <div class="role">// Publicity</div>
+      <div class="cname">Xueqing Peng</div>
+      <div class="caff">Postdoc</div>
+    </div>
+    <div class="committee">
+      <div class="role">// Shared Task</div>
+      <div class="cname">Zhiwei Liu</div>
+      <div class="caff">Postdoc</div>
+    </div>
+    <div class="committee">
+      <div class="role">// Sponsorship</div>
+      <div class="cname">Yankai Chen</div>
+      <div class="caff">Postdoc</div>
+    </div>
+    <div class="committee">
+      <div class="role">// Review</div>
+      <div class="cname">Lingfei Qian</div>
+      <div class="caff">Postdoc</div>
+    </div>
+    <div class="committee">
+      <div class="role">// Publication</div>
+      <div class="cname">Yan Wang</div>
+      <div class="caff">Postdoc</div>
+    </div>
+    <div class="committee">
+      <div class="role">// Local</div>
+      <div class="cname">Zhuohan Xie</div>
+      <div class="caff">Postdoc</div>
+    </div>
   </div>
 
   <h3 class="sub">Program Committee (Reviewers)</h3>
