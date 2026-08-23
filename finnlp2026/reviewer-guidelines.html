@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reviewer Guidelines · FinNLP 2026</title>
+<meta name="description" content="Reviewer Guidelines for FinNLP @ EMNLP 2026 — a concise workshop-specific supplement to the ACL Rolling Review (ARR) Reviewer Guidelines." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --text: #1a1f2e;
+    --text-dim: #525a6b;
+    --text-faint: #8a90a0;
+    --border: #e6e8ee;
+    --border-soft: #eef0f4;
+    --accent: #1d4ed8;
+    --accent-soft: #e8efff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.65; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-weight: 700; font-size: 0.95rem; color: var(--text); letter-spacing: 0.02em; }
+  .brand .accent-text { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-links a { color: var(--text-dim); font-weight: 500; font-size: 0.9rem; }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+  header.page-head {
+    max-width: 920px; margin: 0 auto;
+    padding: 60px 28px 36px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 500;
+  }
+  header.page-head h1 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: clamp(1.7rem, 3.6vw, 2.2rem);
+    line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 14px;
+  }
+  header.page-head .sub { color: var(--text-dim); font-size: 1rem; margin: 0; }
+  header.page-head .sub strong { color: var(--text); font-weight: 600; }
+
+  main { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+  section.block { padding: 40px 0; border-bottom: 1px solid var(--border-soft); }
+  section.block:last-of-type { border-bottom: none; }
+  section.block > h2 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 1.28rem; color: var(--text);
+    margin: 0 0 18px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--text); display: inline-block;
+  }
+  section.block > h2 .num {
+    font-family: 'JetBrains Mono', monospace; color: var(--accent);
+    font-size: 0.95rem; margin-right: 8px;
+  }
+  section.block p { margin: 0 0 14px; color: var(--text); line-height: 1.72; }
+  section.block p.lead { color: var(--text-dim); font-size: 1.02rem; }
+
+  ul.policy-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  ul.policy-list li {
+    padding: 8px 0 8px 22px; position: relative;
+    color: var(--text); font-size: 0.96rem; line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: "—"; position: absolute; left: 0; top: 8px; color: var(--text-faint);
+  }
+  ul.dont li::before { content: "✕"; color: #dc2626; font-size: 0.82rem; top: 9px; }
+  ul.check li::before { content: "✓"; color: var(--accent); font-size: 0.85rem; top: 9px; }
+
+  .callout {
+    border: 1px solid var(--accent); background: var(--accent-soft);
+    padding: 16px 18px; border-radius: 6px; margin-top: 20px;
+  }
+  .callout .lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem;
+    color: var(--accent); margin-bottom: 4px; font-weight: 500;
+  }
+  .callout p { margin: 0; color: var(--text); font-size: 0.95rem; }
+
+  footer {
+    max-width: 920px; margin: 0 auto; padding: 32px 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--text-faint);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  @media (max-width: 700px) {
+    header.page-head { padding: 40px 24px 28px; }
+    main { padding: 0 24px; }
+    section.block { padding: 30px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">FinNLP <span class="accent-text">2026</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="call-for-papers.html">Papers</a>
+      <a href="call-for-challenges.html">Challenges</a>
+      <a href="call-for-sponsors.html">Sponsors</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="eyebrow">// For Reviewers · FinNLP 2026</div>
+  <h1>Reviewer Guidelines</h1>
+  <p class="sub"><strong>FinNLP @ EMNLP 2026</strong> · a concise workshop-specific supplement to the ARR Reviewer Guidelines</p>
+</header>
+
+<main>
+
+<section class="block">
+  <h2>Overview</h2>
+  <p>All submissions to FinNLP 2026 are reviewed through <strong>ACL Rolling Review (ARR)</strong>. Reviewers must follow the full <a href="https://aclrollingreview.org/reviewerguidelines" target="_blank" rel="noopener">ARR Reviewer Guidelines</a>, including its requirements on confidentiality, anonymity, conflicts of interest, professional conduct, ethics, use of generative AI, author response, and reviewer discussion. The standard ARR review form and scoring scheme apply.</p>
+  <p class="lead">This supplement does not replace ARR policy or introduce a new review form. It only explains how to apply ARR standards when assessing a workshop contribution.</p>
+</section>
+
+<section class="block">
+  <h2><span class="num">1</span>Apply ARR Standards</h2>
+  <ul class="policy-list">
+    <li>Check assignments promptly for expertise and conflicts of interest; contact the appropriate chair if reassignment may be needed.</li>
+    <li>Treat the manuscript, supplementary materials, review, author response, and discussion as confidential.</li>
+    <li>Do not attempt to discover the authors' identities, and do not let a suspected identity affect the assessment.</li>
+    <li>Write the review yourself, and follow ARR and ACL policy on generative-AI assistance.</li>
+    <li>Make comments specific, evidence-based, professional, and constructive.</li>
+    <li>Ensure that the review text supports the scores entered in the ARR review form.</li>
+    <li>Read the author response and update the assessment when important concerns are clarified or resolved.</li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2><span class="num">2</span>Adjust Expectations for a Workshop</h2>
+  <p>Workshop papers should remain sufficiently sound for the claims they make. However, they do not always need the breadth, maturity, or experimental scale expected of a main-conference paper. Depending on the Call for Papers, reviewers should be open to:</p>
+  <ul class="policy-list">
+    <li>Preliminary findings and clearly identified work in progress;</li>
+    <li>Focused or small-scale studies with appropriately limited claims;</li>
+    <li>New ideas, proof-of-concept methods, and emerging research directions;</li>
+    <li>Negative, null, replication, reproduction, or diagnostic results;</li>
+    <li>Position, perspective, resource, dataset, benchmark, and system papers;</li>
+    <li>Work on narrow topics, domains, communities, or languages relevant to the workshop;</li>
+    <li>Submissions that offer useful insights or are likely to stimulate productive workshop discussion.</li>
+  </ul>
+  <div class="callout">
+    <div class="lbl">// Important distinction</div>
+    <p>The workshop may be more flexible about completeness and scale, but <strong>not</strong> about unsupported central claims, serious technical errors, misleading presentation, research integrity, or ethical conduct.</p>
+  </div>
+</section>
+
+<section class="block">
+  <h2><span class="num">3</span>Evaluate the Paper on Its Own Claims</h2>
+  <p>Identify the paper's question, contribution, evidence, and intended scope. Ask whether the evidence is sufficient for the claims actually made, and whether the work is relevant and valuable to the workshop community.</p>
+  <ul class="policy-list dont">
+    <li>Do not require state-of-the-art performance unless the paper makes a state-of-the-art claim.</li>
+    <li>Do not penalize a method merely for being simple.</li>
+    <li>Do not treat negative results or a narrow topic as inherently weak.</li>
+    <li>Do not require broad multilingual, multi-domain, or multi-model evaluation when the claims are explicitly limited and well motivated.</li>
+    <li>Do not request additional experiments as conditions for acceptance unless they are necessary to evaluate a central claim.</li>
+    <li>Do not reject a position, resource, replication, or preliminary paper for failing to resemble a conventional empirical main-conference paper.</li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2><span class="num">4</span>Write a Useful Review</h2>
+  <p>A useful review should briefly summarize the paper, identify its main strengths, explain substantive concerns, and distinguish required clarifications from optional suggestions.</p>
+  <ul class="policy-list">
+    <li>Explain which claim is affected by each major concern, and why the issue matters.</li>
+    <li>When questioning novelty, identify relevant prior work and explain the overlap.</li>
+    <li>Separate major concerns, minor issues, questions, and suggestions for future work.</li>
+    <li>Acknowledge meaningful strengths and potential workshop value, even when recommending rejection.</li>
+    <li>Use a respectful, neutral tone; evaluate the submitted work rather than the authors.</li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2><span class="num">5</span>ARR Scores and Discussion</h2>
+  <p>Use the existing ARR review form and score definitions. This workshop does not introduce a separate scoring rubric. When making the overall assessment, consider both the ARR criteria and the paper's relevance and potential value to the workshop. A paper may be suitable for workshop presentation even if it would need further development before a main-conference publication.</p>
+  <p>If an author-response or discussion period is available, read the response, participate when needed, and update the review or scores when the response changes the assessment. Reviewers are not required to reach consensus, but substantial disagreements should be discussed.</p>
+</section>
+
+<section class="block">
+  <h2>Final Check</h2>
+  <ul class="policy-list check">
+    <li>Did I apply the ARR policies and the existing ARR review form?</li>
+    <li>Did I evaluate the paper according to its stated contribution and the workshop Call for Papers?</li>
+    <li>Did I distinguish workshop-appropriate flexibility from problems of soundness or integrity?</li>
+    <li>Are my comments specific, constructive, and consistent with my scores?</li>
+    <li>Have I reserved time to read the author response and discussion, if applicable?</li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2>Contact</h2>
+  <p>For workshop-specific questions, assignment problems, conflicts of interest, emergencies, or suspected policy violations, contact the FinNLP 2026 workshop chairs at <a href="mailto:aclsigfintech@gmail.com">aclsigfintech@gmail.com</a>, or through the confidential mechanism provided in ARR / OpenReview.</p>
+</section>
+
+</main>
+
+<footer>
+  <div>© ACL SIG-FinTech · FinNLP 2026</div>
+  <div>
+    <a href="index.html">Home</a> ·
+    <a href="call-for-papers.html">Papers</a> ·
+    <a href="call-for-challenges.html">Challenges</a> ·
+    <a href="https://aclrollingreview.org/reviewerguidelines" target="_blank" rel="noopener">ARR Guidelines</a>
+  </div>
+</footer>
+
+</body>
+</html>
