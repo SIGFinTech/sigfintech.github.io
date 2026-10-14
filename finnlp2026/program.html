@@ -520,86 +520,192 @@
     .brand { flex: none; }
   }
 
-  .prog-hero .event-line strong { color: var(--text); }
-  .slot { display: grid; grid-template-columns: 118px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border-soft); }
-  .slot-time { font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; font-weight: 500; color: var(--text); padding-top: 2px; }
-  .slot-kind { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-  .slot.keynote .slot-kind { color: #b45309; }
-  .slot.brk .slot-time, .slot.brk .slot-title { color: var(--text-dim); }
-  .slot.brk .slot-kind { color: var(--text-faint); }
-  .slot-title { display: block; font-weight: 600; color: var(--text); line-height: 1.4; }
-  a.slot-title:hover { color: var(--accent); text-decoration: none; }
-  .slot-who { color: var(--text-dim); font-size: 0.9rem; margin-top: 2px; }
-  ol.papers { margin: 12px 0 0; padding-left: 22px; }
-  ol.papers li { margin: 0 0 10px; padding-left: 4px; }
-  ol.papers .p-title { display: block; font-size: 0.93rem; font-weight: 500; line-height: 1.45; }
-  ol.papers .p-auth { display: block; font-size: 0.84rem; color: var(--text-dim); line-height: 1.45; }
-  .tba { color: var(--text-faint); font-style: italic; font-weight: 500; }
-  .remote { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 999px; background: #fff4e5; color: #b45309; border: 1px solid #f6d7a7; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; vertical-align: 2px; }
-  .talk-inline { display: grid; grid-template-columns: 120px 1fr; gap: 22px; margin-top: 6px; scroll-margin-top: 80px; }
-  .talk-photo { width: 120px; height: 148px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); background: #fff; }
-  .slot.talk .slot-title { font-size: 1.08rem; line-height: 1.4; margin-bottom: 4px; }
-  .talk-who { font-size: 0.94rem; margin-bottom: 10px; }
-  .talk-who strong { color: var(--text); }
-  .talk-who span { color: var(--text-dim); }
-  .talk-who span::before { content: " · "; }
-  .talk-bio p { font-size: 0.88rem; line-height: 1.62; color: var(--text-dim); margin: 0 0 7px; }
-  .talk-bio p:last-child { margin-bottom: 0; }
-  .slot-desc { font-size: 0.88rem; line-height: 1.62; color: var(--text-dim); margin: 8px 0 0; max-width: 640px; }
-  .sponsor-row { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
-  .sponsor { display: flex; flex-direction: column; gap: 10px; }
-  .sponsor img { height: 38px; width: auto; }
-  .sponsor span { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-dim); letter-spacing: 0.04em; }
-  @media (max-width: 700px) {
-    .slot { grid-template-columns: 1fr; gap: 4px; }
-    .talk-inline { grid-template-columns: 1fr; }
-    .talk-photo { width: 100px; height: 124px; }
-  }
+  :root { --ink: #0e1222; --paper: #ffffff; --muted: #5b6275; --faint: #9aa0ae; --line: #e7e8ee; --wash: #f5f6fa;
+          --blue: #1d4ed8; --blue-soft: #e8efff; --amber: #b45309; --amber-soft: #fdf1dc; --serif: 'Instrument Serif', Georgia, serif; }
+  body { background: var(--paper); color: var(--ink); }
+  .nav-inner, footer { max-width: 1180px; padding-left: 40px; padding-right: 40px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
 
-  @media (max-width: 700px) {
-    .nav-inner { padding: 12px 20px; gap: 14px; }
-    .nav-links { flex-wrap: nowrap; overflow-x: auto; gap: 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-                 mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a { flex: none; }
-    .brand { flex: none; }
-  }
+  /* hero */
+  .p-hero { padding: 88px 0 56px; border-bottom: 1px solid var(--line); overflow: hidden; }
+  .p-hero .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .78rem; letter-spacing: .08em; color: var(--blue); margin-bottom: 26px; }
+  .p-hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: end; }
+  .p-hero h1 { font-size: clamp(3.6rem, 10.5vw, 9.2rem); line-height: .86; letter-spacing: -.045em; font-weight: 700; margin: 0; }
+  .p-hero h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.02em; color: var(--blue); }
+  .p-hero .lede { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.2; margin: 26px 0 0; max-width: 640px; color: var(--ink); }
+  .facts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+  .facts li span:first-child { font-family: 'JetBrains Mono', monospace; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); padding-top: 3px; }
+  .facts li span:last-child { text-align: right; font-weight: 500; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; border-top: 1px solid var(--line); }
+  .stat { padding: 22px 0 0; border-right: 1px solid var(--line); padding-left: 22px; }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; }
+  .stat b { display: block; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat span { display: block; margin-top: 8px; font-size: .88rem; color: var(--muted); }
 
-  /* ---------- interactions ---------- */
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
-  .sponsor img { transition: transform .25s ease, filter .25s ease; filter: grayscale(.15); }
-  .sponsor:hover img { transform: scale(1.04); filter: none; }
-  .remote { animation: none; }
+  /* sticky day bar */
+  .daybar { position: sticky; top: var(--navh, 53px); z-index: 40; background: rgba(255,255,255,.94); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .daybar .wrap { padding-top: 12px; padding-bottom: 8px; }
+  .bar { display: flex; height: 30px; gap: 2px; }
+  .seg { position: relative; display: flex; align-items: center; min-width: 0; padding: 0 7px; border-radius: 4px; text-decoration: none;
+         font-size: .7rem; font-weight: 600; letter-spacing: .01em; color: var(--ink); background: var(--wash);
+         transition: transform .25s cubic-bezier(.2,.7,.2,1), background .25s, color .25s, box-shadow .25s; }
+  .seg span { white-space: nowrap; overflow: hidden; text-overflow: clip; }
+  .seg:hover { transform: translateY(-2px); text-decoration: none; box-shadow: 0 6px 14px -8px rgba(14,18,34,.4); }
+  .g-keynote { background: var(--amber-soft); color: var(--amber); }
+  .g-talk { background: var(--blue-soft); color: var(--blue); }
+  .g-oral { background: #e9f6ef; color: #0f7a46; }
+  .g-break, .g-lunch { background: var(--wash); color: var(--faint); }
+  .g-task { background: #f1ebfd; color: #6d28d9; }
+  .g-panel, .g-close, .g-open { background: #eef0f4; color: var(--muted); }
+  .g-night { background: var(--ink); color: #fff; }
+  .seg.on { box-shadow: inset 0 0 0 2px currentColor; }
+  .g-night.on { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ink); }
+  .seg.tight span { opacity: 0; }
+  .seg.live::after { content: ""; position: absolute; top: -4px; right: -4px; width: 8px; height: 8px; border-radius: 50%; background: #dc2626;
+                     box-shadow: 0 0 0 0 rgba(220,38,38,.5); animation: ping 1.6s infinite; }
+  @keyframes ping { 70% { box-shadow: 0 0 0 8px rgba(220,38,38,0); } 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); } }
+  .gap { flex: none; }
+  .ticks { position: relative; height: 16px; margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: .64rem; color: var(--faint); }
+  .ticks span { position: absolute; transform: translateX(-2px); }
+  .ticks span.end { transform: translateX(-100%); }
+
+  /* chapters */
+  .chapter { padding: 72px 0 8px; }
+  .ch-head { display: grid; grid-template-columns: 160px 1fr auto; align-items: baseline; gap: 24px; padding-bottom: 18px; border-bottom: 2px solid var(--ink); margin-bottom: 8px; }
+  .ch-no { font-family: var(--serif); font-size: 3.4rem; line-height: 1; color: var(--blue); }
+  .ch-name { font-size: clamp(2rem, 4.2vw, 3.2rem); letter-spacing: -.03em; line-height: 1; margin: 0; font-weight: 700; }
+  .ch-span { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--muted); }
+
+  /* slots */
+  .slot { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 34px 0; border-bottom: 1px solid var(--line);
+          scroll-margin-top: 140px; position: relative; }
+  .slot::before { content: ""; position: absolute; left: -40px; top: 0; bottom: 0; width: 3px; background: transparent; transition: background .3s; }
+  .when { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 4px; }
+  .when:hover { text-decoration: none; }
+  .when .from { font-size: 2rem; font-weight: 600; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; transition: color .2s; }
+  .when .to { font-family: 'JetBrains Mono', monospace; font-size: .74rem; color: var(--faint); }
+  .when .to::before { content: "until "; }
+  .slot:hover .when .from { color: var(--blue); }
+  .kind { font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .09em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .s-keynote .kind { color: var(--amber); }
+  .s-oral .kind { color: #0f7a46; }
+  .s-task .kind { color: #6d28d9; }
+  .title { font-size: clamp(1.3rem, 2.1vw, 1.65rem); line-height: 1.22; letter-spacing: -.02em; margin: 0 0 8px; font-weight: 650; max-width: 760px; }
+  .title.serif { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -.01em; }
+  .meta { color: var(--muted); font-size: .95rem; margin: 0; }
+  .meta a { color: var(--blue); }
+  .desc { color: var(--muted); font-size: .95rem; line-height: 1.65; max-width: 680px; margin: 14px 0 0; }
+
+  /* talks */
+  .talk { display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start; }
+  .portrait { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; background: var(--wash); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.85) contrast(1.02);
+                  transform: scale(1.02); transition: filter .6s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+  .slot:hover .portrait img { filter: none; transform: scale(1.06); }
+  .who { margin: 0 0 16px; font-size: 1rem; }
+  .who strong { font-weight: 650; }
+  .who span::before { content: " — "; color: var(--faint); }
+  .who span { color: var(--muted); }
+  .bio p { color: var(--muted); font-size: .92rem; line-height: 1.68; margin: 0 0 10px; max-width: 680px; }
+  .s-keynote { background: linear-gradient(90deg, var(--amber-soft), rgba(253,241,220,0) 70%); }
+  .s-keynote::before { background: var(--amber); }
+
+  /* orals */
+  ol.papers { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  ol.papers li { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line);
+                 transition: background .2s, padding .25s cubic-bezier(.2,.7,.2,1); }
+  ol.papers li:hover { background: var(--wash); padding-left: 10px; }
+  .no { font-family: var(--serif); font-size: 1.6rem; line-height: 1; color: var(--faint); transition: color .2s; }
+  ol.papers li:hover .no { color: #0f7a46; }
+  .p-title { font-weight: 550; font-size: 1rem; line-height: 1.4; }
+  .p-auth { display: block; margin-top: 3px; color: var(--muted); font-size: .86rem; line-height: 1.45; }
+  .remote { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: #fff4e5; color: var(--amber);
+            border: 1px solid #f6d7a7; font-family: 'JetBrains Mono', monospace; font-size: .66rem; font-weight: 500; vertical-align: 2px; }
+  .remote.sm { margin-left: 0; }
+
+  /* breaks */
+  .s-break { padding: 18px 0; }
+  .s-break .when .from { font-size: 1.1rem; color: var(--faint); }
+  .s-break .when .to { display: none; }
+  .s-break .what { display: flex; align-items: center; gap: 16px; color: var(--faint); }
+  .brk-title { font-family: var(--serif); font-style: italic; font-size: 1.35rem; color: var(--muted); }
+  .s-break .what::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
+
+  /* live */
+  .slot.live::before, .night.live .night-inner::before { background: #dc2626; }
+  .slot.live .kind::after { content: "  ● Live now"; color: #dc2626; animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .35; } }
+  .slot:target { background: var(--blue-soft); }
+
+  /* night */
+  .night { margin-top: 72px; background: var(--ink); color: #fff; scroll-margin-top: 120px; position: relative; overflow: hidden; }
+  .night::after { content: ""; position: absolute; inset: -40% -10% auto auto; width: 620px; height: 620px; border-radius: 50%;
+                  background: radial-gradient(circle, rgba(29,78,216,.55), rgba(29,78,216,0) 65%); pointer-events: none; }
+  .night-inner { max-width: 1180px; margin: 0 auto; padding: 96px 40px 104px; position: relative; z-index: 1; }
+  .night-kind { font-family: 'JetBrains Mono', monospace; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: #93b4ff; }
+  .night-title { font-size: clamp(3.4rem, 10vw, 8.4rem); line-height: .9; letter-spacing: -.045em; margin: 18px 0 22px; font-weight: 700; }
+  .night-title em { font-family: var(--serif); font-weight: 400; font-style: italic; color: #93b4ff; letter-spacing: -.02em; }
+  .night-meta { font-size: 1.05rem; color: #c9cfe0; margin: 0; }
+  .night.live .night-kind::after { content: "  ● Live now"; color: #ff6b6b; }
+
+  /* sponsors */
+  .sponsors { padding-top: 80px; padding-bottom: 96px; }
+  .sponsors h2 { font-family: 'JetBrains Mono', monospace; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: var(--faint); font-weight: 500; margin: 0 0 28px; }
+  .sp-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); }
+  .sp { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; padding: 36px 0 0; }
+  .sp + .sp { border-left: 1px solid var(--line); padding-left: 40px; }
+  .sp .logo { height: 64px; display: flex; align-items: center; }
+  .sp .logo img { height: 100%; width: auto; max-width: 100%; object-fit: contain; display: block; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .sp:hover .logo img { transform: scale(1.04); }
+  .sp p { margin: 0; font-size: .92rem; color: var(--muted); }
+  .sp p b { color: var(--ink); font-weight: 600; }
+
+  /* motion */
+  .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+  .rv.in { opacity: 1; transform: none; }
+  .h-line { display: block; overflow: hidden; }
+  .h-line > span { display: inline-block; animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+  .h-line:nth-child(2) > span { animation-delay: .09s; }
+  @keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
+  .p-hero .lede, .facts, .stats { animation: fadeup .9s .25s cubic-bezier(.2,.7,.2,1) both; }
+  .facts { animation-delay: .35s; } .stats { animation-delay: .45s; }
+  @keyframes fadeup { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    .nav-inner, footer { padding-left: 24px; padding-right: 24px; }
+    .p-hero { padding: 56px 0 40px; }
+    .p-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { padding-left: 0; }
+    .stat:nth-child(2) { border-right: none; }
+    .stat { padding-bottom: 18px; }
+    .daybar .wrap { overflow-x: auto; }
+    .bar, .ticks { min-width: 760px; }
+    .ch-head { grid-template-columns: auto 1fr; }
+    .ch-span { grid-column: 1 / -1; }
+    .ch-no { font-size: 2.6rem; }
+    .slot { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+    .slot::before { left: -24px; }
+    .when { flex-direction: row; align-items: baseline; gap: 10px; }
+    .when .from { font-size: 1.5rem; }
+    .talk { grid-template-columns: 1fr; gap: 18px; }
+    .portrait { width: 160px; }
+    .s-break .what { gap: 10px; }
+    .s-break { display: flex; gap: 14px; align-items: center; }
+    .night-inner { padding: 72px 24px 80px; }
+    .sp-grid { grid-template-columns: 1fr; }
+    .sp + .sp { border-left: none; padding-left: 0; border-top: 1px solid var(--line); margin-top: 32px; }
+  }
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-    .reveal { opacity: 1; transform: none; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .rv { opacity: 1; transform: none; }
   }
-
-  .jump { position: sticky; top: var(--navh, 53px); z-index: 40; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-soft); }
-  .jump-inner { max-width: 920px; margin: 0 auto; padding: 10px 28px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
-  .jump-inner::-webkit-scrollbar { display: none; }
-  .jump a { flex: none; font-size: 0.82rem; font-weight: 500; color: var(--text-dim); padding: 5px 12px; border-radius: 999px;
-            border: 1px solid var(--border); background: #fff; transition: color .2s, background .2s, border-color .2s, transform .2s; }
-  .jump a:hover { color: var(--accent); border-color: #c7d4f5; text-decoration: none; transform: translateY(-1px); }
-  .jump a.on { color: #fff; background: var(--accent); border-color: var(--accent); }
-  .slot { margin: 0 -14px; padding: 16px 14px; scroll-margin-top: 120px;
-          transition: background .25s ease, box-shadow .25s ease; }
-  .slot:hover { background: #f5f7fb; }
-  .slot-time a { color: inherit; text-decoration: none; transition: color .2s; }
-  .slot-time a:hover, .slot:hover .slot-time a { color: var(--accent); }
-  .slot:target { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
-  .talk-photo { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
-  .slot:hover .talk-photo { transform: translateY(-3px) rotate(-0.6deg); box-shadow: 0 12px 26px -14px rgba(15,23,42,.45); }
-  ol.papers li { transition: transform .2s ease; }
-  ol.papers li:hover { transform: translateX(3px); }
-  .slot.live { background: #eef4ff; box-shadow: inset 3px 0 0 var(--accent); }
-  .slot.live .slot-kind::after { content: "\25CF  Live now"; margin-left: 10px; color: #dc2626; letter-spacing: 0.04em;
-                                 animation: livepulse 1.6s ease-in-out infinite; }
-  @keyframes livepulse { 50% { opacity: .35; } }
-  @media (max-width: 700px) { .jump-inner { padding: 8px 24px; } .slot { margin: 0 -10px; padding: 14px 10px; } }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 <nav class="top">
@@ -616,81 +722,104 @@
   </div>
 </nav>
 
-<header class="hero prog-hero">
-  <div class="eyebrow">// Programme · Wednesday 28 October 2026</div>
-  <h1>FinNLP 2026 Programme</h1>
-  <p class="event-line"><strong>Room F8, HUNGEXPO, Budapest</strong> · co-located with EMNLP 2026 · all times CET</p>
-  <div class="meta-pills">
-    <span class="pill"><span class="dot"></span>6 invited talks</span>
-    <span class="pill"><span class="dot"></span>12 oral papers</span>
-    <span class="pill"><span class="dot"></span>Poster session</span>
-    <span class="pill"><span class="dot"></span>Panel</span>
-    <span class="pill"><span class="dot"></span>FinEval shared task</span>
+<header class="p-hero"><div class="wrap">
+  <div class="eyebrow">// FinNLP 2026 · The 11th Workshop on Financial Technology and Natural Language Processing</div>
+  <div class="p-hero-grid">
+    <div>
+      <h1><span class="h-line"><span>The</span></span><span class="h-line"><span><em>Programme</em></span></span></h1>
+      <p class="lede">One day of financial NLP: keynotes from industry, research talks, twelve oral papers, a poster session, the FinEval shared task and a panel.</p>
+    </div>
+    <ul class="facts">
+      <li><span>Date</span><span>Wednesday 28 October 2026</span></li>
+      <li><span>Venue</span><span>Room F8, HUNGEXPO, Budapest</span></li>
+      <li><span>With</span><span>EMNLP 2026</span></li>
+      <li><span>Time</span><span>All times CET</span></li>
+    </ul>
   </div>
-</header>
+  <div class="stats"><div class="stat"><b data-n="6">06</b><span>Keynotes &amp; invited talks</span></div><div class="stat"><b data-n="12">12</b><span>Oral papers</span></div><div class="stat"><b data-n="49">49</b><span>Poster papers</span></div><div class="stat"><b data-n="15">15</b><span>FinEval papers</span></div></div>
+</div></header>
 
-<nav class="jump" aria-label="Jump to part of the day"><div class="jump-inner">
-  <a href="#t-0900" data-from="t-0900">Morning</a>
-  <a href="#t-1230" data-from="t-1230">Lunch &amp; Posters</a>
-  <a href="#t-1400" data-from="t-1400">Afternoon</a>
-  <a href="#t-1900" data-from="t-1900">FinNLP Night</a>
+<nav class="daybar" aria-label="The day at a glance"><div class="wrap">
+  <div class="bar"><a class="seg g-open" style="width:2.588%" href="#t-0900" data-start="540" data-end="555" title="09:00–09:15 · Opening"><span>Opening</span></a><a class="seg g-keynote" style="width:5.176%" href="#t-0915" data-start="555" data-end="585" title="09:15–09:45 · Keynote"><span>Keynote</span></a><a class="seg g-oral" style="width:7.765%" href="#t-0945" data-start="585" data-end="630" title="09:45–10:30 · Oral I"><span>Oral I</span></a><a class="seg g-break" style="width:5.176%" href="#t-1030" data-start="630" data-end="660" title="10:30–11:00 · Break"><span>Break</span></a><a class="seg g-talk" style="width:10.353%" href="#t-1100" data-start="660" data-end="720" title="11:00–12:00 · Talks"><span>Talks</span></a><a class="seg g-keynote" style="width:5.176%" href="#t-1200" data-start="720" data-end="750" title="12:00–12:30 · Keynote"><span>Keynote</span></a><a class="seg g-lunch" style="width:15.529%" href="#t-1230" data-start="750" data-end="840" title="12:30–14:00 · Lunch &amp; Posters"><span>Lunch &amp; Posters</span></a><a class="seg g-talk" style="width:10.353%" href="#t-1400" data-start="840" data-end="900" title="14:00–15:00 · Talks"><span>Talks</span></a><a class="seg g-task" style="width:5.176%" href="#t-1500" data-start="900" data-end="930" title="15:00–15:30 · FinEval"><span>FinEval</span></a><a class="seg g-break" style="width:5.176%" href="#t-1530" data-start="930" data-end="960" title="15:30–16:00 · Break"><span>Break</span></a><a class="seg g-oral" style="width:7.765%" href="#t-1600" data-start="960" data-end="1005" title="16:00–16:45 · Oral II"><span>Oral II</span></a><a class="seg g-panel" style="width:5.176%" href="#t-1645" data-start="1005" data-end="1035" title="16:45–17:15 · Panel"><span>Panel</span></a><a class="seg g-close" style="width:2.588%" href="#t-1715" data-start="1035" data-end="1050" title="17:15–17:30 · Award"><span>Award</span></a><span class="gap" style="width:2%"></span><a class="seg g-night" style="width:10%" href="#t-1900" data-start="1140" data-end="1260" title="19:00–21:00 · FinNLP Night"><span>Night</span></a></div>
+  <div class="ticks"><span style="left:0.000%">09</span><span style="left:10.353%">10</span><span style="left:20.706%">11</span><span style="left:31.059%">12</span><span style="left:41.412%">13</span><span style="left:51.765%">14</span><span style="left:62.118%">15</span><span style="left:72.471%">16</span><span style="left:82.824%">17</span><span style="left:90%">19</span><span style="left:100%" class="end">21</span></div>
 </div></nav>
 
-<main>
+<main class="wrap" id="schedule">
+<section class="chapter" id="ch-i"><header class="ch-head"><span class="ch-no">I</span><h2 class="ch-name">Morning</h2><span class="ch-span">09:00 — 12:30</span></header><article class="slot s-open" id="t-0900" data-start="540" data-end="555"><a class="when" href="#t-0900" aria-label="Link to 09:00"><span class="from">09:00</span><span class="to">09:15</span></a><div class="what"><div class="kind">Opening</div><h3 class="title">Opening Remarks</h3><p class="meta">Sophia Ananiadou · The University of Manchester</p></div></article><article class="slot s-keynote" id="t-0915" data-start="555" data-end="585"><a class="when" href="#t-0915" aria-label="Link to 09:15"><span class="from">09:15</span><span class="to">09:45</span></a><div class="what"><div class="kind">Keynote</div><div class="talk"><figure class="portrait"><img src="assets/speakers/daniel-preotiuc-pietro.jpg" alt="Daniel Preoțiuc-Pietro" loading="lazy"></figure><div class="talk-text"><h3 class="title">Navigating the Open Challenges of Complex Financial Question Answering</h3><p class="who"><strong>Daniel Preoțiuc-Pietro</strong><span>Bloomberg</span></p><div class="bio"><p>Daniel Preoțiuc-Pietro is the engineering manager of the AI Search Services Group at Bloomberg, New York City. His group develops the search models, tools and infrastructure that power both low-latency search and conversational use cases with access to hundreds of millions of unstructured documents across the Bloomberg Terminal.</p><p>His research encompasses topics in NLP, LLMs and Computational Social Science, where he published over 50 top-tier publications. Primary current research areas include introducing new task setups, applications and NLP resources inspired by industry use cases. Personal research interests focus on analyzing the pragmatic, social and temporal dimensions of text, particularly from social media, with cross-disciplinary applications in psychology, law, political science and journalism. This research has been featured extensively in popular press including The Washington Post, BBC and New Scientist.</p><p>He co-founded and co-organizes the Natural Legal Language Processing (NLLP) workshop series collocated with *ACL conferences and serves as Industry Track Chair for EACL 2027. Prior to joining Bloomberg, he was a postdoctoral research fellow at the University of Pennsylvania and obtained a PhD in the NLP Group at the University of Sheffield, UK.</p></div></div></div></div></article><article class="slot s-oral" id="t-0945" data-start="585" data-end="630"><a class="when" href="#t-0945" aria-label="Link to 09:45"><span class="from">09:45</span><span class="to">10:30</span></a><div class="what"><div class="kind">Oral Session I</div><h3 class="title serif">Financial Language Agents</h3><p class="meta">Six papers · five minutes each, then 15 minutes of joint Q&amp;A · <span class="remote sm">Remote</span> presented online</p><ol class="papers"><li><span class="no">01</span><div><span class="p-title">When Helpful Agents Cause Financial Harm: Evaluating LLM Agent Safety in Executable Economic Worlds</span><span class="remote">Remote</span><span class="p-auth">Yuzhu Ling, Jiale Han, Benyou Wang</span></div></li><li><span class="no">02</span><div><span class="p-title">DealTrace: Localizing and Intervening on Failures in Agentic Financial Reasoning</span><span class="p-auth">Alina Hyk</span></div></li><li><span class="no">03</span><div><span class="p-title">How LLM Financial Agents Respond to Stated Affect Depends on Their Assigned Role</span><span class="p-auth">Da Chen Lian, Yu-Lin Chang, Yen-Hsi Huang, Shu-Kai Hsieh</span></div></li><li><span class="no">04</span><div><span class="p-title">MortarBench: Evaluating Mortgage Loan Origination Agents</span><span class="p-auth">Matthew Toles, Yunan Lu, Manav Munjal, Bojun Liu, Yuanhao Deng, Stephanie Selig, Derek Rindner, Cheng Li, Zhou Yu</span></div></li><li><span class="no">05</span><div><span class="p-title">Theatron: A Benchmark for Evaluating Persona Persistence in Long-Horizon LLM Decision-Making</span><span class="p-auth">Yuyan Wang, Yuechen Jiang, Zhiwei Liu, Jimin Huang, Sophia Ananiadou</span></div></li><li><span class="no">06</span><div><span class="p-title">AlphaMemo: Structured Search-Process Memory for Self-Evolving Alpha Mining Agents</span><span class="p-auth">Hang Yu, Zifan Zheng, Jeff Z. Pan, Tongliang Liu, Zhiyong Wang, Fengxiang He</span></div></li></ol></div></article><div class="slot s-break" id="t-1030" data-start="630" data-end="660"><a class="when" href="#t-1030"><span class="from">10:30</span><span class="to">11:00</span></a><div class="what"><span class="brk-title">Coffee break</span></div></div><article class="slot s-talk" id="t-1100" data-start="660" data-end="690"><a class="when" href="#t-1100" aria-label="Link to 11:00"><span class="from">11:00</span><span class="to">11:30</span></a><div class="what"><div class="kind">Invited Talk</div><div class="talk"><figure class="portrait"><img src="assets/speakers/yohei-seki.jpg" alt="Yohei Seki" loading="lazy"></figure><div class="talk-text"><h3 class="title">AI-based Sustainability Compliance Checking: Limitations and Beyond</h3><p class="who"><strong>Yohei Seki</strong><span>University of Tsukuba</span></p><div class="bio"><p>Yohei Seki is a Professor at the Institute of Library, Information and Media Science, University of Tsukuba, Japan, and was selected as one of the University of Tsukuba&#x27;s Best Faculty Members for 2025. He received his Ph.D. from the Graduate University for Advanced Studies (SOKENDAI) in 2005. His research interests include natural language processing, information access, and citizen sentiment analysis, with a recent focus on the analysis of corporate ESG disclosures. He co-organised the NTCIR Multilingual Opinion Analysis Task from 2006 to 2010, and served as a Japanese-side organiser of the ML-ESG shared tasks and SemEval-2025 Task 6 (PromiseEval). His work was a runner-up for the Best Paper Award at ICADL 2022. He also co-edited the international smart city standards ISO/IEC 30146 (2019) and ISO/IEC 30145-3 (2020).</p></div></div></div></div></article><article class="slot s-talk" id="t-1130" data-start="690" data-end="720"><a class="when" href="#t-1130" aria-label="Link to 11:30"><span class="from">11:30</span><span class="to">12:00</span></a><div class="what"><div class="kind">Invited Talk</div><div class="talk"><figure class="portrait"><img src="assets/speakers/prayag-tiwari.jpg" alt="Prayag Tiwari" loading="lazy"></figure><div class="talk-text"><h3 class="title">Can We Trust LLMs in Finance? Lessons from Three Benchmarks on How Models Read, Judge and Act</h3><p class="who"><strong>Prayag Tiwari</strong><span>Halmstad University</span></p><div class="bio"><p>Prayag Tiwari is an Associate Professor at Halmstad University. He received his Ph.D. from the University of Padova, Italy. He has previously worked as a Postdoctoral Researcher at Aalto University, Finland, and as a Marie Curie Researcher at the University of Padova, Italy. Recipient of the 2022 Best Paper Award for a publication in Neural Networks and recognized for multiple Highly Cited Papers. Author of numerous publications in top-tier journals and conferences, including Nature Communications, NeurIPS, ICML, CVPR, ICLR, AAAI, ACL, EMNLP, TMLR, IJCV, PAMI, ACM MM, ECCV, WWW, CIKM. Editor for journals such as Transactions on Machine Learning Research, Neural Networks, Quantum Machine Intelligence and IEEE Transactions on Fuzzy Systems, and Area Chair in NeurIPS 2026/27, AAAI 2026/27 and ICLR 2026/27.</p></div></div></div></div></article><article class="slot s-keynote" id="t-1200" data-start="720" data-end="750"><a class="when" href="#t-1200" aria-label="Link to 12:00"><span class="from">12:00</span><span class="to">12:30</span></a><div class="what"><div class="kind">Keynote</div><div class="talk"><figure class="portrait"><img src="assets/speakers/bhaskarjit-sarmah.jpg" alt="Bhaskarjit Sarmah" loading="lazy"></figure><div class="talk-text"><h3 class="title">Building Trustworthy Self Improving Agents: Grounding, Measuring and Governing AI That Learns Itself</h3><p class="who"><strong>Bhaskarjit Sarmah</strong><span>Domyn</span></p><div class="bio"><p>Bhaskarjit Sarmah is an AI research leader specializing in Agentic AI and financial services. He currently leads AI Research for Financial Services at Domyn, focusing on Knowledge Graphs, RAG, agentic AI, LLM evaluation, and responsible AI. Previously, he led AI research initiatives at BlackRock focused on applying Generative AI and machine learning to investment and risk management. He is also an educator, researcher, and frequent speaker on AI and financial technology.</p></div></div></div></div></article></section><section class="chapter" id="ch-ii"><header class="ch-head"><span class="ch-no">II</span><h2 class="ch-name">Lunch &amp; Posters</h2><span class="ch-span">12:30 — 14:00</span></header><article class="slot s-lunch" id="t-1230" data-start="750" data-end="840"><a class="when" href="#t-1230" aria-label="Link to 12:30"><span class="from">12:30</span><span class="to">14:00</span></a><div class="what"><div class="kind">Lunch &amp;amp; Posters</div><h3 class="title">Lunch and Poster Session</h3><p class="meta">Hall H · all accepted papers present posters, including the oral papers · <a href="accepted.html">see the papers</a></p></div></article></section><section class="chapter" id="ch-iii"><header class="ch-head"><span class="ch-no">III</span><h2 class="ch-name">Afternoon</h2><span class="ch-span">14:00 — 17:30</span></header><article class="slot s-talk" id="t-1400" data-start="840" data-end="870"><a class="when" href="#t-1400" aria-label="Link to 14:00"><span class="from">14:00</span><span class="to">14:30</span></a><div class="what"><div class="kind">Invited Talk</div><div class="talk"><figure class="portrait"><img src="assets/speakers/jacob-choi.jpg" alt="Jacob Chanyeol Choi" loading="lazy"></figure><div class="talk-text"><h3 class="title">Why Frontier Models Fail on Billion Dollar Portfolios</h3><p class="who"><strong>Jacob Chanyeol Choi</strong><span>LinqAlpha</span></p><div class="bio"><p>Jacob Chanyeol Choi, Ph.D. is Co-founder and CEO of LinqAlpha, which builds multi-agent AI for institutional investment research. He holds a Ph.D. in Electrical Engineering and Computer Science from MIT, where his work on neuromorphic computing and AI hardware appeared in Nature, Nature Materials and Nature Electronics and has been cited over 5,800 times. He co-organized the first LLMs and Generative AI for Finance workshop at ICAIF, and his team publishes on financial NLP evaluation, including FinDER and FinAgentBench. LinqAlpha is building open benchmarks for investment research agents with Google DeepMind&#x27;s Kaggle Benchmarks team, and its retrieval model ranked first on the HuggingFace MTEB leaderboard in 2024.</p></div></div></div></div></article><article class="slot s-talk" id="t-1430" data-start="870" data-end="900"><a class="when" href="#t-1430" aria-label="Link to 14:30"><span class="from">14:30</span><span class="to">15:00</span></a><div class="what"><div class="kind">Invited Talk</div><div class="talk"><figure class="portrait"><img src="assets/speakers/qianqian-xie.jpg" alt="Qianqian Xie" loading="lazy"></figure><div class="talk-text"><h3 class="title">Beyond Response Quality: From Financial Simulation to Long-Horizon Alignment of Investment Advisory Agents</h3><p class="who"><strong>Qianqian Xie</strong><span>Wuhan University</span></p><div class="bio"><p>Qianqian Xie is a Professor at the School of Artificial Intelligence, Wuhan University. She was an Associate Research Scientist at Yale University. She is the Secretary of SIG-FinTech. Her research focuses on Financial NLP and BioNLP, with over 60 papers published in conferences and journals, such as NeurIPS, ACL, KDD, ICLR, Nature Communications. She has served as (senior) area chair for NeurIPS, ICLR, ACL, KDD, EMNLP, COLING, LREC, and ARR, and as General Co-Chair for COLING 2025 FinNLP workshop. She received the NIH K99/R00 Pathway to Independence Award, and CCL 2024 Outstanding English Paper Award. She is a co-organizer of several financial shared tasks such as FinNLPAgentScen@IJCAI-2024.</p></div></div></div></div></article><article class="slot s-task" id="t-1500" data-start="900" data-end="930"><a class="when" href="#t-1500" aria-label="Link to 15:00"><span class="from">15:00</span><span class="to">15:30</span></a><div class="what"><div class="kind">Shared Task</div><h3 class="title">FinEval: Overview and Awards</h3><p class="meta">Overview and subtask awards, followed by short presentations from the winning teams</p></div></article><div class="slot s-break" id="t-1530" data-start="930" data-end="960"><a class="when" href="#t-1530"><span class="from">15:30</span><span class="to">16:00</span></a><div class="what"><span class="brk-title">Coffee break</span></div></div><article class="slot s-oral" id="t-1600" data-start="960" data-end="1005"><a class="when" href="#t-1600" aria-label="Link to 16:00"><span class="from">16:00</span><span class="to">16:45</span></a><div class="what"><div class="kind">Oral Session II</div><h3 class="title serif">Financial Text Understanding and Reasoning</h3><p class="meta">Six papers · five minutes each, then 15 minutes of joint Q&amp;A · <span class="remote sm">Remote</span> presented online</p><ol class="papers"><li><span class="no">01</span><div><span class="p-title">Characterizing Ambiguity in Financial Document Question Answering</span><span class="p-auth">Kelsey Rook, Clare Arrington, Tomek Strzalkowski, Razvan Bunescu</span></div></li><li><span class="no">02</span><div><span class="p-title">Diagnosing Fine-Grained Inconsistency Classification in Financial Disclosure Text</span><span class="p-auth">Aman Kumar, Lasitha Vidyaratne, Dipanjan Dipak Ghosh, Arnab Chakrabarti, Ahmed K. Farahat</span></div></li><li><span class="no">03</span><div><span class="p-title">FinLCR: Scaling Financial Long-Context Reasoning via Curriculum Reinforcement Learning</span><span class="p-auth">Wenjie Qiu, Yong Xie, Karan Aggarwal, Aitzaz Ahmad, Stephen Lau</span></div></li><li><span class="no">04</span><div><span class="p-title">What Ensemble Brier Scores Hide: Evidence Routing at a Fixed Article-Exposure Budget in LLM Prediction-Market Forecasting</span><span class="remote">Remote</span><span class="p-auth">Avinash Goutham Aluguvelly</span></div></li><li><span class="no">05</span><div><span class="p-title">GRPO for Financial Advice Generation: Outperforming Commercial LLMs under CATE Evaluation</span><span class="p-auth">Ofir Ben Shoham, Shrutendra Harsola, Vignesh Subrahmaniam, Shravan Mohan, Yakov Gazman, Oded Vainas</span></div></li><li><span class="no">06</span><div><span class="p-title">ShiJianBench: From Dialogue to Decision for Long-Horizon Evaluation of Investment Advisors</span><span class="p-auth">Jie Gong, Maowei Jiang, Zhiwei Liu, Yang Qiao, Wenxi Wu, Mengxi Xiao, Enze Zhang, Ziyan Kuang, Yankai Chen, Caishuang Huang, Meng Zhou, Xiku Du, Xue Liu, Guojun Xiong, Min Peng, Qianqian Xie, Sophia Ananiadou</span></div></li></ol></div></article><article class="slot s-panel" id="t-1645" data-start="1005" data-end="1035"><a class="when" href="#t-1645" aria-label="Link to 16:45"><span class="from">16:45</span><span class="to">17:15</span></a><div class="what"><div class="kind">Panel</div><h3 class="title">Why FinNLP — and Who Is It For?</h3><p class="meta">Moderated by Chung-Chi Chen, with the invited speakers</p><p class="desc">Why does financial NLP merit being a field in its own right, what problems is it uniquely placed to address, and who ultimately benefits? Beyond the usual research and industry framing, the panel turns to the broader public value of the field: financial transparency, reducing information asymmetry, supporting regulators and journalists, protecting consumers, and making complex financial information accessible. And the harder question: if much of FinNLP helps financial institutions operate or invest more effectively, what should the wider contribution of the field be?</p></div></article><article class="slot s-close" id="t-1715" data-start="1035" data-end="1050"><a class="when" href="#t-1715" aria-label="Link to 17:15"><span class="from">17:15</span><span class="to">17:30</span></a><div class="what"><div class="kind">Closing</div><h3 class="title">Domyn Best Paper Award and Closing Remarks</h3><p class="meta">Yongjae Lee</p><p class="desc">The Domyn Best Paper Award is presented to three papers, selected from the oral papers by an independent review panel. FinEval subtask awards are presented during the shared task session.</p></div></article></section>
+</main>
 
-<section class="block" id="schedule">
-  <h2>Schedule</h2>
-  <p class="lead">Keynotes and invited talks are 25 minutes followed by 5 minutes of questions.</p>
-  <div class="slot " id="t-0900" data-start="540" data-end="555"><div class="slot-time"><a href="#t-0900" title="Link to this session">09:00–09:15</a></div><div class="slot-body"><div class="slot-kind">Opening</div><div class="slot-title plain">Opening Remarks</div><div class="slot-who">Sophia Ananiadou · The University of Manchester</div></div></div><div class="slot talk keynote" id="t-0915" data-start="555" data-end="585"><div class="slot-time"><a href="#t-0915" title="Link to this session">09:15–09:45</a></div><div class="slot-body"><div class="slot-kind">Keynote</div><div class="talk-inline" id="talk-daniel-preo-iuc-pietro"><img src="assets/speakers/daniel-preotiuc-pietro.jpg" alt="Daniel Preoțiuc-Pietro" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Navigating the Open Challenges of Complex Financial Question Answering</div><div class="talk-who"><strong>Daniel Preoțiuc-Pietro</strong><span>Bloomberg</span></div><div class="talk-bio"><p>Daniel Preoțiuc-Pietro is the engineering manager of the AI Search Services Group at Bloomberg, New York City. His group develops the search models, tools and infrastructure that power both low-latency search and conversational use cases with access to hundreds of millions of unstructured documents across the Bloomberg Terminal.</p><p>His research encompasses topics in NLP, LLMs and Computational Social Science, where he published over 50 top-tier publications. Primary current research areas include introducing new task setups, applications and NLP resources inspired by industry use cases. Personal research interests focus on analyzing the pragmatic, social and temporal dimensions of text, particularly from social media, with cross-disciplinary applications in psychology, law, political science and journalism. This research has been featured extensively in popular press including The Washington Post, BBC and New Scientist.</p><p>He co-founded and co-organizes the Natural Legal Language Processing (NLLP) workshop series collocated with *ACL conferences and serves as Industry Track Chair for EACL 2027. Prior to joining Bloomberg, he was a postdoctoral research fellow at the University of Pennsylvania and obtained a PhD in the NLP Group at the University of Sheffield, UK.</p></div></div></div></div></div><div class="slot " id="t-0945" data-start="585" data-end="630"><div class="slot-time"><a href="#t-0945" title="Link to this session">09:45–10:30</a></div><div class="slot-body"><div class="slot-kind">Oral Session I</div><div class="slot-title plain">Financial Language Agents</div><div class="slot-who">6 papers · 5 minutes each, followed by 15 minutes of joint Q&amp;A · Remote = presented online</div><ol class="papers"><li><span class="p-title">When Helpful Agents Cause Financial Harm: Evaluating LLM Agent Safety in Executable Economic Worlds <span class="remote">Remote</span></span><span class="p-auth">Yuzhu Ling, Jiale Han, Benyou Wang</span></li><li><span class="p-title">DealTrace: Localizing and Intervening on Failures in Agentic Financial Reasoning</span><span class="p-auth">Alina Hyk</span></li><li><span class="p-title">How LLM Financial Agents Respond to Stated Affect Depends on Their Assigned Role</span><span class="p-auth">Da Chen Lian, Yu-Lin Chang, Yen-Hsi Huang, Shu-Kai Hsieh</span></li><li><span class="p-title">MortarBench: Evaluating Mortgage Loan Origination Agents</span><span class="p-auth">Matthew Toles, Yunan Lu, Manav Munjal, Bojun Liu, Yuanhao Deng, Stephanie Selig, Derek Rindner, Cheng Li, Zhou Yu</span></li><li><span class="p-title">Theatron: A Benchmark for Evaluating Persona Persistence in Long-Horizon LLM Decision-Making</span><span class="p-auth">Yuyan Wang, Yuechen Jiang, Zhiwei Liu, Jimin Huang, Sophia Ananiadou</span></li><li><span class="p-title">AlphaMemo: Structured Search-Process Memory for Self-Evolving Alpha Mining Agents</span><span class="p-auth">Hang Yu, Zifan Zheng, Jeff Z. Pan, Tongliang Liu, Zhiyong Wang, Fengxiang He</span></li></ol></div></div><div class="slot brk" id="t-1030" data-start="630" data-end="660"><div class="slot-time"><a href="#t-1030" title="Link to this session">10:30–11:00</a></div><div class="slot-body"><div class="slot-kind">Break</div><div class="slot-title plain">Coffee Break</div></div></div><div class="slot talk" id="t-1100" data-start="660" data-end="690"><div class="slot-time"><a href="#t-1100" title="Link to this session">11:00–11:30</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-yohei-seki"><img src="assets/speakers/yohei-seki.jpg" alt="Yohei Seki" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">AI-based Sustainability Compliance Checking: Limitations and Beyond</div><div class="talk-who"><strong>Yohei Seki</strong><span>University of Tsukuba</span></div><div class="talk-bio"><p>Yohei Seki is a Professor at the Institute of Library, Information and Media Science, University of Tsukuba, Japan, and was selected as one of the University of Tsukuba&#x27;s Best Faculty Members for 2025. He received his Ph.D. from the Graduate University for Advanced Studies (SOKENDAI) in 2005. His research interests include natural language processing, information access, and citizen sentiment analysis, with a recent focus on the analysis of corporate ESG disclosures. He co-organised the NTCIR Multilingual Opinion Analysis Task from 2006 to 2010, and served as a Japanese-side organiser of the ML-ESG shared tasks and SemEval-2025 Task 6 (PromiseEval). His work was a runner-up for the Best Paper Award at ICADL 2022. He also co-edited the international smart city standards ISO/IEC 30146 (2019) and ISO/IEC 30145-3 (2020).</p></div></div></div></div></div><div class="slot talk" id="t-1130" data-start="690" data-end="720"><div class="slot-time"><a href="#t-1130" title="Link to this session">11:30–12:00</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-prayag-tiwari"><img src="assets/speakers/prayag-tiwari.jpg" alt="Prayag Tiwari" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Can We Trust LLMs in Finance? Lessons from Three Benchmarks on How Models Read, Judge and Act</div><div class="talk-who"><strong>Prayag Tiwari</strong><span>Halmstad University</span></div><div class="talk-bio"><p>Prayag Tiwari is an Associate Professor at Halmstad University. He received his Ph.D. from the University of Padova, Italy. He has previously worked as a Postdoctoral Researcher at Aalto University, Finland, and as a Marie Curie Researcher at the University of Padova, Italy. Recipient of the 2022 Best Paper Award for a publication in Neural Networks and recognized for multiple Highly Cited Papers. Author of numerous publications in top-tier journals and conferences, including Nature Communications, NeurIPS, ICML, CVPR, ICLR, AAAI, ACL, EMNLP, TMLR, IJCV, PAMI, ACM MM, ECCV, WWW, CIKM. Editor for journals such as Transactions on Machine Learning Research, Neural Networks, Quantum Machine Intelligence and IEEE Transactions on Fuzzy Systems, and Area Chair in NeurIPS 2026/27, AAAI 2026/27 and ICLR 2026/27.</p></div></div></div></div></div><div class="slot talk keynote" id="t-1200" data-start="720" data-end="750"><div class="slot-time"><a href="#t-1200" title="Link to this session">12:00–12:30</a></div><div class="slot-body"><div class="slot-kind">Keynote</div><div class="talk-inline" id="talk-bhaskarjit-sarmah"><img src="assets/speakers/bhaskarjit-sarmah.jpg" alt="Bhaskarjit Sarmah" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Building Trustworthy Self Improving Agents: Grounding, Measuring and Governing AI That Learns Itself</div><div class="talk-who"><strong>Bhaskarjit Sarmah</strong><span>Domyn</span></div><div class="talk-bio"><p>Bhaskarjit Sarmah is an AI research leader specializing in Agentic AI and financial services. He currently leads AI Research for Financial Services at Domyn, focusing on Knowledge Graphs, RAG, agentic AI, LLM evaluation, and responsible AI. Previously, he led AI research initiatives at BlackRock focused on applying Generative AI and machine learning to investment and risk management. He is also an educator, researcher, and frequent speaker on AI and financial technology.</p></div></div></div></div></div><div class="slot brk" id="t-1230" data-start="750" data-end="840"><div class="slot-time"><a href="#t-1230" title="Link to this session">12:30–14:00</a></div><div class="slot-body"><div class="slot-kind">Lunch &amp; Posters</div><div class="slot-title plain">Lunch and Poster Session</div><div class="slot-who">Hall H · all accepted papers, including oral papers, present posters</div></div></div><div class="slot talk" id="t-1400" data-start="840" data-end="870"><div class="slot-time"><a href="#t-1400" title="Link to this session">14:00–14:30</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-jacob-chanyeol-choi"><img src="assets/speakers/jacob-choi.jpg" alt="Jacob Chanyeol Choi" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Why Frontier Models Fail on Billion Dollar Portfolios</div><div class="talk-who"><strong>Jacob Chanyeol Choi</strong><span>LinqAlpha</span></div><div class="talk-bio"><p>Jacob Chanyeol Choi, Ph.D. is Co-founder and CEO of LinqAlpha, which builds multi-agent AI for institutional investment research. He holds a Ph.D. in Electrical Engineering and Computer Science from MIT, where his work on neuromorphic computing and AI hardware appeared in Nature, Nature Materials and Nature Electronics and has been cited over 5,800 times. He co-organized the first LLMs and Generative AI for Finance workshop at ICAIF, and his team publishes on financial NLP evaluation, including FinDER and FinAgentBench. LinqAlpha is building open benchmarks for investment research agents with Google DeepMind&#x27;s Kaggle Benchmarks team, and its retrieval model ranked first on the HuggingFace MTEB leaderboard in 2024.</p></div></div></div></div></div><div class="slot talk" id="t-1430" data-start="870" data-end="900"><div class="slot-time"><a href="#t-1430" title="Link to this session">14:30–15:00</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-qianqian-xie"><img src="assets/speakers/qianqian-xie.jpg" alt="Qianqian Xie" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Beyond Response Quality: From Financial Simulation to Long-Horizon Alignment of Investment Advisory Agents</div><div class="talk-who"><strong>Qianqian Xie</strong><span>Wuhan University</span></div><div class="talk-bio"><p>Qianqian Xie is a Professor at the School of Artificial Intelligence, Wuhan University. She was an Associate Research Scientist at Yale University. She is the Secretary of SIG-FinTech. Her research focuses on Financial NLP and BioNLP, with over 60 papers published in conferences and journals, such as NeurIPS, ACL, KDD, ICLR, Nature Communications. She has served as (senior) area chair for NeurIPS, ICLR, ACL, KDD, EMNLP, COLING, LREC, and ARR, and as General Co-Chair for COLING 2025 FinNLP workshop. She received the NIH K99/R00 Pathway to Independence Award, and CCL 2024 Outstanding English Paper Award. She is a co-organizer of several financial shared tasks such as FinNLPAgentScen@IJCAI-2024.</p></div></div></div></div></div><div class="slot " id="t-1500" data-start="900" data-end="930"><div class="slot-time"><a href="#t-1500" title="Link to this session">15:00–15:30</a></div><div class="slot-body"><div class="slot-kind">Shared Task</div><div class="slot-title plain">FinEval Shared Task: Overview and Awards</div><div class="slot-who">Overview and subtask awards, followed by short presentations from the winning teams</div></div></div><div class="slot brk" id="t-1530" data-start="930" data-end="960"><div class="slot-time"><a href="#t-1530" title="Link to this session">15:30–16:00</a></div><div class="slot-body"><div class="slot-kind">Break</div><div class="slot-title plain">Coffee Break</div></div></div><div class="slot " id="t-1600" data-start="960" data-end="1005"><div class="slot-time"><a href="#t-1600" title="Link to this session">16:00–16:45</a></div><div class="slot-body"><div class="slot-kind">Oral Session II</div><div class="slot-title plain">Financial Text Understanding and Reasoning</div><div class="slot-who">6 papers · 5 minutes each, followed by 15 minutes of joint Q&amp;A · Remote = presented online</div><ol class="papers"><li><span class="p-title">Characterizing Ambiguity in Financial Document Question Answering</span><span class="p-auth">Kelsey Rook, Clare Arrington, Tomek Strzalkowski, Razvan Bunescu</span></li><li><span class="p-title">Diagnosing Fine-Grained Inconsistency Classification in Financial Disclosure Text</span><span class="p-auth">Aman Kumar, Lasitha Vidyaratne, Dipanjan Dipak Ghosh, Arnab Chakrabarti, Ahmed K. Farahat</span></li><li><span class="p-title">FinLCR: Scaling Financial Long-Context Reasoning via Curriculum Reinforcement Learning</span><span class="p-auth">Wenjie Qiu, Yong Xie, Karan Aggarwal, Aitzaz Ahmad, Stephen Lau</span></li><li><span class="p-title">What Ensemble Brier Scores Hide: Evidence Routing at a Fixed Article-Exposure Budget in LLM Prediction-Market Forecasting <span class="remote">Remote</span></span><span class="p-auth">Avinash Goutham Aluguvelly</span></li><li><span class="p-title">GRPO for Financial Advice Generation: Outperforming Commercial LLMs under CATE Evaluation</span><span class="p-auth">Ofir Ben Shoham, Shrutendra Harsola, Vignesh Subrahmaniam, Shravan Mohan, Yakov Gazman, Oded Vainas</span></li><li><span class="p-title">ShiJianBench: From Dialogue to Decision for Long-Horizon Evaluation of Investment Advisors</span><span class="p-auth">Jie Gong, Maowei Jiang, Zhiwei Liu, Yang Qiao, Wenxi Wu, Mengxi Xiao, Enze Zhang, Ziyan Kuang, Yankai Chen, Caishuang Huang, Meng Zhou, Xiku Du, Xue Liu, Guojun Xiong, Min Peng, Qianqian Xie, Sophia Ananiadou</span></li></ol></div></div><div class="slot " id="t-1645" data-start="1005" data-end="1035"><div class="slot-time"><a href="#t-1645" title="Link to this session">16:45–17:15</a></div><div class="slot-body"><div class="slot-kind">Panel</div><div class="slot-title plain">Why FinNLP — and Who Is It For?</div><div class="slot-who">Moderator: Chung-Chi Chen · with the invited speakers</div><p class="slot-desc">Why does financial NLP merit being a field in its own right, what problems is it uniquely placed to address, and who ultimately benefits? Beyond the usual research and industry framing, the panel turns to the broader public value of the field: financial transparency, reducing information asymmetry, supporting regulators and journalists, protecting consumers, and making complex financial information accessible. And the harder question: if much of FinNLP helps financial institutions operate or invest more effectively, what should the wider contribution of the field be?</p></div></div><div class="slot " id="t-1715" data-start="1035" data-end="1050"><div class="slot-time"><a href="#t-1715" title="Link to this session">17:15–17:30</a></div><div class="slot-body"><div class="slot-kind">Closing</div><div class="slot-title plain">Domyn Best Paper Award and Closing Remarks</div><div class="slot-who">Yongjae Lee</div><p class="slot-desc">The Domyn Best Paper Award is presented to three papers, selected from the oral papers by an independent review panel. FinEval subtask awards are presented during the shared task session.</p></div></div><div class="slot brk" id="t-1900" data-start="1140" data-end="1260"><div class="slot-time"><a href="#t-1900" title="Link to this session">19:00–21:00</a></div><div class="slot-body"><div class="slot-kind">Reception</div><div class="slot-title plain">FinNLP Night</div><div class="slot-who">Sponsored by Bloomberg · venue to be announced</div></div></div>
-</section>
+<section class="night" id="t-1900" data-start="1140" data-end="1260"><div class="night-inner"><div class="night-kind">IV · Evening · 19:00–21:00</div><h2 class="night-title">FinNLP <em>Night</em></h2><p class="night-meta">Drinks and conversation to close the day · sponsored by Bloomberg · venue to be announced</p></div></section>
 
-
-
-
-<section class="block" id="sponsors">
-  <h2>Sponsors</h2>
-  <div class="sponsor-row">
-    <div class="sponsor"><img src="assets/sponsors/bloomberg-engineering-black.png" alt="Bloomberg"><span>RECEPTION SPONSOR</span></div>
-    <div class="sponsor"><img src="assets/sponsors/domyn-primary.png" alt="Domyn"><span>DOMYN BEST PAPER AWARD</span></div>
+<section class="sponsors wrap" id="sponsors">
+  <h2>With thanks to our sponsors</h2>
+  <div class="sp-grid">
+    <div class="sp"><div class="logo"><img src="assets/sponsors/bloomberg-engineering-black.png" alt="Bloomberg Engineering" width="1261" height="510"></div>
+      <p><b>Bloomberg</b> · FinNLP Night</p></div>
+    <div class="sp"><div class="logo"><img src="assets/sponsors/domyn-primary.png" alt="Domyn" width="1400" height="339"></div>
+      <p><b>Domyn</b> · Domyn Best Paper Award</p></div>
   </div>
 </section>
 
-</main>
 
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
   const nav = document.querySelector('nav.top');
-  const setNavH = () => nav && document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+  const setNavH = () => nav && root.style.setProperty('--navh', nav.offsetHeight + 'px');
   setNavH(); addEventListener('resize', setNavH);
-  const reveal = (els) => {
-    if (reduce || !('IntersectionObserver' in window)) return;
-    els.forEach(el => el.classList.add('reveal'));
+  requestAnimationFrame(() => document.body.classList.add('ready'));
+  // hide day-bar labels that do not fit
+  const fit = () => document.querySelectorAll('.seg').forEach(sg => {
+    const sp = sg.querySelector('span'); sg.classList.remove('tight');
+    if (sp && sp.scrollWidth > sg.clientWidth - 10) sg.classList.add('tight');
+  });
+  fit(); addEventListener('resize', fit); document.fonts && document.fonts.ready.then(fit);
+
+  // reveal on scroll
+  const rv = [...document.querySelectorAll('.slot, .ch-head, .sp, .night-inner > *')];
+  if (!reduce && 'IntersectionObserver' in window) {
+    rv.forEach(el => el.classList.add('rv'));
     const io = new IntersectionObserver(es => es.forEach(en => {
       if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-    }), { rootMargin: '0px 0px -6% 0px' });
-    els.forEach(el => io.observe(el));
-  };
+    }), { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach(el => io.observe(el));
+  }
 
-  const slots = [...document.querySelectorAll('.slot')];
-  reveal([...slots, ...document.querySelectorAll('.sponsor')]);
-  // scroll-spy for the jump bar
-  const links = [...document.querySelectorAll('.jump a')];
-  const starts = links.map(a => document.getElementById(a.dataset.from));
+  // count-up stats
+  document.querySelectorAll('.stat b').forEach(b => {
+    const to = +b.dataset.n; if (reduce) { b.textContent = String(to).padStart(2, '0'); return; }
+    const t0 = performance.now(), dur = 1100;
+    const step = t => { const k = Math.min(1, (t - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+                        b.textContent = String(v).padStart(2, '0'); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+
+  // day bar scroll-spy: highlight the segment covering the slot nearest the top
+  const segs = [...document.querySelectorAll('.seg')]; let lastAct = null;
+  const timed = [...document.querySelectorAll('[data-start]')].filter(el => !el.classList.contains('seg'));
   const spy = () => {
-    const y = window.scrollY + 170; let k = -1;
-    starts.forEach((el, i) => { if (el && el.getBoundingClientRect().top + window.scrollY <= y) k = i; });
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) k = links.length - 1;
-    links.forEach((a, i) => a.classList.toggle('on', i === k));
+    const y = (document.querySelector('.daybar')?.getBoundingClientRect().bottom || 120) + 40;
+    let cur = null;
+    timed.forEach(el => { if (el.getBoundingClientRect().top <= y) cur = el; });
+    if (innerHeight + scrollY >= root.scrollHeight - 4) cur = timed[timed.length - 1];
+    const m = cur ? +cur.dataset.start : -1;
+    let act = null;
+    segs.forEach(s => { const on = m >= +s.dataset.start && m < +s.dataset.end; s.classList.toggle('on', on); if (on) act = s; });
+    if (act && act !== lastAct) {
+      lastAct = act; const w = act.closest('.wrap');
+      if (w && w.scrollWidth > w.clientWidth) w.scrollTo({ left: act.offsetLeft - w.clientWidth / 2 + act.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+    }
   };
   addEventListener('scroll', spy, { passive: true }); spy();
-  // "Live now" on the workshop day, Budapest time
-  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Budapest', year: 'numeric', month: '2-digit',
-                                                 day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+
+  // live now on 28 Oct, Budapest time
+  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Budapest', year: 'numeric', month: '2-digit', day: '2-digit',
+                                                 hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   const tick = () => {
     const p = Object.fromEntries(fmt.formatToParts(new Date()).map(x => [x.type, x.value]));
     const today = `${p.year}-${p.month}-${p.day}` === '2026-10-28', m = +p.hour * 60 + +p.minute;
-    slots.forEach(s => s.classList.toggle('live', today && m >= +s.dataset.start && m < +s.dataset.end));
+    document.querySelectorAll('[data-start]').forEach(el => el.classList.toggle('live', today && m >= +el.dataset.start && m < +el.dataset.end));
   };
   tick(); setInterval(tick, 30000);
 })();
