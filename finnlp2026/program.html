@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Programme — FinNLP 2026</title>
+<meta name="description" content="The 11th Workshop on Financial Technology and Natural Language Processing (FinNLP-2026), co-located with EMNLP 2026 in Budapest, Hungary, October 24–29, 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --panel: #ffffff;
+    --text: #1a1f2e;
+    --text-dim: #525a6b;
+    --text-faint: #8a90a0;
+    --border: #e6e8ee;
+    --border-soft: #eef0f4;
+    --accent: #1d4ed8;
+    --accent-soft: #e8efff;
+    --accent-dark: #1e40af;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- NAV ---------- */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--text); letter-spacing: 0.02em;
+  }
+  .brand .accent-text { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--text-dim); font-weight: 500; font-size: 0.9rem;
+  }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+  /* ---------- HEADER ---------- */
+  header.hero {
+    max-width: 920px; margin: 0 auto;
+    padding: 72px 28px 48px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  header.hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    color: var(--text);
+  }
+  .event-line {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0 0 24px;
+  }
+  .event-line strong { color: var(--text); font-weight: 600; }
+
+  .meta-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 8px;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    background: var(--bg-soft);
+  }
+  .pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .hero-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -6px rgba(29, 78, 216, 0.45);
+    text-decoration: none;
+  }
+  .hero-cta svg { width: 14px; height: 14px; }
+  .hero-cta-note {
+    margin: 10px 0 0;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  section.block {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  section.block:last-of-type { border-bottom: none; }
+  section.block > h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--text);
+    margin: 0 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+    letter-spacing: -0.005em;
+  }
+  section.block p {
+    margin: 0 0 14px;
+    color: var(--text);
+    line-height: 1.72;
+  }
+  section.block p.lead {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- TOPICS ---------- */
+  ul.topics-list {
+    columns: 2;
+    column-gap: 36px;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+  ul.topics-list li {
+    padding: 7px 0 7px 18px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    break-inside: avoid;
+  }
+  ul.topics-list li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 7px;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  /* ---------- DATES TABLE ---------- */
+  .dates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+  .dates-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .dates-table td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    width: 60%;
+  }
+  .dates-table td:last-child {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    text-align: right;
+  }
+  .dates-table tr.highlight td:last-child {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .tz-note {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- SUB-HEADINGS ---------- */
+  h3.sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text);
+    margin: 26px 0 10px;
+    letter-spacing: 0;
+  }
+  h3.sub::before {
+    content: "// ";
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 0.88rem;
+  }
+
+  /* ---------- ORGANIZER GRID ---------- */
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  a.org {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: border-color 0.18s, background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  a.org:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -8px rgba(29, 78, 216, 0.25);
+    text-decoration: none;
+  }
+  a.org .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    flex-shrink: 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    transition: border-color 0.18s;
+  }
+  a.org:hover .avatar { border-color: var(--accent); }
+  a.org .info { min-width: 0; flex: 1; }
+  a.org .name {
+    font-weight: 600; color: var(--text);
+    font-size: 0.98rem;
+    margin-bottom: 2px;
+  }
+  a.org .aff {
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+  a.org .aff + .aff { color: var(--text-faint); font-size: 0.82rem; margin-top: 1px; }
+  a.org .ext {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 14px; height: 14px;
+    color: var(--text-faint);
+    opacity: 0;
+    transition: opacity 0.18s, color 0.18s, transform 0.18s;
+  }
+  a.org:hover .ext {
+    opacity: 1;
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+
+  /* ---------- ORGANIZING COMMITTEE ---------- */
+  .committee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  a.committee {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: border-color 0.18s, background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  a.committee:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -8px rgba(29, 78, 216, 0.25);
+    text-decoration: none;
+  }
+  a.committee .avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    flex-shrink: 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    transition: border-color 0.18s;
+  }
+  a.committee:hover .avatar { border-color: var(--accent); }
+  a.committee .info { min-width: 0; flex: 1; }
+  a.committee .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+  a.committee .cname {
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--text);
+  }
+  a.committee .caff {
+    color: var(--text-dim);
+    font-size: 0.84rem;
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+  a.committee .ext {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 14px; height: 14px;
+    color: var(--text-faint);
+    opacity: 0;
+    transition: opacity 0.18s, color 0.18s, transform 0.18s;
+  }
+  a.committee:hover .ext { opacity: 1; color: var(--accent); transform: translate(2px, -2px); }
+
+  /* ---------- INVITED SPEAKERS (TBA) ---------- */
+  .speakers-tba {
+    margin-top: 12px;
+    padding: 28px 22px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    background: var(--bg-soft);
+    text-align: center;
+  }
+  .speakers-tba .tba-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .speakers-tba p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- PREVIOUS EDITIONS ---------- */
+  ul.prev-list {
+    list-style: none; padding: 0;
+    margin: 12px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 24px;
+    font-size: 0.92rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  ul.prev-list li {
+    padding: 5px 0;
+    color: var(--text-dim);
+  }
+  ul.prev-list li strong {
+    color: var(--text);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  /* ---------- CTA cards ---------- */
+  .cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .cta-card {
+    display: block;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 18px 20px;
+    border-radius: 8px;
+    transition: all 0.15s;
+  }
+  .cta-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .cta-card .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .cta-card .title {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin-bottom: 4px;
+  }
+  .cta-card .desc {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-line {
+    display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+  }
+  .contact-line a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  /* ---------- POLICY LIST ---------- */
+  ul.policy-list {
+    list-style: none; padding: 0; margin: 10px 0 0;
+  }
+  ul.policy-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: "—";
+    position: absolute; left: 0; top: 8px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 700px) {
+    ul.topics-list, ul.prev-list, .org-grid, .committee-grid, .cta-row {
+      grid-template-columns: 1fr;
+      columns: 1;
+    }
+    header.hero { padding: 48px 24px 36px; }
+    main { padding: 0 24px; }
+    section.block { padding: 36px 0; }
+    .dates-table td { padding: 10px 0; }
+  }
+  /* NAV-MOBILE */
+  @media (max-width: 700px) {
+    .nav-inner { padding: 12px 20px; gap: 14px; }
+    .nav-links { flex-wrap: nowrap; overflow-x: auto; gap: 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+                 mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { flex: none; }
+    .brand { flex: none; }
+  }
+
+  .prog-hero .event-line strong { color: var(--text); }
+  .slot { display: grid; grid-template-columns: 118px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border-soft); }
+  .slot-time { font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; font-weight: 500; color: var(--text); padding-top: 2px; }
+  .slot-kind { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .slot.keynote .slot-kind { color: #b45309; }
+  .slot.brk .slot-time, .slot.brk .slot-title { color: var(--text-dim); }
+  .slot.brk .slot-kind { color: var(--text-faint); }
+  .slot-title { display: block; font-weight: 600; color: var(--text); line-height: 1.4; }
+  a.slot-title:hover { color: var(--accent); text-decoration: none; }
+  .slot-who { color: var(--text-dim); font-size: 0.9rem; margin-top: 2px; }
+  ol.papers { margin: 12px 0 0; padding-left: 22px; }
+  ol.papers li { margin: 0 0 10px; padding-left: 4px; }
+  ol.papers .p-title { display: block; font-size: 0.93rem; font-weight: 500; line-height: 1.45; }
+  ol.papers .p-auth { display: block; font-size: 0.84rem; color: var(--text-dim); line-height: 1.45; }
+  .tba { color: var(--text-faint); font-style: italic; font-weight: 500; }
+  .remote { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 999px; background: #fff4e5; color: #b45309; border: 1px solid #f6d7a7; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; vertical-align: 2px; }
+  .talk-inline { display: grid; grid-template-columns: 120px 1fr; gap: 22px; margin-top: 6px; scroll-margin-top: 80px; }
+  .talk-photo { width: 120px; height: 148px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); background: #fff; }
+  .slot.talk .slot-title { font-size: 1.08rem; line-height: 1.4; margin-bottom: 4px; }
+  .talk-who { font-size: 0.94rem; margin-bottom: 10px; }
+  .talk-who strong { color: var(--text); }
+  .talk-who span { color: var(--text-dim); }
+  .talk-who span::before { content: " · "; }
+  .talk-bio p { font-size: 0.88rem; line-height: 1.62; color: var(--text-dim); margin: 0 0 7px; }
+  .talk-bio p:last-child { margin-bottom: 0; }
+  .slot-desc { font-size: 0.88rem; line-height: 1.62; color: var(--text-dim); margin: 8px 0 0; max-width: 640px; }
+  .sponsor-row { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+  .sponsor { display: flex; flex-direction: column; gap: 10px; }
+  .sponsor img { height: 38px; width: auto; }
+  .sponsor span { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-dim); letter-spacing: 0.04em; }
+  @media (max-width: 700px) {
+    .slot { grid-template-columns: 1fr; gap: 4px; }
+    .talk-inline { grid-template-columns: 1fr; }
+    .talk-photo { width: 100px; height: 124px; }
+  }
+
+  @media (max-width: 700px) {
+    .nav-inner { padding: 12px 20px; gap: 14px; }
+    .nav-links { flex-wrap: nowrap; overflow-x: auto; gap: 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+                 mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { flex: none; }
+    .brand { flex: none; }
+  }
+
+  /* ---------- interactions ---------- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .sponsor img { transition: transform .25s ease, filter .25s ease; filter: grayscale(.15); }
+  .sponsor:hover img { transform: scale(1.04); filter: none; }
+  .remote { animation: none; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .jump { position: sticky; top: var(--navh, 53px); z-index: 40; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-soft); }
+  .jump-inner { max-width: 920px; margin: 0 auto; padding: 10px 28px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .jump-inner::-webkit-scrollbar { display: none; }
+  .jump a { flex: none; font-size: 0.82rem; font-weight: 500; color: var(--text-dim); padding: 5px 12px; border-radius: 999px;
+            border: 1px solid var(--border); background: #fff; transition: color .2s, background .2s, border-color .2s, transform .2s; }
+  .jump a:hover { color: var(--accent); border-color: #c7d4f5; text-decoration: none; transform: translateY(-1px); }
+  .jump a.on { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .slot { margin: 0 -14px; padding: 16px 14px; scroll-margin-top: 120px;
+          transition: background .25s ease, box-shadow .25s ease; }
+  .slot:hover { background: #f5f7fb; }
+  .slot-time a { color: inherit; text-decoration: none; transition: color .2s; }
+  .slot-time a:hover, .slot:hover .slot-time a { color: var(--accent); }
+  .slot:target { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
+  .talk-photo { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+  .slot:hover .talk-photo { transform: translateY(-3px) rotate(-0.6deg); box-shadow: 0 12px 26px -14px rgba(15,23,42,.45); }
+  ol.papers li { transition: transform .2s ease; }
+  ol.papers li:hover { transform: translateX(3px); }
+  .slot.live { background: #eef4ff; box-shadow: inset 3px 0 0 var(--accent); }
+  .slot.live .slot-kind::after { content: "\25CF  Live now"; margin-left: 10px; color: #dc2626; letter-spacing: 0.04em;
+                                 animation: livepulse 1.6s ease-in-out infinite; }
+  @keyframes livepulse { 50% { opacity: .35; } }
+  @media (max-width: 700px) { .jump-inner { padding: 8px 24px; } .slot { margin: 0 -10px; padding: 14px 10px; } }
+</style>
+</head>
+<body>
+<nav class="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">FinNLP <span class="accent-text">2026</span></a>
+    <div class="nav-links">
+      <a href="program.html">Programme</a>
+      <a href="accepted.html">Accepted Papers</a>
+      <a href="index.html#dates">Dates</a>
+      <a href="call-for-papers.html">Papers</a>
+      <a href="call-for-challenges.html">Challenges</a>
+      <a href="call-for-sponsors.html">Sponsors</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero prog-hero">
+  <div class="eyebrow">// Programme · Wednesday 28 October 2026</div>
+  <h1>FinNLP 2026 Programme</h1>
+  <p class="event-line"><strong>Room F8, HUNGEXPO, Budapest</strong> · co-located with EMNLP 2026 · all times CET</p>
+  <div class="meta-pills">
+    <span class="pill"><span class="dot"></span>6 invited talks</span>
+    <span class="pill"><span class="dot"></span>12 oral papers</span>
+    <span class="pill"><span class="dot"></span>Poster session</span>
+    <span class="pill"><span class="dot"></span>Panel</span>
+    <span class="pill"><span class="dot"></span>FinEval shared task</span>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Jump to part of the day"><div class="jump-inner">
+  <a href="#t-0900" data-from="t-0900">Morning</a>
+  <a href="#t-1230" data-from="t-1230">Lunch &amp; Posters</a>
+  <a href="#t-1400" data-from="t-1400">Afternoon</a>
+  <a href="#t-1900" data-from="t-1900">FinNLP Night</a>
+</div></nav>
+
+<main>
+
+<section class="block" id="schedule">
+  <h2>Schedule</h2>
+  <p class="lead">Keynotes and invited talks are 25 minutes followed by 5 minutes of questions.</p>
+  <div class="slot " id="t-0900" data-start="540" data-end="555"><div class="slot-time"><a href="#t-0900" title="Link to this session">09:00–09:15</a></div><div class="slot-body"><div class="slot-kind">Opening</div><div class="slot-title plain">Opening Remarks</div><div class="slot-who">Sophia Ananiadou · The University of Manchester</div></div></div><div class="slot talk keynote" id="t-0915" data-start="555" data-end="585"><div class="slot-time"><a href="#t-0915" title="Link to this session">09:15–09:45</a></div><div class="slot-body"><div class="slot-kind">Keynote</div><div class="talk-inline" id="talk-daniel-preo-iuc-pietro"><img src="assets/speakers/daniel-preotiuc-pietro.jpg" alt="Daniel Preoțiuc-Pietro" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Navigating the Open Challenges of Complex Financial Question Answering</div><div class="talk-who"><strong>Daniel Preoțiuc-Pietro</strong><span>Bloomberg</span></div><div class="talk-bio"><p>Daniel Preoțiuc-Pietro is the engineering manager of the AI Search Services Group at Bloomberg, New York City. His group develops the search models, tools and infrastructure that power both low-latency search and conversational use cases with access to hundreds of millions of unstructured documents across the Bloomberg Terminal.</p><p>His research encompasses topics in NLP, LLMs and Computational Social Science, where he published over 50 top-tier publications. Primary current research areas include introducing new task setups, applications and NLP resources inspired by industry use cases. Personal research interests focus on analyzing the pragmatic, social and temporal dimensions of text, particularly from social media, with cross-disciplinary applications in psychology, law, political science and journalism. This research has been featured extensively in popular press including The Washington Post, BBC and New Scientist.</p><p>He co-founded and co-organizes the Natural Legal Language Processing (NLLP) workshop series collocated with *ACL conferences and serves as Industry Track Chair for EACL 2027. Prior to joining Bloomberg, he was a postdoctoral research fellow at the University of Pennsylvania and obtained a PhD in the NLP Group at the University of Sheffield, UK.</p></div></div></div></div></div><div class="slot " id="t-0945" data-start="585" data-end="630"><div class="slot-time"><a href="#t-0945" title="Link to this session">09:45–10:30</a></div><div class="slot-body"><div class="slot-kind">Oral Session I</div><div class="slot-title plain">Financial Language Agents</div><div class="slot-who">6 papers · 5 minutes each, followed by 15 minutes of joint Q&amp;A · Remote = presented online</div><ol class="papers"><li><span class="p-title">When Helpful Agents Cause Financial Harm: Evaluating LLM Agent Safety in Executable Economic Worlds <span class="remote">Remote</span></span><span class="p-auth">Yuzhu Ling, Jiale Han, Benyou Wang</span></li><li><span class="p-title">DealTrace: Localizing and Intervening on Failures in Agentic Financial Reasoning</span><span class="p-auth">Alina Hyk</span></li><li><span class="p-title">How LLM Financial Agents Respond to Stated Affect Depends on Their Assigned Role</span><span class="p-auth">Da Chen Lian, Yu-Lin Chang, Yen-Hsi Huang, Shu-Kai Hsieh</span></li><li><span class="p-title">MortarBench: Evaluating Mortgage Loan Origination Agents</span><span class="p-auth">Matthew Toles, Yunan Lu, Manav Munjal, Bojun Liu, Yuanhao Deng, Stephanie Selig, Derek Rindner, Cheng Li, Zhou Yu</span></li><li><span class="p-title">Theatron: A Benchmark for Evaluating Persona Persistence in Long-Horizon LLM Decision-Making</span><span class="p-auth">Yuyan Wang, Yuechen Jiang, Zhiwei Liu, Jimin Huang, Sophia Ananiadou</span></li><li><span class="p-title">AlphaMemo: Structured Search-Process Memory for Self-Evolving Alpha Mining Agents</span><span class="p-auth">Hang Yu, Zifan Zheng, Jeff Z. Pan, Tongliang Liu, Zhiyong Wang, Fengxiang He</span></li></ol></div></div><div class="slot brk" id="t-1030" data-start="630" data-end="660"><div class="slot-time"><a href="#t-1030" title="Link to this session">10:30–11:00</a></div><div class="slot-body"><div class="slot-kind">Break</div><div class="slot-title plain">Coffee Break</div></div></div><div class="slot talk" id="t-1100" data-start="660" data-end="690"><div class="slot-time"><a href="#t-1100" title="Link to this session">11:00–11:30</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-yohei-seki"><img src="assets/speakers/yohei-seki.jpg" alt="Yohei Seki" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">AI-based Sustainability Compliance Checking: Limitations and Beyond</div><div class="talk-who"><strong>Yohei Seki</strong><span>University of Tsukuba</span></div><div class="talk-bio"><p>Yohei Seki is a Professor at the Institute of Library, Information and Media Science, University of Tsukuba, Japan, and was selected as one of the University of Tsukuba&#x27;s Best Faculty Members for 2025. He received his Ph.D. from the Graduate University for Advanced Studies (SOKENDAI) in 2005. His research interests include natural language processing, information access, and citizen sentiment analysis, with a recent focus on the analysis of corporate ESG disclosures. He co-organised the NTCIR Multilingual Opinion Analysis Task from 2006 to 2010, and served as a Japanese-side organiser of the ML-ESG shared tasks and SemEval-2025 Task 6 (PromiseEval). His work was a runner-up for the Best Paper Award at ICADL 2022. He also co-edited the international smart city standards ISO/IEC 30146 (2019) and ISO/IEC 30145-3 (2020).</p></div></div></div></div></div><div class="slot talk" id="t-1130" data-start="690" data-end="720"><div class="slot-time"><a href="#t-1130" title="Link to this session">11:30–12:00</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-prayag-tiwari"><img src="assets/speakers/prayag-tiwari.jpg" alt="Prayag Tiwari" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Can We Trust LLMs in Finance? Lessons from Three Benchmarks on How Models Read, Judge and Act</div><div class="talk-who"><strong>Prayag Tiwari</strong><span>Halmstad University</span></div><div class="talk-bio"><p>Prayag Tiwari is an Associate Professor at Halmstad University. He received his Ph.D. from the University of Padova, Italy. He has previously worked as a Postdoctoral Researcher at Aalto University, Finland, and as a Marie Curie Researcher at the University of Padova, Italy. Recipient of the 2022 Best Paper Award for a publication in Neural Networks and recognized for multiple Highly Cited Papers. Author of numerous publications in top-tier journals and conferences, including Nature Communications, NeurIPS, ICML, CVPR, ICLR, AAAI, ACL, EMNLP, TMLR, IJCV, PAMI, ACM MM, ECCV, WWW, CIKM. Editor for journals such as Transactions on Machine Learning Research, Neural Networks, Quantum Machine Intelligence and IEEE Transactions on Fuzzy Systems, and Area Chair in NeurIPS 2026/27, AAAI 2026/27 and ICLR 2026/27.</p></div></div></div></div></div><div class="slot talk keynote" id="t-1200" data-start="720" data-end="750"><div class="slot-time"><a href="#t-1200" title="Link to this session">12:00–12:30</a></div><div class="slot-body"><div class="slot-kind">Keynote</div><div class="talk-inline" id="talk-bhaskarjit-sarmah"><img src="assets/speakers/bhaskarjit-sarmah.jpg" alt="Bhaskarjit Sarmah" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Building Trustworthy Self Improving Agents: Grounding, Measuring and Governing AI That Learns Itself</div><div class="talk-who"><strong>Bhaskarjit Sarmah</strong><span>Domyn</span></div><div class="talk-bio"><p>Bhaskarjit Sarmah is an AI research leader specializing in Agentic AI and financial services. He currently leads AI Research for Financial Services at Domyn, focusing on Knowledge Graphs, RAG, agentic AI, LLM evaluation, and responsible AI. Previously, he led AI research initiatives at BlackRock focused on applying Generative AI and machine learning to investment and risk management. He is also an educator, researcher, and frequent speaker on AI and financial technology.</p></div></div></div></div></div><div class="slot brk" id="t-1230" data-start="750" data-end="840"><div class="slot-time"><a href="#t-1230" title="Link to this session">12:30–14:00</a></div><div class="slot-body"><div class="slot-kind">Lunch &amp; Posters</div><div class="slot-title plain">Lunch and Poster Session</div><div class="slot-who">Hall H · all accepted papers, including oral papers, present posters</div></div></div><div class="slot talk" id="t-1400" data-start="840" data-end="870"><div class="slot-time"><a href="#t-1400" title="Link to this session">14:00–14:30</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-jacob-chanyeol-choi"><img src="assets/speakers/jacob-choi.jpg" alt="Jacob Chanyeol Choi" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Why Frontier Models Fail on Billion Dollar Portfolios</div><div class="talk-who"><strong>Jacob Chanyeol Choi</strong><span>LinqAlpha</span></div><div class="talk-bio"><p>Jacob Chanyeol Choi, Ph.D. is Co-founder and CEO of LinqAlpha, which builds multi-agent AI for institutional investment research. He holds a Ph.D. in Electrical Engineering and Computer Science from MIT, where his work on neuromorphic computing and AI hardware appeared in Nature, Nature Materials and Nature Electronics and has been cited over 5,800 times. He co-organized the first LLMs and Generative AI for Finance workshop at ICAIF, and his team publishes on financial NLP evaluation, including FinDER and FinAgentBench. LinqAlpha is building open benchmarks for investment research agents with Google DeepMind&#x27;s Kaggle Benchmarks team, and its retrieval model ranked first on the HuggingFace MTEB leaderboard in 2024.</p></div></div></div></div></div><div class="slot talk" id="t-1430" data-start="870" data-end="900"><div class="slot-time"><a href="#t-1430" title="Link to this session">14:30–15:00</a></div><div class="slot-body"><div class="slot-kind">Invited Talk</div><div class="talk-inline" id="talk-qianqian-xie"><img src="assets/speakers/qianqian-xie.jpg" alt="Qianqian Xie" class="talk-photo" loading="lazy"><div class="talk-main"><div class="slot-title">Beyond Response Quality: From Financial Simulation to Long-Horizon Alignment of Investment Advisory Agents</div><div class="talk-who"><strong>Qianqian Xie</strong><span>Wuhan University</span></div><div class="talk-bio"><p>Qianqian Xie is a Professor at the School of Artificial Intelligence, Wuhan University. She was an Associate Research Scientist at Yale University. She is the Secretary of SIG-FinTech. Her research focuses on Financial NLP and BioNLP, with over 60 papers published in conferences and journals, such as NeurIPS, ACL, KDD, ICLR, Nature Communications. She has served as (senior) area chair for NeurIPS, ICLR, ACL, KDD, EMNLP, COLING, LREC, and ARR, and as General Co-Chair for COLING 2025 FinNLP workshop. She received the NIH K99/R00 Pathway to Independence Award, and CCL 2024 Outstanding English Paper Award. She is a co-organizer of several financial shared tasks such as FinNLPAgentScen@IJCAI-2024.</p></div></div></div></div></div><div class="slot " id="t-1500" data-start="900" data-end="930"><div class="slot-time"><a href="#t-1500" title="Link to this session">15:00–15:30</a></div><div class="slot-body"><div class="slot-kind">Shared Task</div><div class="slot-title plain">FinEval Shared Task: Overview and Awards</div><div class="slot-who">Overview and subtask awards, followed by short presentations from the winning teams</div></div></div><div class="slot brk" id="t-1530" data-start="930" data-end="960"><div class="slot-time"><a href="#t-1530" title="Link to this session">15:30–16:00</a></div><div class="slot-body"><div class="slot-kind">Break</div><div class="slot-title plain">Coffee Break</div></div></div><div class="slot " id="t-1600" data-start="960" data-end="1005"><div class="slot-time"><a href="#t-1600" title="Link to this session">16:00–16:45</a></div><div class="slot-body"><div class="slot-kind">Oral Session II</div><div class="slot-title plain">Financial Text Understanding and Reasoning</div><div class="slot-who">6 papers · 5 minutes each, followed by 15 minutes of joint Q&amp;A · Remote = presented online</div><ol class="papers"><li><span class="p-title">Characterizing Ambiguity in Financial Document Question Answering</span><span class="p-auth">Kelsey Rook, Clare Arrington, Tomek Strzalkowski, Razvan Bunescu</span></li><li><span class="p-title">Diagnosing Fine-Grained Inconsistency Classification in Financial Disclosure Text</span><span class="p-auth">Aman Kumar, Lasitha Vidyaratne, Dipanjan Dipak Ghosh, Arnab Chakrabarti, Ahmed K. Farahat</span></li><li><span class="p-title">FinLCR: Scaling Financial Long-Context Reasoning via Curriculum Reinforcement Learning</span><span class="p-auth">Wenjie Qiu, Yong Xie, Karan Aggarwal, Aitzaz Ahmad, Stephen Lau</span></li><li><span class="p-title">What Ensemble Brier Scores Hide: Evidence Routing at a Fixed Article-Exposure Budget in LLM Prediction-Market Forecasting <span class="remote">Remote</span></span><span class="p-auth">Avinash Goutham Aluguvelly</span></li><li><span class="p-title">GRPO for Financial Advice Generation: Outperforming Commercial LLMs under CATE Evaluation</span><span class="p-auth">Ofir Ben Shoham, Shrutendra Harsola, Vignesh Subrahmaniam, Shravan Mohan, Yakov Gazman, Oded Vainas</span></li><li><span class="p-title">ShiJianBench: From Dialogue to Decision for Long-Horizon Evaluation of Investment Advisors</span><span class="p-auth">Jie Gong, Maowei Jiang, Zhiwei Liu, Yang Qiao, Wenxi Wu, Mengxi Xiao, Enze Zhang, Ziyan Kuang, Yankai Chen, Caishuang Huang, Meng Zhou, Xiku Du, Xue Liu, Guojun Xiong, Min Peng, Qianqian Xie, Sophia Ananiadou</span></li></ol></div></div><div class="slot " id="t-1645" data-start="1005" data-end="1035"><div class="slot-time"><a href="#t-1645" title="Link to this session">16:45–17:15</a></div><div class="slot-body"><div class="slot-kind">Panel</div><div class="slot-title plain">Why FinNLP — and Who Is It For?</div><div class="slot-who">Moderator: Chung-Chi Chen · with the invited speakers</div><p class="slot-desc">Why does financial NLP merit being a field in its own right, what problems is it uniquely placed to address, and who ultimately benefits? Beyond the usual research and industry framing, the panel turns to the broader public value of the field: financial transparency, reducing information asymmetry, supporting regulators and journalists, protecting consumers, and making complex financial information accessible. And the harder question: if much of FinNLP helps financial institutions operate or invest more effectively, what should the wider contribution of the field be?</p></div></div><div class="slot " id="t-1715" data-start="1035" data-end="1050"><div class="slot-time"><a href="#t-1715" title="Link to this session">17:15–17:30</a></div><div class="slot-body"><div class="slot-kind">Closing</div><div class="slot-title plain">Domyn Best Paper Award and Closing Remarks</div><div class="slot-who">Yongjae Lee</div><p class="slot-desc">The Domyn Best Paper Award is presented to three papers, selected from the oral papers by an independent review panel. FinEval subtask awards are presented during the shared task session.</p></div></div><div class="slot brk" id="t-1900" data-start="1140" data-end="1260"><div class="slot-time"><a href="#t-1900" title="Link to this session">19:00–21:00</a></div><div class="slot-body"><div class="slot-kind">Reception</div><div class="slot-title plain">FinNLP Night</div><div class="slot-who">Sponsored by Bloomberg · venue to be announced</div></div></div>
+</section>
+
+
+
+
+<section class="block" id="sponsors">
+  <h2>Sponsors</h2>
+  <div class="sponsor-row">
+    <div class="sponsor"><img src="assets/sponsors/bloomberg-engineering-black.png" alt="Bloomberg"><span>RECEPTION SPONSOR</span></div>
+    <div class="sponsor"><img src="assets/sponsors/domyn-primary.png" alt="Domyn"><span>DOMYN BEST PAPER AWARD</span></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.querySelector('nav.top');
+  const setNavH = () => nav && document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+  setNavH(); addEventListener('resize', setNavH);
+  const reveal = (els) => {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    els.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  };
+
+  const slots = [...document.querySelectorAll('.slot')];
+  reveal([...slots, ...document.querySelectorAll('.sponsor')]);
+  // scroll-spy for the jump bar
+  const links = [...document.querySelectorAll('.jump a')];
+  const starts = links.map(a => document.getElementById(a.dataset.from));
+  const spy = () => {
+    const y = window.scrollY + 170; let k = -1;
+    starts.forEach((el, i) => { if (el && el.getBoundingClientRect().top + window.scrollY <= y) k = i; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) k = links.length - 1;
+    links.forEach((a, i) => a.classList.toggle('on', i === k));
+  };
+  addEventListener('scroll', spy, { passive: true }); spy();
+  // "Live now" on the workshop day, Budapest time
+  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Budapest', year: 'numeric', month: '2-digit',
+                                                 day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+  const tick = () => {
+    const p = Object.fromEntries(fmt.formatToParts(new Date()).map(x => [x.type, x.value]));
+    const today = `${p.year}-${p.month}-${p.day}` === '2026-10-28', m = +p.hour * 60 + +p.minute;
+    slots.forEach(s => s.classList.toggle('live', today && m >= +s.dataset.start && m < +s.dataset.end));
+  };
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+
+<footer>
+  <div>© ACL SIG-FinTech · FinNLP 2026</div>
+  <div>
+    <a href="call-for-papers.html">Papers</a> ·
+    <a href="call-for-challenges.html">Challenges</a> ·
+    <a href="call-for-sponsors.html">Sponsors</a> ·
+    <a href="https://sigfintech.github.io/" target="_blank" rel="noopener">SIG-FinTech</a> ·
+    <a href="https://aclanthology.org/venues/finnlp/" target="_blank" rel="noopener">Anthology</a> ·
+    <a href="https://www.aclweb.org/portal/content/acl-code-ethics" target="_blank" rel="noopener">Code of Conduct</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Accepted Papers — FinNLP 2026</title>
+<meta name="description" content="The 11th Workshop on Financial Technology and Natural Language Processing (FinNLP-2026), co-located with EMNLP 2026 in Budapest, Hungary, October 24–29, 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --panel: #ffffff;
+    --text: #1a1f2e;
+    --text-dim: #525a6b;
+    --text-faint: #8a90a0;
+    --border: #e6e8ee;
+    --border-soft: #eef0f4;
+    --accent: #1d4ed8;
+    --accent-soft: #e8efff;
+    --accent-dark: #1e40af;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- NAV ---------- */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-weight: 700; font-size: 0.95rem;
+    color: var(--text); letter-spacing: 0.02em;
+  }
+  .brand .accent-text { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--text-dim); font-weight: 500; font-size: 0.9rem;
+  }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+  /* ---------- HEADER ---------- */
+  header.hero {
+    max-width: 920px; margin: 0 auto;
+    padding: 72px 28px 48px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  header.hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    color: var(--text);
+  }
+  .event-line {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0 0 24px;
+  }
+  .event-line strong { color: var(--text); font-weight: 600; }
+
+  .meta-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 8px;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    background: var(--bg-soft);
+  }
+  .pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .hero-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -6px rgba(29, 78, 216, 0.45);
+    text-decoration: none;
+  }
+  .hero-cta svg { width: 14px; height: 14px; }
+  .hero-cta-note {
+    margin: 10px 0 0;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  section.block {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  section.block:last-of-type { border-bottom: none; }
+  section.block > h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--text);
+    margin: 0 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+    letter-spacing: -0.005em;
+  }
+  section.block p {
+    margin: 0 0 14px;
+    color: var(--text);
+    line-height: 1.72;
+  }
+  section.block p.lead {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- TOPICS ---------- */
+  ul.topics-list {
+    columns: 2;
+    column-gap: 36px;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+  ul.topics-list li {
+    padding: 7px 0 7px 18px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    break-inside: avoid;
+  }
+  ul.topics-list li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 7px;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  /* ---------- DATES TABLE ---------- */
+  .dates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+  .dates-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .dates-table td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    width: 60%;
+  }
+  .dates-table td:last-child {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    text-align: right;
+  }
+  .dates-table tr.highlight td:last-child {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .tz-note {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- SUB-HEADINGS ---------- */
+  h3.sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text);
+    margin: 26px 0 10px;
+    letter-spacing: 0;
+  }
+  h3.sub::before {
+    content: "// ";
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 0.88rem;
+  }
+
+  /* ---------- ORGANIZER GRID ---------- */
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  a.org {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: border-color 0.18s, background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  a.org:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -8px rgba(29, 78, 216, 0.25);
+    text-decoration: none;
+  }
+  a.org .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    flex-shrink: 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    transition: border-color 0.18s;
+  }
+  a.org:hover .avatar { border-color: var(--accent); }
+  a.org .info { min-width: 0; flex: 1; }
+  a.org .name {
+    font-weight: 600; color: var(--text);
+    font-size: 0.98rem;
+    margin-bottom: 2px;
+  }
+  a.org .aff {
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+  a.org .aff + .aff { color: var(--text-faint); font-size: 0.82rem; margin-top: 1px; }
+  a.org .ext {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 14px; height: 14px;
+    color: var(--text-faint);
+    opacity: 0;
+    transition: opacity 0.18s, color 0.18s, transform 0.18s;
+  }
+  a.org:hover .ext {
+    opacity: 1;
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+
+  /* ---------- ORGANIZING COMMITTEE ---------- */
+  .committee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  a.committee {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: border-color 0.18s, background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  a.committee:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -8px rgba(29, 78, 216, 0.25);
+    text-decoration: none;
+  }
+  a.committee .avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    flex-shrink: 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    transition: border-color 0.18s;
+  }
+  a.committee:hover .avatar { border-color: var(--accent); }
+  a.committee .info { min-width: 0; flex: 1; }
+  a.committee .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+  a.committee .cname {
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--text);
+  }
+  a.committee .caff {
+    color: var(--text-dim);
+    font-size: 0.84rem;
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+  a.committee .ext {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 14px; height: 14px;
+    color: var(--text-faint);
+    opacity: 0;
+    transition: opacity 0.18s, color 0.18s, transform 0.18s;
+  }
+  a.committee:hover .ext { opacity: 1; color: var(--accent); transform: translate(2px, -2px); }
+
+  /* ---------- INVITED SPEAKERS (TBA) ---------- */
+  .speakers-tba {
+    margin-top: 12px;
+    padding: 28px 22px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    background: var(--bg-soft);
+    text-align: center;
+  }
+  .speakers-tba .tba-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+  .speakers-tba p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- PREVIOUS EDITIONS ---------- */
+  ul.prev-list {
+    list-style: none; padding: 0;
+    margin: 12px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 24px;
+    font-size: 0.92rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  ul.prev-list li {
+    padding: 5px 0;
+    color: var(--text-dim);
+  }
+  ul.prev-list li strong {
+    color: var(--text);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  /* ---------- CTA cards ---------- */
+  .cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .cta-card {
+    display: block;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 18px 20px;
+    border-radius: 8px;
+    transition: all 0.15s;
+  }
+  .cta-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .cta-card .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .cta-card .title {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin-bottom: 4px;
+  }
+  .cta-card .desc {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-line {
+    display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+  }
+  .contact-line a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  /* ---------- POLICY LIST ---------- */
+  ul.policy-list {
+    list-style: none; padding: 0; margin: 10px 0 0;
+  }
+  ul.policy-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: "—";
+    position: absolute; left: 0; top: 8px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 700px) {
+    ul.topics-list, ul.prev-list, .org-grid, .committee-grid, .cta-row {
+      grid-template-columns: 1fr;
+      columns: 1;
+    }
+    header.hero { padding: 48px 24px 36px; }
+    main { padding: 0 24px; }
+    section.block { padding: 36px 0; }
+    .dates-table td { padding: 10px 0; }
+  }
+  /* NAV-MOBILE */
+  @media (max-width: 700px) {
+    .nav-inner { padding: 12px 20px; gap: 14px; }
+    .nav-links { flex-wrap: nowrap; overflow-x: auto; gap: 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+                 mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { flex: none; }
+    .brand { flex: none; }
+  }
+
+  ol.papers, ul.papers { margin: 12px 0 0; padding-left: 22px; }
+  ul.papers { list-style: none; padding-left: 0; }
+  .papers li { margin: 0 0 12px; padding-left: 4px; }
+  .papers .p-title { font-size: 0.95rem; font-weight: 500; line-height: 1.45; }
+  .papers .p-auth { display: block; font-size: 0.86rem; color: var(--text-dim); line-height: 1.45; }
+  .ptype { display: inline-block; margin-left: 8px; padding: 0 7px; border: 1px solid var(--border); border-radius: 999px;
+           font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-faint); vertical-align: 2px; }
+  h3.sub { margin-top: 26px; }
+  .remote { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: 999px; background: #fff4e5; color: #b45309; border: 1px solid #f6d7a7; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; vertical-align: 2px; }
+
+  @media (max-width: 700px) {
+    .nav-inner { padding: 12px 20px; gap: 14px; }
+    .nav-links { flex-wrap: nowrap; overflow-x: auto; gap: 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+                 mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { flex: none; }
+    .brand { flex: none; }
+  }
+
+  /* ---------- interactions ---------- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .sponsor img { transition: transform .25s ease, filter .25s ease; filter: grayscale(.15); }
+  .sponsor:hover img { transform: scale(1.04); filter: none; }
+  .remote { animation: none; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .finder { position: sticky; top: var(--navh, 53px); z-index: 40; background: rgba(255,255,255,0.94); backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-soft); }
+  .finder-inner { max-width: 920px; margin: 0 auto; padding: 12px 28px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .search { position: relative; flex: 1 1 260px; }
+  .search input { width: 100%; font: inherit; font-size: 0.92rem; padding: 9px 40px 9px 36px; border: 1px solid var(--border);
+                  border-radius: 10px; background: #fff; color: var(--text); outline: none; transition: border-color .2s, box-shadow .2s; }
+  .search input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .search svg { position: absolute; left: 11px; top: 50%; width: 16px; height: 16px; transform: translateY(-50%); color: var(--text-faint); }
+  .search kbd { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-family: 'JetBrains Mono', monospace;
+                font-size: 0.7rem; color: var(--text-faint); border: 1px solid var(--border); border-radius: 5px; padding: 1px 6px; background: var(--bg-soft); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font: inherit; font-size: 0.8rem; font-weight: 500; color: var(--text-dim); background: #fff; border: 1px solid var(--border);
+          border-radius: 999px; padding: 5px 12px; cursor: pointer; transition: color .2s, background .2s, border-color .2s, transform .15s; }
+  .chip:hover { color: var(--accent); border-color: #c7d4f5; transform: translateY(-1px); }
+  .chip.on { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .chip .n { opacity: .65; margin-left: 4px; font-variant-numeric: tabular-nums; }
+  .count { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-faint); width: 100%; }
+  .papers li { transition: transform .2s ease, opacity .25s ease; }
+  .papers li:hover { transform: translateX(3px); }
+  .papers li.hide { display: none; }
+  section.block.empty { display: none; }
+  mark { background: #fff1a8; color: inherit; border-radius: 3px; padding: 0 1px; }
+  .noresult { display: none; padding: 40px 0; text-align: center; color: var(--text-dim); }
+  .noresult.show { display: block; }
+  @media (max-width: 700px) { .finder-inner { padding: 10px 24px; } }
+</style>
+</head>
+<body>
+<nav class="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">FinNLP <span class="accent-text">2026</span></a>
+    <div class="nav-links">
+      <a href="program.html">Programme</a>
+      <a href="accepted.html">Accepted Papers</a>
+      <a href="index.html#dates">Dates</a>
+      <a href="call-for-papers.html">Papers</a>
+      <a href="call-for-challenges.html">Challenges</a>
+      <a href="call-for-sponsors.html">Sponsors</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">// Accepted Papers · FinNLP 2026</div>
+  <h1>Accepted Papers</h1>
+  <p class="event-line"><strong>61 research papers</strong> · 14 FinEval system papers and the FinEval overview · Wednesday 28 October 2026, Budapest</p>
+  <div class="meta-pills">
+    <span class="pill"><span class="dot"></span>12 oral papers</span>
+    <span class="pill"><span class="dot"></span>49 poster papers</span>
+    <span class="pill"><span class="dot"></span>15 FinEval papers</span>
+  </div>
+</header>
+
+<div class="finder"><div class="finder-inner">
+  <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search titles and authors" autocomplete="off" aria-label="Search titles and authors"><kbd>/</kbd></label>
+  <div class="chips" role="group" aria-label="Filter papers">
+    <button class="chip on" data-f="all">All<span class="n"></span></button>
+    <button class="chip" data-f="oral">Oral<span class="n"></span></button>
+    <button class="chip" data-f="poster">Poster<span class="n"></span></button>
+    <button class="chip" data-f="fineval">FinEval<span class="n"></span></button>
+    <button class="chip" data-f="remote">Remote<span class="n"></span></button>
+  </div>
+  <div class="count" id="count" aria-live="polite"></div>
+</div></div>
+
+<main>
+
+<section class="block" id="oral">
+  <h2>Oral Papers</h2>
+  <p class="lead">Oral papers are presented in two sessions (5 minutes each, followed by joint Q&amp;A) and also present a poster during the lunch session. Papers marked Remote are presented online. See the <a href="program.html">programme</a> for times.</p>
+  <h3 class="sub">Oral Session I: Financial Language Agents (09:45–10:30)</h3>
+  <ol class="papers"><li data-kind="oral" data-remote="1"><span class="p-title">When Helpful Agents Cause Financial Harm: Evaluating LLM Agent Safety in Executable Economic Worlds</span><span class="ptype">Long</span><span class="remote">Remote</span><span class="p-auth">Yuzhu Ling, Jiale Han, Benyou Wang</span></li><li data-kind="oral" data-remote="0"><span class="p-title">DealTrace: Localizing and Intervening on Failures in Agentic Financial Reasoning</span><span class="ptype">Long</span><span class="p-auth">Alina Hyk</span></li><li data-kind="oral" data-remote="0"><span class="p-title">How LLM Financial Agents Respond to Stated Affect Depends on Their Assigned Role</span><span class="ptype">Long</span><span class="p-auth">Da Chen Lian, Yu-Lin Chang, Yen-Hsi Huang, Shu-Kai Hsieh</span></li><li data-kind="oral" data-remote="0"><span class="p-title">MortarBench: Evaluating Mortgage Loan Origination Agents</span><span class="ptype">Long</span><span class="p-auth">Matthew Toles, Yunan Lu, Manav Munjal, Bojun Liu, Yuanhao Deng, Stephanie Selig, Derek Rindner, Cheng Li, Zhou Yu</span></li><li data-kind="oral" data-remote="0"><span class="p-title">Theatron: A Benchmark for Evaluating Persona Persistence in Long-Horizon LLM Decision-Making</span><span class="p-auth">Yuyan Wang, Yuechen Jiang, Zhiwei Liu, Jimin Huang, Sophia Ananiadou</span></li><li data-kind="oral" data-remote="0"><span class="p-title">AlphaMemo: Structured Search-Process Memory for Self-Evolving Alpha Mining Agents</span><span class="p-auth">Hang Yu, Zifan Zheng, Jeff Z. Pan, Tongliang Liu, Zhiyong Wang, Fengxiang He</span></li></ol>
+  <h3 class="sub">Oral Session II: Financial Text Understanding and Reasoning (16:00–16:45)</h3>
+  <ol class="papers"><li data-kind="oral" data-remote="0"><span class="p-title">Characterizing Ambiguity in Financial Document Question Answering</span><span class="ptype">Long</span><span class="p-auth">Kelsey Rook, Clare Arrington, Tomek Strzalkowski, Razvan Bunescu</span></li><li data-kind="oral" data-remote="0"><span class="p-title">Diagnosing Fine-Grained Inconsistency Classification in Financial Disclosure Text</span><span class="ptype">Long</span><span class="p-auth">Aman Kumar, Lasitha Vidyaratne, Dipanjan Dipak Ghosh, Arnab Chakrabarti, Ahmed K. Farahat</span></li><li data-kind="oral" data-remote="0"><span class="p-title">FinLCR: Scaling Financial Long-Context Reasoning via Curriculum Reinforcement Learning</span><span class="ptype">Short</span><span class="p-auth">Wenjie Qiu, Yong Xie, Karan Aggarwal, Aitzaz Ahmad, Stephen Lau</span></li><li data-kind="oral" data-remote="1"><span class="p-title">What Ensemble Brier Scores Hide: Evidence Routing at a Fixed Article-Exposure Budget in LLM Prediction-Market Forecasting</span><span class="ptype">Long</span><span class="remote">Remote</span><span class="p-auth">Avinash Goutham Aluguvelly</span></li><li data-kind="oral" data-remote="0"><span class="p-title">GRPO for Financial Advice Generation: Outperforming Commercial LLMs under CATE Evaluation</span><span class="ptype">Long</span><span class="p-auth">Ofir Ben Shoham, Shrutendra Harsola, Vignesh Subrahmaniam, Shravan Mohan, Yakov Gazman, Oded Vainas</span></li><li data-kind="oral" data-remote="0"><span class="p-title">ShiJianBench: From Dialogue to Decision for Long-Horizon Evaluation of Investment Advisors</span><span class="ptype">Long</span><span class="p-auth">Jie Gong, Maowei Jiang, Zhiwei Liu, Yang Qiao, Wenxi Wu, Mengxi Xiao, Enze Zhang, Ziyan Kuang, Yankai Chen, Caishuang Huang, Meng Zhou, Xiku Du, Xue Liu, Guojun Xiong, Min Peng, Qianqian Xie, Sophia Ananiadou</span></li></ol>
+</section>
+
+<section class="block" id="posters">
+  <h2>Poster Papers</h2>
+  <p class="lead">Presented at the poster session, 12:30–14:00 in Hall H. Listed alphabetically by title.</p>
+  <ul class="papers"><li data-kind="poster" data-remote="0"><span class="p-title">Auditing Bank Statement PDFs: A Multi-Tier Parser and Design Choices for the NL-to-SQL Query Layer Above It</span><span class="ptype">Long</span><span class="p-auth">Anamul Hoque Emtiaj, Anindya Iqbal</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Auditing Scaffolding Gains in LLM Financial Extraction When the Label Is the Method</span><span class="ptype">Long</span><span class="p-auth">Arthus le Vaillant de Chaudenay, Arij Riabi, Valentin Noël</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Bags of Words, Bags of Analysts: Two Event Spaces for Industry Classification</span><span class="ptype">Short</span><span class="p-auth">Artem Lensky</span></li><li data-kind="poster" data-remote="0"><span class="p-title">BankShield: Fairness-Aware Safety Guardrails for Indian-Language Banking AI</span><span class="ptype">Long</span><span class="p-auth">Piyush Agarwal</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Beyond Compressibility: Transferable Low-Dimensional Structure and the Limits of Compression in Financial Retrieval</span><span class="ptype">Long</span><span class="p-auth">Oddharak Tyagi, Shashishekar Ramakrishna, Chetan Harsha, Sridhar Dasaratha</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Can LLMs Catch a Rigged Backtest? A Clean-Control Calibration Benchmark</span><span class="ptype">Short</span><span class="p-auth">Makar Ulesov, Vladislav Smirnov, Omar Ibrahim, Arsenii Bobovnikov</span></li><li data-kind="poster" data-remote="0"><span class="p-title">CARPAS: Towards Content-Aware Refinement of Provided Aspects for Summarization in Large Language Models</span><span class="ptype">Long</span><span class="p-auth">Yong-En Tian, Yu-Chien Tang, An-Zi Yen, Wen-Chih Peng</span></li><li data-kind="poster" data-remote="0"><span class="p-title">CAST: An Interpretable Evidence-Based Confidence Estimation Tool for RAG with Human-in-the-Loop Verification</span><span class="ptype">Long</span><span class="p-auth">Xutong Liu, Morris Groot Beumer, Joerg Robert Osterrieder, Max Baak</span></li><li data-kind="poster" data-remote="0"><span class="p-title">CLAIR-Fin: An Adversarial Multi-Agent Framework for Claim-Level Verification and Adaptive Debate in Cross-Modal Financial QA</span><span class="ptype">Long</span><span class="p-auth">Fatema Tuj Johora Faria, Mukaffi Bin Moin, Jubayer Al Mahmud, M. F. Mridha, Md. Alam Hossain</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Continuous Financial Knowledge Graph Construction with Citation-Grounded Agentic Question Answering</span><span class="ptype">Long</span><span class="p-auth">Arnau Rodon Comas</span></li><li data-kind="poster" data-remote="0"><span class="p-title">CORAL: Closed-loop Oracle Alignment for Agentic Tax Engine Modernization</span><span class="ptype">Long</span><span class="p-auth">Maarten De Raedt, Ahmed Abdullah, Abhinav Agrawal</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Definitional or Computational? Decomposing LLM Numeric Fidelity in Financial-Statement Analysis with an XBRL Cascade Oracle</span><span class="ptype">Long</span><span class="p-auth">Oussama Chahed</span></li><li data-kind="poster" data-remote="0"><span class="p-title">DelistBench: Evaluating Search-Enabled LLMs for Auditable Corporate-Event Database Completion</span><span class="ptype">Long</span><span class="p-auth">Xuan Yao, Li Shuping, Dai Yang, Zhou Yi, Ke-Wei Huang</span></li><li data-kind="poster" data-remote="0"><span class="p-title">DeXposure-Claw: An Agent System for DeFi Risk Supervision</span><span class="ptype">Long</span><span class="p-auth">Aijie Shu, Bowei Chen, Wenbin Wu, Cathy Yi Hsuan Chen, Fengxiang He</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Do Tools Matter, or Just Their Descriptions?</span><span class="ptype">Long</span><span class="p-auth">Ananya Tomar, Ayush Nangia</span></li><li data-kind="poster" data-remote="0"><span class="p-title">EVOQUANT: Self-Evolving Verifier-Guided Strategy Optimization for Robust Quantitative Trading</span><span class="p-auth">Jie Mao, Changlun Li, Xiang Li, Qiqi Duan, Jinhui Yuan, Xiang Liu, Yuyu Luo, Jing Tang, Nan Tang</span></li><li data-kind="poster" data-remote="0"><span class="p-title">FinDRA: Multi-Agent Financial Reasoning under Asymmetric Information and Unequal Authority</span><span class="ptype">Long</span><span class="p-auth">Inyoung Won, Yunyoung Lee</span></li><li data-kind="poster" data-remote="0"><span class="p-title">FinEngage: Benchmarking Multimodal Language Models on Content-Conditioned Human Feedback Inference</span><span class="ptype">Long</span><span class="p-auth">Qiqi Qiang, Ying Peng, Yunmiao Zhang, Zhiwei Liu, Victor Gutierrez Basulto, Yifei Zhang, Dejun Cao, Jie Gong, Min Peng, Honghai Yu, Qianqian Xie</span></li><li data-kind="poster" data-remote="0"><span class="p-title">FinEvo: Financial Language Agents Shape the Markets That Evaluate Them</span><span class="ptype">Long</span><span class="p-auth">Mingxi Zou, Jiaxiang Chen, Langzhang Liang, Zhuo Wang, Luo Aotian, Zhang Chi, Danny Dongning Sun, Zenglin Xu</span></li><li data-kind="poster" data-remote="0"><span class="p-title">FRED-SemBench: Evaluating Semantic Reliability in LLM Access to Macroeconomic Data</span><span class="ptype">Short</span><span class="p-auth">Wilson Wang, Chandler Han, Peter Zhang</span></li><li data-kind="poster" data-remote="0"><span class="p-title">GreenAudit-Bench: Evidence-Grounded Auditing of Compositional Greenwashing in Corporate Sustainability Disclosures</span><span class="ptype">Long</span><span class="p-auth">Shixiang You, Zeyuan Wang, Yuechen Jiang, Zhiwei Liu, Jie Gao, Sophia Ananiadou, Zhuoran Lu</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Helping Customers in Distress: An LLM-powered Agent that Converses, Probes, and Routes</span><span class="ptype">Short</span><span class="p-auth">Alankar Atreya, Stefan Sylvius Wagner, Devesh Batra, Robert Hankache, Cristovão Iglesias Jr, Patrick Sinclair, Giulio Pelosio, Michael McMillan, Greig A Cowan, Raad Khraishi</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Hidden Below the Landing Page: Tracking Linked Pages and Relation-Centered DOM Summaries for Financial Phishing Detection</span><span class="ptype">Short</span><span class="p-auth">Hyeji Heo, Dae-Young Park, Minwoo Kim</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Human Agreement and Return Association Are Not Interchangeable Criteria</span><span class="ptype">Long</span><span class="p-auth">A S Aravinthakshan, Laven Srivastava, Harsh Nandwani</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Know Thyself: Concept-Level Diagnosis for Financial Large Language Models</span><span class="ptype">Long</span><span class="p-auth">Ziyan Kuang, Maowei Jiang, Feiyu Zhu, Ziyang Xu, Zhentao Li, Zhiwei Hu, Victor Gutierrez Basulto, Yanzhao Lai, Wenjin Feng, Zhitong Wang, Zelin Wang, Chen Xu, Meikang Qiu, Jiajia Huang, Min Peng, Qianqian Xie, Sophia Ananiadou</span></li><li data-kind="poster" data-remote="0"><span class="p-title">LatentDemandBench: A Contamination-Resistant Diagnostic for Pre-Recognition Product–Need Ranking in Synthetic Economies</span><span class="ptype">Long</span><span class="p-auth">Avinash Goutham Aluguvelly</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Market Signal Injection: Adversarial Context Manipulation of LLM Pricing Agents</span><span class="p-auth">Dohun Lee, Hyunwoo Park</span></li><li data-kind="poster" data-remote="0"><span class="p-title">NLP for Crowdfunding Success Prediction: A Systematic Mapping Review Exposes an Underexplored Equity Domain</span><span class="ptype">Long</span><span class="p-auth">Chaya Liebeskind, Hana Tzur, Shmuel Liebeskind</span></li><li data-kind="poster" data-remote="0"><span class="p-title">One Advisor, Many Faces: How User Personas Shape LLM Stock Recommendations</span><span class="ptype">Long</span><span class="p-auth">Yuxian He</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Perceived Professionalism in Financial Inquiry: An Interpretable and Empirically Grounded Linguistic Modeling of Textual Preference</span><span class="ptype">Long</span><span class="p-auth">Giulia D&#x27;Agostino, Chung-Chi Chen</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Prediction-Market Seed Capital Recovery from Noise-Dominant Flow</span><span class="ptype">Long</span><span class="p-auth">Yankai Chen, Bowei He, Zhuohan Xie, Zhiwei Liu, Fan Zhang, Xueqing Peng, Yan Wang, Lingfei Qian, Xue Liu</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Preliminary Study on LLM-as-a-Judge Evaluation of Causal Mechanism Explanations in Financial News and its Bias Analysis</span><span class="ptype">Long</span><span class="p-auth">Yucheng Xie, Yurina Kosai, Rikuto Tsuchida, Takehito Utsuro</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Regression-Aware Statistically Gated Policy Updating for Korean Financial LLM Input Guardrails</span><span class="ptype">Short</span><span class="p-auth">Eunjung Cho, Dae-Young Park, Minwoo Kim</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Relevant Is Not Enough: Expert-Audited Decision-Grade Web Evidence for Financial Fact Verification</span><span class="ptype">Short</span><span class="p-auth">Hyunkyung Park, Eui Hyun Kim, Wooah Choi, Arkaitz Zubiaga</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Same Financials, Different Identity: A Counterfactual Audit of Demographic Sensitivity in LLM-Based Credit-Risk Scoring</span><span class="ptype">Short</span><span class="p-auth">Mustafa Furkan Zenginoğlu, Zeynep Beyda Kara, Hasan Fatih Durkaya, Mehmet Haklidir, Tuna Çakar</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Same Meaning, Different Wording: Evaluating Paraphrase Robustness in Financial Natural Language Inference</span><span class="ptype">Short</span><span class="p-auth">Yike Li, Adam Poliak</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Scripted Hesitation in a Financial Customer-Service Chatbot: A Brazilian Portuguese Case Study</span><span class="ptype">Short</span><span class="p-auth">Valeria Vieira dos Santos</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Selective Compliance in Financial Rule Reasoning: A Solver-Verified Chinese Benchmark and Empirical Analysis</span><span class="ptype">Long</span><span class="p-auth">Peng Li, Yinchun Wang</span></li><li data-kind="poster" data-remote="0"><span class="p-title">SpendSight: Privacy-Preserving Personal Finance Q&amp;A with Sub-2B LLMs</span><span class="ptype">Long</span><span class="p-auth">Sajag Swami, Yash Pandey</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Topic‑Aware Environmental Claim Extraction from Corporate News</span><span class="ptype">Long</span><span class="p-auth">Tanay Kumar Gupta, Vaishali Aggarwal, Ishan Verma</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Trade-Adaptive Aggregation of Probabilistic Financial Forecasts</span><span class="ptype">Long</span><span class="p-auth">Yankai Chen, Rassul Magauin, Bowei He, Anuar Aimoldin, Sirui Song, Bin Xiao, Zangir Iklassov, Xue Liu</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Trust the Query, Not the Answer: Auditable Text-to-SPARQL over the GLEIF Register</span><span class="ptype">Demo</span><span class="p-auth">Jannic Alexander Cutura</span></li><li data-kind="poster" data-remote="0"><span class="p-title">TRUST-BENCH: A Synthetic Japanese Financial-Group Benchmark for Enterprise Document Access in Coding Agents</span><span class="ptype">Long</span><span class="p-auth">Shamik Kundu, Anand Mekala, Kazutaka Yamasaki</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Valid but Wrong: Domain Invariants and a Cross-Model Plan-Validity Benchmark for Household-Finance LLMs</span><span class="ptype">Short</span><span class="p-auth">Vignesh Coumarane</span></li><li data-kind="poster" data-remote="0"><span class="p-title">What Deterministic Verification Actually Fixes in Financial QA: A Diagnostic Analysis of Rule Heterogeneity Across Datasets</span><span class="ptype">Long</span><span class="p-auth">Aaditya Anand Thokal</span></li><li data-kind="poster" data-remote="0"><span class="p-title">What the Window Does Not Contain: Auditing Provenance in a Document-Grounded Instability Benchmark</span><span class="ptype">Long</span><span class="p-auth">Seyed Mosayeb Alam</span></li><li data-kind="poster" data-remote="0"><span class="p-title">When FEVER Meets Finance: A Controlled Benchmark Reveals Overlap-Driven Financial Claim Verification</span><span class="ptype">Short</span><span class="p-auth">Suprabhat Rapolu</span></li><li data-kind="poster" data-remote="0"><span class="p-title">When Words Move Markets: Sentiment and Semantic Complexity in Central Bank Communication and Equity Volatility</span><span class="ptype">Long</span><span class="p-auth">Arush Sachdeva, Anirban Dasgupta</span></li><li data-kind="poster" data-remote="0"><span class="p-title">Where A Small Language Model Helps in Invoice Categorisation, Understood Through Embedding Geometry</span><span class="ptype">Long</span><span class="p-auth">Emma Ceccherini, Daniel John Lawson, Anjulika Salhan</span></li></ul>
+</section>
+
+<section class="block" id="fineval">
+  <h2>FinEval Shared Task</h2>
+  <p class="lead">The FinEval shared task session runs 15:00–15:30. System papers are listed alphabetically by title.</p>
+  <h3 class="sub">Overview</h3>
+  <ul class="papers"><li data-kind="fineval" data-remote="0"><span class="p-title">FinEval Challenge @ EMNLP 2026 - FinNLP Workshop: Multilingual Financial Language Understanding</span><span class="p-auth">Yupeng Cao, Haohang Li, Yuechen Jiang, Yueru He, Yuyan Wang, Ruoyu Xiang, Yangyang Yu</span></li></ul>
+  <h3 class="sub">System Papers</h3>
+  <ul class="papers"><li data-kind="fineval" data-remote="0"><span class="p-title">ADML at the FinEval 2026: Version-Aware Retrieval and Grounded Sparse Editing for Multilingual Financial QA</span><span class="p-auth">Gautier Marti, Khaled AlNuaimi</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">AhsanBLAH at the FinEval 2026: Grounded Two-Stage Financial QA with LLM-Judge Verification</span><span class="p-auth">Muhammad Ahsan Atiq, Mohib Ahmad Butt</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Al-Qahera at the FinEval 2026: GEPA Prompt Evolution for Greek Financial NER and Japanese Implicit Communication Recognition</span><span class="p-auth">Mohamed Mohamed, Hazem Ajlan</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Daikoku at the FinEval 2026: Multi-Stage Labelling with Forced-Choice Adjudication</span><span class="p-auth">Kyosuke Morita</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Fin_Agent at FinEval 2026: Task-Aware Methods for Multilingual Financial NLP</span><span class="p-auth">Mohotarema Rashid, Tanzina Hossain, Xiaoying Song, Lingzi Hong</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Finaira at the FinEval 2026: Dense Retrieval and Validated Prompt Engineering for Cross-Lingual Financial Question Answering</span><span class="p-auth">Yara Mohamed Nasser, Ashraf Mohamed</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">HX-Fin at FinEval 2026: Precision-Anchored Answer Refinement and Multi-Model Evidence Selection for Multilingual Financial Question Answering</span><span class="p-auth">Peng Li, Yinchun Wang</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Jetsons at the FinEval 2026: Minimal-Pair Augmentation and Label-Routed Ensembling for Greek and Japanese Financial NLP</span><span class="p-auth">Parag Pravin Dakle, Sai Krishna Rallabandi, Preethi Raghavan</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">LangKG at the FinEval 2026: Answer-Contract Knowledge over Instruction Engineering</span><span class="p-auth">Shivika Prasanna, Jaeseong Lee, Hui Su, Yourong Xu</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Maddies NLP at the FinEval 2026: Proposition-Aware Tagged Reasoning for Japanese Implicit Communication Recognition</span><span class="p-auth">Madhav Kapoor, Aditya Channa, Jastej Singh</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Mircea Andrei Razvan at the FinEval 2026: A Unified Prompting Approach for Multilingual Financial Q&amp;A</span><span class="p-auth">Mircea Andrei Razvan</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">PIO at the FinEval 2026: An OpenRouter API Pipeline for Multilingual Financial Understanding</span><span class="p-auth">Israel Olanrewaju Odeajo</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">shamikkundu at the FinEval 2026: Zero-Parameter Confidence Elicitation for Japanese Implicit Communication Recognition</span><span class="p-auth">Shamik Kundu</span></li><li data-kind="fineval" data-remote="0"><span class="p-title">Token Crit at the FinEval 2026: Role-Specialized, Validation-Gated LLM Workflows for JF-ICR and Multilingual Financial Q&amp;A</span><span class="p-auth">Anke Xu, Wenbo Cao</span></li></ul>
+</section>
+
+<p class="noresult" id="noresult">No papers match your search.</p>
+</main>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.querySelector('nav.top');
+  const setNavH = () => nav && document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+  setNavH(); addEventListener('resize', setNavH);
+  const reveal = (els) => {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    els.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  };
+
+  const items = [...document.querySelectorAll('.papers li')];
+  reveal(items);
+  const q = document.getElementById('q'), count = document.getElementById('count');
+  const chips = [...document.querySelectorAll('.chip')];
+  const secs = [...document.querySelectorAll('section.block')];
+  const none = document.getElementById('noresult');
+  items.forEach(li => {
+    const t = li.querySelector('.p-title'), a = li.querySelector('.p-auth');
+    li._t = t; li._a = a; li._tt = t.textContent; li._at = a.textContent;
+    li._hay = (li._tt + ' ' + li._at).toLowerCase();
+  });
+  const match = (li, f) => f === 'all' || (li.dataset.kind === f) || (f === 'remote' && li.dataset.remote === '1');
+  chips.forEach(c => c.querySelector('.n').textContent = items.filter(li => match(li, c.dataset.f)).length);
+  let filt = 'all';
+  const esc = s => s.replace(/[&<>"]/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[ch]));
+  const mark = (txt, term) => {
+    if (!term) return esc(txt);
+    const i = txt.toLowerCase().indexOf(term);
+    return i < 0 ? esc(txt) : esc(txt.slice(0, i)) + '<mark>' + esc(txt.slice(i, i + term.length)) + '</mark>' + esc(txt.slice(i + term.length));
+  };
+  const apply = () => {
+    const term = q.value.trim().toLowerCase(); let n = 0;
+    items.forEach(li => {
+      const ok = match(li, filt) && (!term || li._hay.includes(term));
+      li.classList.toggle('hide', !ok); if (ok) { n++; li.classList.add('in'); }
+      li._t.innerHTML = mark(li._tt, term); li._a.innerHTML = mark(li._at, term);
+    });
+    secs.forEach(s => s.classList.toggle('empty', !s.querySelector('.papers li:not(.hide)')));
+    document.querySelectorAll('.papers').forEach(l => {
+      const has = !!l.querySelector('li:not(.hide)'), h = l.previousElementSibling;
+      l.style.display = has ? '' : 'none';
+      if (h && h.matches('h3.sub')) h.style.display = has ? '' : 'none';
+    });
+    count.textContent = `Showing ${n} of ${items.length} papers`;
+    none.classList.toggle('show', n === 0);
+  };
+  q.addEventListener('input', apply);
+  chips.forEach(c => c.addEventListener('click', () => {
+    filt = c.dataset.f; chips.forEach(x => x.classList.toggle('on', x === c)); apply();
+  }));
+  addEventListener('keydown', ev => {
+    if (ev.key === '/' && document.activeElement !== q) { ev.preventDefault(); q.focus(); }
+    else if (ev.key === 'Escape' && document.activeElement === q) { q.value = ''; apply(); q.blur(); }
+  });
+  apply();
+})();
+</script>
+
+<footer>
+  <div>© ACL SIG-FinTech · FinNLP 2026</div>
+  <div>
+    <a href="call-for-papers.html">Papers</a> ·
+    <a href="call-for-challenges.html">Challenges</a> ·
+    <a href="call-for-sponsors.html">Sponsors</a> ·
+    <a href="https://sigfintech.github.io/" target="_blank" rel="noopener">SIG-FinTech</a> ·
+    <a href="https://aclanthology.org/venues/finnlp/" target="_blank" rel="noopener">Anthology</a> ·
+    <a href="https://www.aclweb.org/portal/content/acl-code-ethics" target="_blank" rel="noopener">Code of Conduct</a>
+  </div>
+</footer>
+
+</body>
+</html>
