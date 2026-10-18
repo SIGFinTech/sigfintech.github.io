@@ -519,6 +519,48 @@
     .nav-links a { flex: none; }
     .brand { flex: none; }
   }
+
+  /* ---------- PROGRAM COMMITTEE ---------- */
+  .pc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 18px 0 8px;
+  }
+  .pc-label .pc-n { color: var(--text-faint); margin-left: 6px; }
+  ul.pc-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 24px;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pc-list li { min-width: 0; overflow-wrap: anywhere; }
+  .pc-clip {
+    position: relative;
+    max-height: calc(0.88rem * 1.75 * 8);
+    overflow: hidden;
+  }
+  .pc-clip::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48px;
+    background: linear-gradient(rgba(255, 255, 255, 0), var(--bg));
+    pointer-events: none;
+  }
+  .pc-toggle:checked ~ .pc-clip { max-height: none; }
+  .pc-toggle:checked ~ .pc-clip::after { display: none; }
+  .pc-btn {
+    display: inline-block; margin-top: 8px;
+    font-size: 0.82rem; font-weight: 500;
+    color: var(--accent); cursor: pointer;
+  }
+  .pc-btn:hover { text-decoration: underline; }
+  .pc-btn .pc-hide, .pc-toggle:checked ~ .pc-btn .pc-show { display: none; }
+  .pc-toggle:checked ~ .pc-btn .pc-hide { display: inline; }
+  @media (max-width: 700px) {
+    ul.pc-list { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
@@ -774,8 +816,218 @@
     </a>
   </div>
 
-  <h3 class="sub">Program Committee (Reviewers)</h3>
-  <p style="color: var(--text-dim);">To Be Announced (TBA)</p>
+  <h3 class="sub">Program Committee</h3>
+  <div class="pc-label">Area Chairs <span class="pc-n">13</span></div>
+  <ul class="pc-list">
+    <li>Nino Antulov-Fantulin</li>
+    <li>Yupeng Cao</li>
+    <li>Yankai Chen</li>
+    <li>Xutong Liu</li>
+    <li>Zhiwei Liu</li>
+    <li>Xueqing Peng</li>
+    <li>Lingfei Qian</li>
+    <li>Prayag Tiwari</li>
+    <li>Yan Wang</li>
+    <li>Yong Xie</li>
+    <li>Zhuohan Xie</li>
+    <li>Jiangpeng Yan</li>
+    <li>Shiqi Ye</li>
+  </ul>
+  <div class="pc-label">Reviewers <span class="pc-n">188</span></div>
+  <input type="checkbox" id="pc-more" class="pc-toggle" hidden>
+  <div class="pc-clip">
+    <ul class="pc-list">
+      <li>Ahmed Abdullah</li>
+      <li>Piyush Agarwal</li>
+      <li>Zohair Ahmed</li>
+      <li>Jubayer Al Mahmud</li>
+      <li>Seyed Mosayeb Alam</li>
+      <li>Avinash Goutham Aluguvelly</li>
+      <li>Tasniem Nasser Alyahya</li>
+      <li>Diego Amaya</li>
+      <li>A S Aravinthakshan</li>
+      <li>Elliott Ash</li>
+      <li>Atousa Assadihaghi</li>
+      <li>Alankar Atreya</li>
+      <li>Shubham Barge</li>
+      <li>Devesh Batra</li>
+      <li>Ofir Ben Shoham</li>
+      <li>Abhishek Bhandari</li>
+      <li>Mukaffi Bin Moin</li>
+      <li>Xin Cai</li>
+      <li>Dejun Cao</li>
+      <li>Mingyu Cao</li>
+      <li>Wenbo Cao</li>
+      <li>Emma Ceccherini</li>
+      <li>Nischal Reddy Chandra</li>
+      <li>Ben Charoenwong</li>
+      <li>Bowei Chen</li>
+      <li>Pin-Hao Chen</li>
+      <li>Eunjung Cho</li>
+      <li>Wooah Choi</li>
+      <li>Saebyeok Chu</li>
+      <li>Vignesh Coumarane</li>
+      <li>Ziqiang Cui</li>
+      <li>Jannic Alexander Cutura</li>
+      <li>Giulia D&#x27;Agostino</li>
+      <li>Sridhar Dasaratha</li>
+      <li>Yu-Chen Den</li>
+      <li>Suryadeep Singh Deswal</li>
+      <li>Durjoy Dey</li>
+      <li>Fabrizio Dimino</li>
+      <li>Fatema Tuj Johora Faria</li>
+      <li>Weibin Feng</li>
+      <li>Stoyan Ganchev</li>
+      <li>Somraj Gautam</li>
+      <li>Daria Godorozha</li>
+      <li>Jie Gong</li>
+      <li>Morris Groot Beumer</li>
+      <li>Runteng Guo</li>
+      <li>Wei Guo</li>
+      <li>Nyida Gyal</li>
+      <li>Mehmet Haklidir</li>
+      <li>Krishna Harish</li>
+      <li>Chetan Harsha</li>
+      <li>Wanying He</li>
+      <li>Yueru He</li>
+      <li>Yuxian He</li>
+      <li>Amr Hegazy</li>
+      <li>Shu-Kai Hsieh</li>
+      <li>Jingying Hu</li>
+      <li>Caishuang Huang</li>
+      <li>Ke-Wei Huang</li>
+      <li>Xianting Huang</li>
+      <li>Xiyang Huang</li>
+      <li>Apoorva Jaiswal</li>
+      <li>Denglin Jiang</li>
+      <li>Yuechen Jiang</li>
+      <li>Anup K. Kalia</li>
+      <li>Anusha Kamath</li>
+      <li>Hong Kang</li>
+      <li>Munyoung Kang</li>
+      <li>Alireza Kargarzadeh</li>
+      <li>Arman Khaledian</li>
+      <li>Nariman Khaledian</li>
+      <li>Genady Kogan</li>
+      <li>Ziyan Kuang</li>
+      <li>Shamik Kundu</li>
+      <li>Kseniia Kuvshinova</li>
+      <li>Victoire Laurent</li>
+      <li>Liliya Lechner</li>
+      <li>Yesol Lee</li>
+      <li>Yunyoung Lee</li>
+      <li>Baichuan Li</li>
+      <li>Haohang Li</li>
+      <li>Mingqi Li</li>
+      <li>Peng Li</li>
+      <li>Yifan Li</li>
+      <li>Zhentao Li</li>
+      <li>Fangfang Lin</li>
+      <li>Ping-Sheng Lin</li>
+      <li>Yuzhu Ling</li>
+      <li>Yongtai Liu</li>
+      <li>Zhuosheng Liu</li>
+      <li>Giuliano Lorenzoni</li>
+      <li>Peng Lu</li>
+      <li>Fabian Lukassen</li>
+      <li>Linhai Ma</li>
+      <li>Peixian Ma</li>
+      <li>Prabir Mallick</li>
+      <li>Anar Mehraliyev</li>
+      <li>Vaibhav Mehrotra</li>
+      <li>Ge Meng</li>
+      <li>Yanlong Meng</li>
+      <li>Ann Naser Nabil</li>
+      <li>Aravind Narayanan</li>
+      <li>Chun Chet Ng</li>
+      <li>Talapaka Nithin</li>
+      <li>Valentin Noël</li>
+      <li>Nong Nhu Uyen</li>
+      <li>Erfan Nourbakhsh</li>
+      <li>Rapheal Obodugo</li>
+      <li>Mateusz Ostaszewski</li>
+      <li>Rajveer Singh Pall</li>
+      <li>Nisarg Patel</li>
+      <li>Ying Peng</li>
+      <li>Adam Poliak</li>
+      <li>Shivika Prasanna</li>
+      <li>Wenjie Qiu</li>
+      <li>Yunzhi Qiu</li>
+      <li>Aulia Kharis Rakhmasari</li>
+      <li>Shashishekar Ramakrishna</li>
+      <li>Aman Rangapur</li>
+      <li>Suprabhat Rapolu</li>
+      <li>Arnau Rodon Comas</li>
+      <li>Arush Sachdeva</li>
+      <li>Yunus Santur</li>
+      <li>Krish Sapru</li>
+      <li>Anirban Sen</li>
+      <li>Théo Nicolas Sitjar</li>
+      <li>Kyungsub Song</li>
+      <li>Yanlin Song</li>
+      <li>Laven Srivastava</li>
+      <li>Varad Srivastava</li>
+      <li>Yan Sun</li>
+      <li>Sajag Swami</li>
+      <li>Yu-Chien Tang</li>
+      <li>Aaditya Anand Thokal</li>
+      <li>Lara Turgut</li>
+      <li>Oddharak Tyagi</li>
+      <li>Hafeez Ullah</li>
+      <li>Takehito Utsuro</li>
+      <li>Natalia Vanetik</li>
+      <li>Ishan Verma</li>
+      <li>Natan Vidra</li>
+      <li>Valeria Vieira dos Santos</li>
+      <li>Vu Gia Nam</li>
+      <li>Qianhui Stella Wan</li>
+      <li>Chuan-Ju Wang</li>
+      <li>Dong Wang</li>
+      <li>Wilson Wang</li>
+      <li>Yinzhi Wang</li>
+      <li>Yuyan Wang</li>
+      <li>Zhuo Wang</li>
+      <li>Zining Wang</li>
+      <li>Wei Wei</li>
+      <li>Xinyu Wei</li>
+      <li>Lars Wilhelmi</li>
+      <li>Wenbin Wu</li>
+      <li>Yue Wu</li>
+      <li>Ruoyu Xiang</li>
+      <li>Anke Xu</li>
+      <li>Shijie Xu</li>
+      <li>Yihuai Xu</li>
+      <li>Lalit Yadav</li>
+      <li>Yuhong Yan</li>
+      <li>Junyi Yao</li>
+      <li>Ping Yao</li>
+      <li>Xuan Yao</li>
+      <li>An-Zi Yen</li>
+      <li>Simge Yildirim</li>
+      <li>Shixiang You</li>
+      <li>Dianzhi Yu</li>
+      <li>Honghai Yu</li>
+      <li>Han Yuan</li>
+      <li>Huaye Zeng</li>
+      <li>Bo Zhang</li>
+      <li>Enze Zhang</li>
+      <li>Fan Zhang</li>
+      <li>Nathan Zhang</li>
+      <li>Vincent Jim Zhang</li>
+      <li>Xilun Zhang</li>
+      <li>Xinni Zhang</li>
+      <li>Yunbai Zhang</li>
+      <li>Nan Zhao</li>
+      <li>Yingzhu Zhao</li>
+      <li>Jin Zheng</li>
+      <li>Yixiang Zheng</li>
+      <li>Zihao Zheng</li>
+      <li>Yixi Zhou</li>
+      <li>Liyun Zhu</li>
+      <li>Mingxi Zou</li>
+    </ul>
+  </div>
+  <label for="pc-more" class="pc-btn"><span class="pc-show">Show all 188 reviewers</span><span class="pc-hide">Show fewer</span></label>
 </section>
 
 <section class="block" id="previous">
