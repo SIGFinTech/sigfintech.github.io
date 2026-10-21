@@ -665,7 +665,11 @@
   .sponsors h2 { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin: 0 0 24px; }
   .sp-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
   .sp { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 32px; }
-  .sp img { height: 40px; width: auto; display: block; }
+  .sp img { width: auto; display: block; }
+  /* equal cap height (~22px) and a shared baseline for the two wordmarks */
+  .sp .logo { height: 60px; display: flex; align-items: flex-start; }
+  .sp img.bbg { height: 60px; }
+  .sp img.dmn { height: 34px; margin-top: -4px; }
   .sp span { font-size: .9rem; color: var(--dim); }
 
   @media (max-width: 900px) {
@@ -734,8 +738,8 @@
 <section class="sponsors page" id="sponsors">
   <h2>Sponsors</h2>
   <div class="sp-row">
-    <div class="sp"><img src="assets/sponsors/bloomberg-engineering-black.png" alt="Bloomberg Engineering" width="1261" height="510"><span>FinNLP Night</span></div>
-    <div class="sp"><img src="assets/sponsors/domyn-primary.png" alt="Domyn" width="1400" height="339"><span>Domyn Best Paper Award</span></div>
+    <div class="sp"><div class="logo"><img class="bbg" src="assets/sponsors/bloomberg-engineering-black.png" alt="Bloomberg Engineering" width="1261" height="510"></div><span>FinNLP Night</span></div>
+    <div class="sp"><div class="logo"><img class="dmn" src="assets/sponsors/domyn-primary.png" alt="Domyn" width="1400" height="339"></div><span>Domyn Best Paper Award</span></div>
   </div>
 </section>
 
