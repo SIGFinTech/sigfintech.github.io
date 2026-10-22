@@ -573,11 +573,11 @@
   html, body { overflow-x: clip; }
   header.hero, header.page-head { position: relative; }
   header.hero h1 { max-width: 600px; }
-  /* header art: Rinpa-style Kinkaku-ji folding screen, fading into the page on the left */
-  .scene { position: absolute; top: 0; bottom: 0; left: 34%; right: min(0px, calc(50% - 50vw)); pointer-events: none; user-select: none; overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40%), linear-gradient(180deg, #000 82%, transparent);
-    -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 40%), linear-gradient(180deg, #000 82%, transparent); mask-composite: intersect; }
-  header.page-head .scene { left: 42%; }
+  /* header art: Rinpa-style Kinkaku-ji folding screen as a full-bleed band; a paper veil keeps the text side calm */
+  .scene { position: absolute; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); pointer-events: none; user-select: none; overflow: hidden;
+    -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent); mask-image: linear-gradient(180deg, #000 80%, transparent); }
+  .scene::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,.9) 0, rgba(255,255,255,.84) calc(50% + 60px), rgba(255,255,255,0) calc(50% + 300px)); }
   .scene .art { position: absolute; inset: 0; }
   .scene img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 84% 55%; display: block; }
   .scene .pond { clip-path: inset(66% 0 0 0); filter: url(#pond-ripple); opacity: .85; }
@@ -589,6 +589,7 @@
       -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); }
     header.page-head .scene { margin-top: -40px; }
     .scene .pond { display: none; }
+    .scene::after { display: none; }
   }
 </style>
 <link rel="stylesheet" href="assets/motion.css">

@@ -57,7 +57,6 @@
   if (!head || reduce) return;
 
   // ---------- Kinkaku-ji screen: fireflies over the pond ----------
-  const scene = head.querySelector('.scene');
   const cv = document.createElement('canvas'); cv.className = 'petal-canvas'; cv.setAttribute('aria-hidden', 'true');
   head.prepend(cv);
   const ctx = cv.getContext('2d');
@@ -66,23 +65,15 @@
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
   const rnd = (a, b) => a + Math.random() * (b - a);
-  // the scene's box in header pixels; fireflies live around the pond and the pines
-  const box = () => { if (!scene) return [W * .55, H * .3, W * .45, H * .7];
-    const r = scene.getBoundingClientRect(), h = head.getBoundingClientRect(); return [r.left - h.left, r.top - h.top, r.width, r.height]; };
+  // fireflies live over the pond, on the painting's side of the header
+  const box = () => [W * .45, H * .3, W * .55, H * .7];
   const flies = [], MAX = innerWidth < 700 ? 9 : 18;
-  const spawn = (x, y, burst = 0) => {
+  const spawn = () => {
     const [bx, by, bw, bh] = box();
-    flies.push({ x: x ?? bx + bw * rnd(.3, 1), y: y ?? by + bh * rnd(.45, .85), vx: rnd(-.2, .2) + burst * rnd(-1.2, 1.2), vy: rnd(-.2, .1) + burst * rnd(-1.2, .4),
+    flies.push({ x: bx + bw * rnd(.55, 1), y: by + bh * rnd(.45, .85), vx: rnd(-.12, .12), vy: rnd(-.12, .06),
       r: rnd(1.1, 2), ph: rnd(0, 6.28), rate: rnd(.025, .06), life: 0, max: rnd(500, 900), t: rnd(0, 6.28) });
   };
-  let px = -1, py = -1, last = 0, run = true;
-  head.addEventListener('pointermove', e => { const r = head.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top; });
-  head.addEventListener('pointerleave', () => { px = py = -1; });
-  head.addEventListener('click', e => {
-    if (e.target.closest('a, button')) return;
-    const r = head.getBoundingClientRect();
-    for (let i = 0; i < 8; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
-  });
+  let last = 0, run = true;
   new IntersectionObserver(([e]) => { run = e.isIntersecting; if (run) requestAnimationFrame(tick); }).observe(head);
   document.addEventListener('visibilitychange', () => { run = !document.hidden; if (run) requestAnimationFrame(tick); });
 
@@ -95,10 +86,7 @@
     for (let i = flies.length - 1; i >= 0; i--) {
       const f = flies[i]; f.life += dt / 16; f.t += .015; f.ph += f.rate;
       // lazy wandering: steer by a slowly turning heading
-      f.vx += Math.cos(f.t * 1.7 + i) * .012; f.vy += Math.sin(f.t * 1.3 + i * 2) * .01;
-      // curious about the cursor, but shy when it gets too close
-      if (px >= 0) { const dx = px - f.x, dy = py - f.y, d = Math.hypot(dx, dy);
-        if (d < 260) { const k = d > 46 ? .0009 : -.006; f.vx += dx * k; f.vy += dy * k; } }
+      f.vx += Math.cos(f.t * 1.7 + i) * .006; f.vy += Math.sin(f.t * 1.3 + i * 2) * .005;
       f.vx *= .985; f.vy *= .985;
       f.x += f.vx * dt / 16; f.y += f.vy * dt / 16;
       const age = f.life / f.max;
