@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Call for Challenges · FinNLP 2027</title>
+<meta name="description" content="FinEval 2027 Shared Tasks at FinNLP @ ACL 2027 — call for financial AI shared task proposals." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-14 -14 28 28'%3E%3Cg transform='translate(0,0) rotate(0) scale(1.0)'%3E%3Cpath d='M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z' transform='rotate(0)' fill='%23e98aa8'/%3E%3Cpath d='M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z' transform='rotate(72)' fill='%23e98aa8'/%3E%3Cpath d='M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z' transform='rotate(144)' fill='%23e98aa8'/%3E%3Cpath d='M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z' transform='rotate(216)' fill='%23e98aa8'/%3E%3Cpath d='M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z' transform='rotate(288)' fill='%23e98aa8'/%3E%3Ccircle r='2.1' fill='%23e28aa5'/%3E%3Ccircle cx='2.12' cy='-2.91' r='0.7' fill='%23d96f92'/%3E%3Ccircle cx='3.42' cy='1.11' r='0.7' fill='%23d96f92'/%3E%3Ccircle cx='0.00' cy='3.60' r='0.7' fill='%23d96f92'/%3E%3Ccircle cx='-3.42' cy='1.11' r='0.7' fill='%23d96f92'/%3E%3Ccircle cx='-2.12' cy='-2.91' r='0.7' fill='%23d96f92'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #fafafa;
+    --text: #1a1f2e;
+    --text-dim: #525a6b;
+    --text-faint: #8a90a0;
+    --border: #e6e8ee;
+    --border-soft: #eef0f4;
+    --accent: #1d4ed8;
+    --accent-soft: #e8efff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.65; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 920px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .brand { font-weight: 700; font-size: 0.95rem; color: var(--text); letter-spacing: 0.02em; }
+  .brand .accent-text { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-links a { color: var(--text-dim); font-weight: 500; font-size: 0.9rem; }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+  .nav-links a.active { color: var(--accent); }
+
+  header.page-head {
+    max-width: 920px; margin: 0 auto;
+    padding: 60px 28px 36px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 500;
+  }
+  header.page-head h1 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: clamp(1.7rem, 3.6vw, 2.2rem);
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  header.page-head .sub {
+    color: var(--text-dim); font-size: 1rem; margin: 0;
+  }
+  header.page-head .sub strong { color: var(--text); font-weight: 600; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .hero-cta:hover {
+    background: #1e40af;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -6px rgba(184, 51, 106, 0.45);
+    text-decoration: none;
+  }
+  .hero-cta svg { width: 14px; height: 14px; }
+  .hero-cta-note {
+    margin: 10px 0 0;
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+  .phase-label {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 28px 0 10px;
+    padding: 4px 10px;
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  .phase-note {
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    margin: 6px 0 12px;
+    font-style: italic;
+  }
+
+  main { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+  section.block {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  section.block:last-of-type { border-bottom: none; }
+  section.block > h2 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 1.3rem; color: var(--text);
+    margin: 0 0 20px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--text);
+    display: inline-block;
+  }
+  section.block p {
+    margin: 0 0 14px; color: var(--text); line-height: 1.72;
+  }
+  section.block p.lead { color: var(--text-dim); }
+
+  h3.sub {
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 1.02rem; color: var(--text);
+    margin: 26px 0 10px;
+  }
+  h3.sub::before {
+    content: "// "; color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400; font-size: 0.88rem;
+  }
+
+  ul.policy-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  ul.policy-list li {
+    padding: 8px 0 8px 22px; position: relative;
+    color: var(--text); font-size: 0.95rem; line-height: 1.6;
+  }
+  ul.policy-list li::before {
+    content: "—"; position: absolute; left: 0; top: 8px; color: var(--text-faint);
+  }
+
+  ul.prev-tasks {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    display: grid; grid-template-columns: 1fr; gap: 4px;
+    font-size: 0.92rem;
+  }
+  ul.prev-tasks li {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border-soft);
+    display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    align-items: baseline;
+  }
+  ul.prev-tasks li:hover { background: var(--bg-soft); }
+  ul.prev-tasks .task-name { color: var(--accent); font-weight: 500; text-decoration: none; }
+  ul.prev-tasks a.task-name:hover { text-decoration: underline; }
+  ul.prev-tasks .task-venue {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+  }
+
+  .dates-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 8px; font-size: 0.95rem;
+  }
+  .dates-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .dates-table td:first-child {
+    color: var(--text); font-weight: 500; width: 60%;
+  }
+  .dates-table td:last-child {
+    color: var(--text-dim); font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem; text-align: right;
+  }
+  .dates-table tr.highlight td:last-child {
+    color: var(--accent); font-weight: 500;
+  }
+  .tz-note {
+    margin-top: 10px; font-size: 0.82rem;
+    color: var(--text-faint); font-family: 'JetBrains Mono', monospace;
+  }
+
+  .callout {
+    border: 1px solid var(--accent); background: var(--accent-soft);
+    padding: 16px 18px; border-radius: 6px;
+    margin-top: 20px;
+  }
+  .callout .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem; color: var(--accent);
+    margin-bottom: 4px; font-weight: 500;
+  }
+  .callout p { margin: 0; color: var(--text); font-size: 0.93rem; }
+
+  .task-cards { display: grid; gap: 14px; margin-top: 16px; }
+  .task-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 22px; background: var(--bg);
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .task-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.15);
+  }
+  .task-card .t-title {
+    font-weight: 600; font-size: 1.05rem; color: var(--text);
+    line-height: 1.4; margin-bottom: 12px;
+  }
+  .task-card .t-org { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 12px; }
+  .task-card .t-soon {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-faint);
+    border: 1px solid var(--border); border-radius: 3px;
+    padding: 3px 10px;
+  }
+
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; border-radius: 6px;
+    font-weight: 600; font-size: 0.94rem; text-decoration: none;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1e40af; transform: translateY(-1px); box-shadow: 0 6px 18px -6px rgba(184, 51, 106,.45); text-decoration: none; }
+  .btn-secondary { background: var(--bg); color: var(--accent); border: 1px solid var(--accent); }
+  .btn-secondary:hover { background: var(--accent-soft); transform: translateY(-1px); text-decoration: none; }
+  .btn svg { width: 14px; height: 14px; }
+
+  .subtasks { display: grid; gap: 14px; margin-top: 16px; }
+  .subtask {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 22px; background: var(--bg);
+  }
+  .subtask .st-idx {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 8px; font-weight: 500;
+  }
+  .subtask h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 0 0 8px; }
+  .subtask p { font-size: 0.93rem; color: var(--text-dim); margin: 0 0 12px; line-height: 1.6; }
+  .subtask .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .subtask .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem;
+    color: var(--text-dim); background: var(--bg-soft);
+    border: 1px solid var(--border); border-radius: 4px; padding: 3px 9px;
+  }
+  .subtask .tag strong { color: var(--text); font-weight: 600; }
+
+  footer {
+    max-width: 920px; margin: 0 auto;
+    padding: 32px 28px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--text-faint);
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-dim); }
+
+  @media (max-width: 700px) {
+    header.page-head { padding: 40px 24px 28px; }
+    main { padding: 0 24px; }
+    section.block { padding: 32px 0; }
+    .dates-table td { padding: 10px 0; }
+  }
+
+  /* ---------- FINNLP 2027 · SAKURA THEME ---------- */
+  :root {
+    --accent: #b8336a;
+    --accent-soft: #fdeef3;
+    --accent-dark: #93264f;
+  }
+  header.hero, header.page-head { position: relative; }
+  header.hero h1 { max-width: 600px; }
+  .sakura {
+    position: absolute; top: 0; right: 0;
+    width: 250px; height: auto;
+    pointer-events: none; user-select: none;
+  }
+  header.page-head .sakura { width: 190px; }
+  .brand { display: inline-flex; align-items: center; gap: 7px; }
+  .brand .mark { width: 16px; height: 16px; flex: none; }
+  @media (max-width: 700px) {
+    .sakura, header.page-head .sakura { width: 120px; right: -6px; opacity: 0.75; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><svg class="mark" viewBox="-14 -14 28 28" aria-hidden="true"><g transform="translate(0,0) rotate(0) scale(1.0)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#e98aa8"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#e98aa8"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#e98aa8"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#e98aa8"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#e98aa8"/><circle r="2.1" fill="#fff2f6"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#b8336a"/><circle cx="3.42" cy="1.11" r="0.7" fill="#b8336a"/><circle cx="0.00" cy="3.60" r="0.7" fill="#b8336a"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#b8336a"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#b8336a"/></g></svg>FinNLP <span class="accent-text">2027</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="call-for-papers.html">Papers</a>
+      <a href="call-for-challenges.html" class="active">Challenges</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <svg class="sakura" viewBox="0 0 250 190" aria-hidden="true" focusable="false"><g fill="none" stroke="#8b7378" stroke-linecap="round"><path d="M238,-6 C230,30 206,56 172,78 C142,97 112,110 74,122" stroke-width="2.6"/><path d="M214,46 C222,52 228,58 232,66" stroke-width="1.6"/><path d="M168,81 C172,93 175,104 172,116" stroke-width="1.6"/><path d="M112,108 C102,101 93,93 86,84" stroke-width="1.3"/></g><g transform="translate(222,26) rotate(30) scale(0.8)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(196,62) rotate(-10) scale(1.15)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#f6c3d2"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(232,68) rotate(18) scale(0.85)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(172,118) rotate(40) scale(0.95)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#f6c3d2"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(132,101) rotate(-25) scale(1.0)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(86,82) rotate(12) scale(0.8)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(74,122) rotate(-38) scale(1.05)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#f6c3d2"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><ellipse cx="234" cy="8" rx="2.6" ry="3.4" fill="#eea3ba"/><ellipse cx="152" cy="92" rx="2.6" ry="3.4" fill="#eea3ba"/><ellipse cx="102" cy="116" rx="2.6" ry="3.4" fill="#eea3ba"/><path transform="translate(44,160) rotate(-35) scale(0.8)" d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" fill="#f6c3d2"/><path transform="translate(122,178) rotate(50) scale(0.65)" d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" fill="#f6c3d2"/><path transform="translate(22,136) rotate(15) scale(0.55)" d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" fill="#f6c3d2"/></svg>
+  <div class="eyebrow">// FinEval 2027 Shared Tasks</div>
+  <h1>Call for Challenges</h1>
+  <p class="sub"><strong>FinNLP-2027 @ ACL-2027</strong> · August 17–22, 2027 · Kyoto, Japan</p>
+  <p class="hero-cta-note">// Call for task proposals coming soon</p>
+</header>
+
+<main>
+
+<section class="block">
+  <h2>About FinEval</h2>
+  <p>Shared tasks are collaborative initiatives where researchers and practitioners work together to address a common challenge using shared datasets and evaluation metrics. <strong>FinEval</strong> — Financial Information Access and Evaluation — aims to foster competition while providing a community venue, with new editions called annually alongside the FinNLP workshop.</p>
+  <p>For 2027, we invite proposals for new financial AI shared tasks to be held at FinNLP-2027 @ ACL 2027. Participants of accepted tasks submit a system description paper (see the <a href="call-for-papers.html">Call for Papers</a>), published in the ACL Anthology and presented at the workshop. See also the official <a href="https://sigfintech.github.io/fineval.html" target="_blank" rel="noopener">FinEval page</a>.</p>
+
+  <div class="callout">
+    <div class="lbl">// Call for task proposals</div>
+    <p>Proposal guidelines, the submission form and the deadline will be announced on this page.</p>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Important Dates</h2>
+  <table class="dates-table">
+    <tbody>
+      <tr><td>Task proposal deadline</td><td>TBA</td></tr>
+      <tr><td>Notification of accepted tasks</td><td>TBA</td></tr>
+      <tr><td>Datasets release</td><td>TBA</td></tr>
+      <tr><td>Test phase</td><td>TBA</td></tr>
+      <tr><td>System paper submission</td><td>TBA</td></tr>
+      <tr class="highlight"><td>Workshop &amp; awards @ ACL</td><td>August 18 or 19, 2027 (TBA)</td></tr>
+    </tbody>
+  </table>
+  <p class="tz-note">// All deadlines will be 11:59 PM Anywhere on Earth (AoE, UTC-12)</p>
+</section>
+
+<section class="block">
+  <h2>Previous FinEval Tasks</h2>
+  <ul class="prev-tasks">
+    <li><a class="task-name" href="../finnlp2026/call-for-challenges.html">Multilingual Financial Language Understanding</a><span class="task-venue">EMNLP-2026</span></li>
+    <li><a class="task-name" href="https://sigfintech.github.io/fineval_earnings2Insights.html" target="_blank" rel="noopener">Earnings2Insights</a><span class="task-venue">EMNLP-2025</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-fnp-llmfinlegal/shared-tasks" target="_blank" rel="noopener">FinEval-Pilot (5 tasks)</a><span class="task-venue">COLING-2025</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-agentscen/shared-task-finllm" target="_blank" rel="noopener">Financial Challenges in Large Language Models</a><span class="task-venue">IJCAI-2024</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-agentscen/shared-task-mqg" target="_blank" rel="noopener">Multiple Question Generation from Presentation Transcripts</a><span class="task-venue">IJCAI-2024</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-kdf-2024/shared-task-ml-esg-3" target="_blank" rel="noopener">ML-ESG-3</a><span class="task-venue">LREC-COLING-2024</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2023/shared-task-esg-impact" target="_blank" rel="noopener">ML-ESG-2</a><span class="task-venue">IJCNLP-AACL-2023</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-2023/shared-task-esg-issue" target="_blank" rel="noopener">Multi-Lingual ESG Issue Identification</a><span class="task-venue">IJCAI-2023</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-2022-emnlp/erai-shared-task" target="_blank" rel="noopener">ERAI</a><span class="task-venue">EMNLP-2022</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp-2022/shared-task-finsim4-esg" target="_blank" rel="noopener">FinSim-4</a><span class="task-venue">IJCAI-ECAI-2022</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2021/" target="_blank" rel="noopener">FinSim-3</a><span class="task-venue">IJCAI-2021</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2021/shared-task-finsim" target="_blank" rel="noopener">FinSBD-2</a><span class="task-venue">IJCAI-2020</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp2020/shared-task-finsim" target="_blank" rel="noopener">FinSim</a><span class="task-venue">IJCAI-2020</span></li>
+    <li><a class="task-name" href="https://sites.google.com/nlg.csie.ntu.edu.tw/finnlp/shared-task-finsbd" target="_blank" rel="noopener">FinSBD</a><span class="task-venue">IJCAI-2019</span></li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2>Contact</h2>
+  <p>For questions about FinEval shared tasks, contact <a href="mailto:aclsigfintech@gmail.com">aclsigfintech@gmail.com</a>.</p>
+</section>
+
+</main>
+
+<footer>
+  <div>© ACL SIG-FinTech · FinNLP 2027</div>
+  <div>
+    <a href="index.html">Home</a> ·
+    <a href="call-for-papers.html">Papers</a> ·
+    <a href="https://sigfintech.github.io/fineval.html" target="_blank" rel="noopener">FinEval (Official)</a> ·
+    <a href="https://www.aclweb.org/portal/content/acl-code-ethics" target="_blank" rel="noopener">Code of Conduct</a>
+  </div>
+</footer>
+
+</body>
+</html>
