@@ -56,7 +56,7 @@
 
   if (!head || reduce) return;
 
-  // ---------- Kyoto scene: Daimonji embers, parallax ridges, lanterns ----------
+  // ---------- Kinkaku-ji scene: fireflies over the pond, layered parallax ----------
   const scene = head.querySelector('.scene');
   const cv = document.createElement('canvas'); cv.className = 'petal-canvas'; cv.setAttribute('aria-hidden', 'true');
   head.prepend(cv);
@@ -66,38 +66,24 @@
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
   const rnd = (a, b) => a + Math.random() * (b - a);
-  // where the 大 sits, in header pixels
-  const fire = () => {
-    const d = scene && scene.querySelector('.daimonji');
-    if (!d) return [W * .8, H * .5, 30];
-    const r = d.getBoundingClientRect(), h = head.getBoundingClientRect();
-    return [r.left - h.left + r.width / 2, r.top - h.top + r.height / 2, r.width / 2];
-  };
-  const embers = [], MAX = innerWidth < 700 ? 22 : 46;
+  // the scene's box in header pixels; fireflies live around the pond and the pines
+  const box = () => { if (!scene) return [W * .55, H * .3, W * .45, H * .7];
+    const r = scene.getBoundingClientRect(), h = head.getBoundingClientRect(); return [r.left - h.left, r.top - h.top, r.width, r.height]; };
+  const flies = [], MAX = innerWidth < 700 ? 9 : 18;
   const spawn = (x, y, burst = 0) => {
-    const [fx, fy, fr] = fire();
-    const z = rnd(.5, 1.2);
-    embers.push({ x: x ?? fx + rnd(-fr, fr), y: y ?? fy + rnd(-fr * .6, fr * .6), z, r: rnd(.6, 1.4) * z,
-      vx: rnd(-.15, .15) + burst * rnd(-1.6, 1.6), vy: -rnd(.25, .7) * z - burst * rnd(.4, 1.8),
-      life: 0, max: rnd(140, 260), ph: rnd(0, 6.28), hue: rnd(14, 38) });
+    const [bx, by, bw, bh] = box();
+    flies.push({ x: x ?? bx + bw * rnd(.3, 1), y: y ?? by + bh * rnd(.45, .85), vx: rnd(-.2, .2) + burst * rnd(-1.2, 1.2), vy: rnd(-.2, .1) + burst * rnd(-1.2, .4),
+      r: rnd(1.1, 2), ph: rnd(0, 6.28), rate: rnd(.025, .06), life: 0, max: rnd(500, 900), t: rnd(0, 6.28) });
   };
-  let wind = 0, windT = 0, px = -1, py = -1, last = 0, run = true, acc = 0;
-  head.addEventListener('pointermove', e => {
-    const r = head.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-    if (px >= 0) windT += (x - px) * .01;
-    px = x; py = y;
-    // lanterns warm up as the cursor nears the pagoda
-    if (scene) { const pg = scene.querySelector('.pagoda').getBoundingClientRect();
-      scene.classList.toggle('lit', Math.hypot(e.clientX - (pg.left + pg.width / 2), e.clientY - (pg.top + pg.height / 2)) < 140); }
-  });
-  head.addEventListener('pointerleave', () => { px = py = -1; scene && scene.classList.remove('lit'); });
+  let px = -1, py = -1, last = 0, run = true;
+  head.addEventListener('pointermove', e => { const r = head.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top; });
+  head.addEventListener('pointerleave', () => { px = py = -1; });
   head.addEventListener('click', e => {
     if (e.target.closest('a, button')) return;
     const r = head.getBoundingClientRect();
-    for (let i = 0; i < 18; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
+    for (let i = 0; i < 8; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
   });
-  // gentle depth: layers drift at different rates with scroll and cursor
-  const layers = scene ? [['.ridge-far', .06, 6], ['.daimonji', .06, 6], ['.ridge-near', .12, 10], ['.town', .18, 14], ['.pagoda', .18, 14]]
+  const layers = scene ? [['.hill-far', .05, 5], ['.daimonji', .05, 5], ['.hill-near', .1, 9], ['.above', .16, 13]]
     .map(([s, k, m]) => [scene.querySelector(s), k, m]).filter(l => l[0]) : [];
   let mx = 0;
   head.addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; });
@@ -109,30 +95,33 @@
   function tick(t) {
     if (!run) return;
     const dt = Math.min(48, t - (last || t)); last = t;
-    windT *= .95; wind += ((.05 + windT) - wind) * .05;
-    acc += dt; if (acc > 120 && embers.length < MAX) { acc = 0; spawn(); }
+    if (flies.length < MAX && Math.random() < .02) spawn();
     parallax();
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'lighter';
-    for (let i = embers.length - 1; i >= 0; i--) {
-      const p = embers[i]; p.life += dt / 16; p.ph += .12;
-      p.vx += (wind * p.z - p.vx) * .03 + Math.sin(p.ph * .4) * .01;
-      p.vy += (-.45 * p.z - p.vy) * .01;
-      if (px >= 0) { const dx = p.x - px, dy = p.y - py, d2 = dx * dx + dy * dy;
-        if (d2 < 4900) { const f = (1 - d2 / 4900) * .25; p.vx += dx / 70 * f; p.vy += dy / 70 * f; } }
-      p.x += p.vx * dt / 16; p.y += p.vy * dt / 16;
-      const k = p.life / p.max;
-      if (k >= 1 || p.y < -10) { embers.splice(i, 1); continue; }
-      const flick = .65 + .35 * Math.sin(p.ph * 2.3), a = Math.sin(Math.PI * Math.min(1, k * 1.2)) * flick * (.45 + .5 * p.z);
-      const R = p.r * (2.2 - k);
-      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R * 2.4);
-      g.addColorStop(0, `hsla(${p.hue + 12}, 100%, 72%, ${a})`);
-      g.addColorStop(.35, `hsla(${p.hue}, 95%, 55%, ${a * .55})`);
-      g.addColorStop(1, `hsla(${p.hue - 8}, 90%, 45%, 0)`);
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, R * 2.4, 0, 6.29); ctx.fill();
+    for (let i = flies.length - 1; i >= 0; i--) {
+      const f = flies[i]; f.life += dt / 16; f.t += .015; f.ph += f.rate;
+      // lazy wandering: steer by a slowly turning heading
+      f.vx += Math.cos(f.t * 1.7 + i) * .012; f.vy += Math.sin(f.t * 1.3 + i * 2) * .01;
+      // curious about the cursor, but shy when it gets too close
+      if (px >= 0) { const dx = px - f.x, dy = py - f.y, d = Math.hypot(dx, dy);
+        if (d < 260) { const k = d > 46 ? .0009 : -.006; f.vx += dx * k; f.vy += dy * k; } }
+      f.vx *= .985; f.vy *= .985;
+      f.x += f.vx * dt / 16; f.y += f.vy * dt / 16;
+      const age = f.life / f.max;
+      if (age >= 1 || f.x < -20 || f.x > W + 20 || f.y < -20 || f.y > H + 20) { flies.splice(i, 1); continue; }
+      const blink = Math.max(0, Math.sin(f.ph)) ** 2, a = blink * Math.sin(Math.PI * age) * .95;
+      if (a < .02) continue;
+      const R = f.r * 5;
+      const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, R);
+      g.addColorStop(0, `rgba(255, 252, 210, ${a})`);
+      g.addColorStop(.25, `rgba(232, 236, 120, ${a * .6})`);
+      g.addColorStop(1, 'rgba(190, 220, 90, 0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(f.x, f.y, R, 0, 6.29); ctx.fill();
     }
     ctx.globalCompositeOperation = 'source-over';
     requestAnimationFrame(tick);
   }
-  setTimeout(() => { for (let i = 0; i < 12; i++) spawn(); requestAnimationFrame(tick); }, 1600);   // after the 大 is drawn
+  for (let i = 0; i < 8; i++) { spawn(); flies[i].life = rnd(50, 300); }
+  requestAnimationFrame(tick);
 })();
