@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 150%22%3E%3Cpath d=%22M4 142H296%22 stroke=%22%23C7463B%22 stroke-width=%2213%22/%3E%3Cpath d=%22M68 138H232 M76 138V104 M224 138V104 M114 138V104 M186 138V104 M38 106Q56 103 66 96H234Q244 103 262 106 M88 96V70 M212 96V70 M84 84H216 M58 72Q74 69 82 62H218Q226 69 242 72 M116 62V40 M184 62V40 M84 42Q100 39 110 32L150 14L190 32Q200 39 216 42%22 fill=%22none%22 stroke=%22%2324334A%22 stroke-width=%2214%22/%3E%3Ccircle cx=%22150%22 cy=%227%22 r=%229%22 fill=%22%23C7463B%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 150%22%3E%3Cdefs%3E%3ClinearGradient id=%22gl%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23E4BE57%22/%3E%3Cstop offset=%22.55%22 stop-color=%22%23C99A35%22/%3E%3Cstop offset=%221%22 stop-color=%22%23A97C22%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%22M4 142H296%22 stroke=%22%232C4A6E%22 stroke-width=%2213%22/%3E%3Cpath d=%22M68 138H232 M76 138V104 M224 138V104 M114 138V104 M186 138V104 M38 106Q56 103 66 96H234Q244 103 262 106 M88 96V70 M212 96V70 M84 84H216 M58 72Q74 69 82 62H218Q226 69 242 72 M116 62V40 M184 62V40 M84 42Q100 39 110 32L150 14L190 32Q200 39 216 42%22 fill=%22none%22 stroke=%22url(%23gl)%22 stroke-width=%2214%22/%3E%3Ccircle cx=%22150%22 cy=%227%22 r=%229%22 fill=%22%23C99A35%22/%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #ffffff;
@@ -578,7 +578,7 @@
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40%), linear-gradient(180deg, #000 82%, transparent);
     -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 40%), linear-gradient(180deg, #000 82%, transparent); mask-composite: intersect; }
   header.page-head .scene { left: 42%; }
-  .scene .art { position: absolute; inset: 0; scale: 1.05; }
+  .scene .art { position: absolute; inset: 0; }
   .scene img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 84% 55%; display: block; }
   .scene .pond { clip-path: inset(66% 0 0 0); filter: url(#pond-ripple); opacity: .85; }
   header.hero h1, header.hero .event-line, header.page-head h1, header.page-head .sub, .hero-cta-note, .eyebrow { text-shadow: 0 0 18px #fff, 0 0 6px #fff; }
@@ -599,7 +599,7 @@
 
 <nav class="top">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 300 150" aria-hidden="true"><path d="M4 142H296" stroke="#C7463B" stroke-width="13"/><path d="M68 138H232 M76 138V104 M224 138V104 M114 138V104 M186 138V104 M38 106Q56 103 66 96H234Q244 103 262 106 M88 96V70 M212 96V70 M84 84H216 M58 72Q74 69 82 62H218Q226 69 242 72 M116 62V40 M184 62V40 M84 42Q100 39 110 32L150 14L190 32Q200 39 216 42" fill="none" stroke="#24334A" stroke-width="14"/><circle cx="150" cy="7" r="9" fill="#C7463B"/></svg>FinNLP <span class="accent-text">2027</span></a>
+    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 300 150" aria-hidden="true"><defs><linearGradient id="gl-nav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4BE57"/><stop offset=".55" stop-color="#C99A35"/><stop offset="1" stop-color="#A97C22"/></linearGradient></defs><path d="M4 142H296" stroke="#2C4A6E" stroke-width="13"/><path d="M68 138H232 M76 138V104 M224 138V104 M114 138V104 M186 138V104 M38 106Q56 103 66 96H234Q244 103 262 106 M88 96V70 M212 96V70 M84 84H216 M58 72Q74 69 82 62H218Q226 69 242 72 M116 62V40 M184 62V40 M84 42Q100 39 110 32L150 14L190 32Q200 39 216 42" fill="none" stroke="url(#gl-nav)" stroke-width="14"/><circle cx="150" cy="7" r="9" fill="#C99A35"/></svg>FinNLP <span class="accent-text">2027</span></a>
     <div class="nav-links">
       <a href="index.html#dates">Dates</a>
       <a href="call-for-papers.html">Papers</a>
@@ -614,7 +614,7 @@
     <picture><source type="image/webp" srcset="assets/kinkaku-rinpa-900.webp 900w, assets/kinkaku-rinpa-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 640px"><img class="base" src="assets/kinkaku-rinpa-1600.jpg" alt="" decoding="async" fetchpriority="high"></picture>
     <img class="pond" src="assets/kinkaku-rinpa-900.webp" alt="" decoding="async">
   </div></div>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="pond-ripple" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.09" numOctaves="2" seed="7"><animate attributeName="baseFrequency" values="0.006 0.09;0.008 0.12;0.006 0.09" dur="10s" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="pond-ripple" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.004 0.06" numOctaves="1" seed="7"><animate attributeName="baseFrequency" values="0.004 0.06;0.0045 0.068;0.004 0.06" dur="36s" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
   <div class="eyebrow">// ACL SIG-FinTech · 12th edition</div>
   <h1>The 12th Workshop on Financial Technology and Natural Language Processing</h1>
   <p class="event-line"><strong>FinNLP-2027 @ ACL-2027</strong> · August 17–22, 2027 · Kyoto, Japan</p>

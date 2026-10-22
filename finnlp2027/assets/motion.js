@@ -1,4 +1,4 @@
-// FinNLP 2027 motion layer: fireflies over the Kinkaku-ji screen painting, gentle parallax,
+// FinNLP 2027 motion layer: fireflies over the Kinkaku-ji screen painting,
 // headline + scroll reveals, magnetic CTA, tilting cards. No dependencies.
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -56,7 +56,7 @@
 
   if (!head || reduce) return;
 
-  // ---------- Kinkaku-ji screen: fireflies over the pond, parallax ----------
+  // ---------- Kinkaku-ji screen: fireflies over the pond ----------
   const scene = head.querySelector('.scene');
   const cv = document.createElement('canvas'); cv.className = 'petal-canvas'; cv.setAttribute('aria-hidden', 'true');
   head.prepend(cv);
@@ -83,12 +83,6 @@
     const r = head.getBoundingClientRect();
     for (let i = 0; i < 8; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
   });
-  // the screen painting drifts gently with the cursor and scroll (it is scaled up in CSS so edges never show)
-  const layers = scene ? [['.art', .06, 12]].map(([s, k, m]) => [scene.querySelector(s), k, m]).filter(l => l[0]) : [];
-  let mx = 0;
-  head.addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; });
-  const parallax = () => layers.forEach(([el, k, m]) => { el.style.transform = `translate(${(-mx * m).toFixed(1)}px, ${(Math.min(scrollY, 300) * k).toFixed(1)}px)`; });
-  addEventListener('scroll', parallax, { passive: true });
   new IntersectionObserver(([e]) => { run = e.isIntersecting; if (run) requestAnimationFrame(tick); }).observe(head);
   document.addEventListener('visibilitychange', () => { run = !document.hidden; if (run) requestAnimationFrame(tick); });
 
@@ -96,7 +90,6 @@
     if (!run) return;
     const dt = Math.min(48, t - (last || t)); last = t;
     if (flies.length < MAX && Math.random() < .02) spawn();
-    parallax();
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'lighter';
     for (let i = flies.length - 1; i >= 0; i--) {
