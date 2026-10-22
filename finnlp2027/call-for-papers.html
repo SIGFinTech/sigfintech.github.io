@@ -224,31 +224,10 @@
     .sakura, header.page-head .sakura { width: 120px; right: -6px; opacity: 0.75; }
   }
 
-  /* falling petals: CSS only, confined to the right of the header, off under reduced motion */
-  .petals { position: absolute; top: 0; right: 0; bottom: 0; width: 320px; overflow: hidden; pointer-events: none; }
-  .petals i {
-    position: absolute; top: -14px; width: 11px; height: 9px;
-    background: linear-gradient(135deg, #f7c6d6, #e98aa8);
-    border-radius: 100% 0 100% 0; opacity: 0;
-    animation: petal-fall 11s linear infinite, petal-sway 3.2s ease-in-out infinite alternate;
-  }
-  .petals i:nth-child(1) { left: 58%; animation-delay: 0s, 0s; }
-  .petals i:nth-child(2) { left: 74%; animation-delay: 1.8s, .6s; width: 9px; height: 7px; }
-  .petals i:nth-child(3) { left: 40%; animation-delay: 3.6s, 1.1s; }
-  .petals i:nth-child(4) { left: 86%; animation-delay: 5.2s, .3s; width: 8px; height: 6px; }
-  .petals i:nth-child(5) { left: 64%; animation-delay: 7s, 1.6s; }
-  .petals i:nth-child(6) { left: 50%; animation-delay: 8.6s, .9s; width: 10px; height: 8px; }
-  .petals i:nth-child(7) { left: 80%; animation-delay: 9.9s, 1.3s; }
-  @keyframes petal-fall {
-    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-    8% { opacity: .9; }
-    85% { opacity: .75; }
-    100% { transform: translate(-70px, 420px) rotate(320deg); opacity: 0; }
-  }
-  @keyframes petal-sway { from { margin-left: -10px; } to { margin-left: 12px; } }
-  @media (max-width: 700px) { .petals { width: 160px; } .petals i:nth-child(n+5) { display: none; } }
-  @media (prefers-reduced-motion: reduce) { .petals { display: none; } }
 </style>
+<link rel="stylesheet" href="assets/motion.css">
+<script>document.documentElement.classList.add("m")</script>
+<script src="assets/motion.js" defer></script>
 </head>
 <body>
 
@@ -265,7 +244,6 @@
 
 <header class="page-head">
   <svg class="sakura" viewBox="0 0 250 190" aria-hidden="true" focusable="false"><g fill="none" stroke="#8b7378" stroke-linecap="round"><path d="M238,-6 C230,30 206,56 172,78 C142,97 112,110 74,122" stroke-width="2.6"/><path d="M214,46 C222,52 228,58 232,66" stroke-width="1.6"/><path d="M168,81 C172,93 175,104 172,116" stroke-width="1.6"/><path d="M112,108 C102,101 93,93 86,84" stroke-width="1.3"/></g><g transform="translate(222,26) rotate(30) scale(0.8)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(196,62) rotate(-10) scale(1.15)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#f6c3d2"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(232,68) rotate(18) scale(0.85)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(172,118) rotate(40) scale(0.95)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#f6c3d2"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(132,101) rotate(-25) scale(1.0)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(86,82) rotate(12) scale(0.8)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#fbdde6"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#fbdde6"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><g transform="translate(74,122) rotate(-38) scale(1.05)"><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(0)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(72)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(144)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(216)" fill="#f6c3d2"/><path d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" transform="rotate(288)" fill="#f6c3d2"/><circle r="2.1" fill="#e28aa5"/><circle cx="2.12" cy="-2.91" r="0.7" fill="#d96f92"/><circle cx="3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="0.00" cy="3.60" r="0.7" fill="#d96f92"/><circle cx="-3.42" cy="1.11" r="0.7" fill="#d96f92"/><circle cx="-2.12" cy="-2.91" r="0.7" fill="#d96f92"/></g><ellipse cx="234" cy="8" rx="2.6" ry="3.4" fill="#eea3ba"/><ellipse cx="152" cy="92" rx="2.6" ry="3.4" fill="#eea3ba"/><ellipse cx="102" cy="116" rx="2.6" ry="3.4" fill="#eea3ba"/><path transform="translate(44,160) rotate(-35) scale(0.8)" d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" fill="#f6c3d2"/><path transform="translate(122,178) rotate(50) scale(0.65)" d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" fill="#f6c3d2"/><path transform="translate(22,136) rotate(15) scale(0.55)" d="M0,0 C-5.2,-3 -6.4,-9.4 -3.1,-12.4 L0,-10.6 L3.1,-12.4 C6.4,-9.4 5.2,-3 0,0Z" fill="#f6c3d2"/></svg>
-  <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="eyebrow">// Call for Papers · v12.0</div>
   <h1>Call for Papers</h1>
   <p class="sub"><strong>FinNLP-2027 @ ACL-2027</strong> · August 17–22, 2027 · Kyoto, Japan</p>
@@ -276,25 +254,24 @@
 
 <section class="block">
   <h2>Topics of Interest</h2>
-  <p class="lead">We invite submissions of original contributions on methods, theories, applications, and systems on artificial intelligence, machine learning, natural language processing &amp; understanding, big data, statistical learning, data analytics, and deep learning, with a focus on knowledge discovery in the financial services domain. The scope of the workshop includes, but is not limited to, the following areas:</p>
+  <p class="lead">Financial, economic, and legal domains provide a distinctive testbed for the next generation of NLP and AI. Real-world financial information spans long documents, numerical tables, charts, news, regulatory filings, earnings calls, and rapidly evolving market signals; financial markets are multilingual, dynamic, and interconnected; and LLM agents, multi-agent systems, and world models are moving financial AI from static prediction toward interactive reasoning, simulation, and long-horizon decision making. We invite original research on these challenges across NLP, finance, economics, and law. Topics include, but are not limited to:</p>
   <ul class="topics-list">
-    <li>Language modeling on financial corpora, including tabular and numerical data, and multi-modal modeling</li>
-    <li>Graph representation learning and mining on financial data</li>
-    <li>Multi-source knowledge integration and fusion</li>
-    <li>Synthetic and genuine financial datasets and benchmarks</li>
-    <li>Transfer learning applications for financial data</li>
-    <li>Financial search and question answering systems</li>
-    <li>Event discovery and impact on organizational equity price</li>
-    <li>ESG event discovery, evaluation, and impact assessment</li>
-    <li>Compliance monitoring</li>
-    <li>Cross-disciplinary LLM-based methodologies for financial and legal domains</li>
-    <li>Applications of LLMs in financial auditing and regulatory reporting</li>
-    <li>Ethical implications and bias mitigation in AI applications</li>
-    <li>Hallucination mitigation and evaluation in LLMs</li>
-    <li>Privacy concerns and data protection strategies</li>
-    <li>Enhancing interpretability and explainability of LLM models</li>
-    <li>Responsible AI practices and governance</li>
-    <li>Methods, evaluation metrics, benchmarks, and datasets for LLMs in finance and law</li>
+    <li>Financial, economic, and legal language models and foundation models</li>
+    <li>Numerical, tabular, long-context, and multimodal understanding and reasoning</li>
+    <li>Multilingual, cross-lingual, low-resource, and domain-adaptive financial NLP</li>
+    <li>LLM agents and multi-agent systems for financial and economic applications</li>
+    <li>World models, market simulation, planning, memory, and sequential decision making</li>
+    <li>Tool use, retrieval-augmented generation, and multi-source knowledge integration</li>
+    <li>Knowledge graphs and structured representation learning for financial data</li>
+    <li>Financial search, question answering, information extraction, and document intelligence</li>
+    <li>Financial forecasting, event discovery, trading, portfolio management, and risk analysis</li>
+    <li>Economic and market modeling, behavioral simulation, and decision support</li>
+    <li>ESG analysis, sustainability assessment, and impact evaluation</li>
+    <li>Financial regulation, compliance monitoring, legal reasoning, auditing, and regulatory reporting</li>
+    <li>Synthetic data, data augmentation, privacy-preserving learning, and data quality</li>
+    <li>Benchmarks and evaluation of financial models and agents</li>
+    <li>Interpretability, fairness, privacy, security, safety, responsible AI, and governance</li>
+    <li>Real-world systems, applications, and demonstrations from financial institutions and industry</li>
   </ul>
 </section>
 
