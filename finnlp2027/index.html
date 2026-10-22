@@ -570,14 +570,25 @@
     --accent-soft: #fdeee8;
     --accent-dark: #9c3020;
   }
-  header.hero, header.page-head { position: relative; overflow: hidden; }
+  html, body { overflow-x: clip; }
+  header.hero, header.page-head { position: relative; }
   header.hero h1 { max-width: 600px; }
-  .scene { position: absolute; right: -8px; bottom: -1px; width: 440px; height: auto; pointer-events: none; user-select: none; }
-  header.page-head .scene { width: 330px; }
+  /* header art: Rinpa-style Kinkaku-ji folding screen, fading into the page on the left */
+  .scene { position: absolute; top: 0; bottom: 0; left: 34%; right: min(0px, calc(50% - 50vw)); pointer-events: none; user-select: none; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40%), linear-gradient(180deg, #000 82%, transparent);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 40%), linear-gradient(180deg, #000 82%, transparent); mask-composite: intersect; }
+  header.page-head .scene { left: 42%; }
+  .scene .art { position: absolute; inset: 0; scale: 1.05; }
+  .scene img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 84% 55%; display: block; }
+  .scene .pond { clip-path: inset(66% 0 0 0); filter: url(#pond-ripple); opacity: .85; }
+  header.hero h1, header.hero .event-line, header.page-head h1, header.page-head .sub, .hero-cta-note, .eyebrow { text-shadow: 0 0 18px #fff, 0 0 6px #fff; }
   .brand { display: inline-flex; align-items: center; gap: 7px; }
   .brand .mark { width: 22px; height: 11px; flex: none; }
   @media (max-width: 700px) {
-    .scene, header.page-head .scene { width: 170px; opacity: .55; }
+    .scene, header.page-head .scene { position: relative; display: block; left: auto; right: auto; height: 150px; margin: -48px -24px 22px;
+      -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); }
+    header.page-head .scene { margin-top: -40px; }
+    .scene .pond { display: none; }
   }
 </style>
 <link rel="stylesheet" href="assets/motion.css">
@@ -599,43 +610,12 @@
 </nav>
 
 <header class="hero">
-  <svg class="scene" viewBox="0 0 380 250" aria-hidden="true" focusable="false">
-<defs>
-  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5d98a"/><stop offset=".55" stop-color="#d9a93b"/><stop offset="1" stop-color="#a8781f"/></linearGradient>
-  <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
-    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    <animate attributeName="x1" values="-1;1.4" dur="5s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="x2" values="0;2.4" dur="5s" begin="1.2s" repeatCount="indefinite"/>
-  </linearGradient>
-  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fbeedd"/></linearGradient>
-  <linearGradient id="pond" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe0e3"/><stop offset="1" stop-color="#e9f1f1" stop-opacity="0"/></linearGradient>
-  <linearGradient id="fadeL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".32" stop-color="#fff"/></linearGradient>
-  <linearGradient id="fadeT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".25" stop-color="#fff"/></linearGradient>
-  <mask id="edgeL"><rect width="380" height="250" fill="url(#fadeL)"/></mask>
-  <mask id="edgeT"><rect width="380" height="250" fill="url(#fadeT)"/></mask>
-  <filter id="ripple" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.18" numOctaves="2" seed="4" result="n">
-      <animate attributeName="baseFrequency" values="0.012 0.18;0.016 0.22;0.012 0.18" dur="9s" repeatCount="indefinite"/></feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
-    <feGaussianBlur stdDeviation=".5"/>
-  </filter>
-  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<g mask="url(#edgeL)"><g mask="url(#edgeT)">
-  <rect width="380" height="178" fill="url(#sky)"/>
-  <!-- Kinugasa hills with Hidari-Daimonji -->
-  <path class="hill-far" d="M0 126C46 104 84 92 128 98C170 104 196 70 246 62C292 55 336 78 380 84V178H0Z" fill="#d9dfe2"/>
-  <g class="daimonji" filter="url(#glow)" stroke="#e8572f" stroke-width="2" stroke-linecap="round" fill="none">
-    <path d="M266 80H288"/><path d="M277 73L276.3 81Q274 89 267 94"/><path d="M276.8 81Q280.5 89 288 92.5"/></g>
-  <path class="hill-near" d="M0 156C40 140 92 136 140 142C190 148 230 124 282 122C322 120 352 132 380 128V178H0Z" fill="#b8c6c2"/>
-  <g class="above"><path d="M70 182C68 159.0 76 142.9 72 113.0" stroke="#3b3631" stroke-width="3.7" fill="none"/><ellipse cx="60.8" cy="147.5" rx="18.4" ry="6.9" fill="#3f5b4c"/><ellipse cx="81.5" cy="136.0" rx="20.7" ry="7.5" fill="#3f5b4c"/><ellipse cx="67.7" cy="122.2" rx="16.1" ry="6.3" fill="#3f5b4c"/><ellipse cx="76.9" cy="110.7" rx="11.5" ry="5.2" fill="#3f5b4c"/><path d="M318 180C316 160.0 324 146.0 320 120.0" stroke="#3b3631" stroke-width="3.2" fill="none"/><ellipse cx="310.0" cy="150.0" rx="16.0" ry="6.0" fill="#47624f"/><ellipse cx="328.0" cy="140.0" rx="18.0" ry="6.5" fill="#47624f"/><ellipse cx="316.0" cy="128.0" rx="14.0" ry="5.5" fill="#47624f"/><ellipse cx="324.0" cy="118.0" rx="10.0" ry="4.5" fill="#47624f"/><path d="M352 184C350 168.0 358 156.8 354 136.0" stroke="#3b3631" stroke-width="2.6" fill="none"/><ellipse cx="345.6" cy="160.0" rx="12.8" ry="4.8" fill="#3a5446"/><ellipse cx="360.0" cy="152.0" rx="14.4" ry="5.2" fill="#3a5446"/><ellipse cx="350.4" cy="142.4" rx="11.2" ry="4.4" fill="#3a5446"/><ellipse cx="356.8" cy="134.4" rx="8.0" ry="3.6" fill="#3a5446"/><ellipse cx="120" cy="181" rx="28" ry="5" fill="#6d7a62"/><path d="M120 180C118 169.0 126 161.3 122 147.0" stroke="#3b3631" stroke-width="1.8" fill="none"/><ellipse cx="115.6" cy="163.5" rx="8.8" ry="3.3" fill="#4d6a55"/><ellipse cx="125.5" cy="158.0" rx="9.9" ry="3.6" fill="#4d6a55"/><ellipse cx="118.9" cy="151.4" rx="7.7" ry="3.0" fill="#4d6a55"/><ellipse cx="123.3" cy="145.9" rx="5.5" ry="2.5" fill="#4d6a55"/><rect x="147" y="144" width="116" height="34" fill="#efe8d8"/><rect x="147.0" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="163.4" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="179.8" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="196.2" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="212.6" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="229.0" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="245.4" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="261.8" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="147" y="144" width="116" height="4" fill="#6b5442"/><rect x="147" y="170" width="116" height="8" fill="#8a6f58"/><path d="M123 145Q139 143 145 134H265Q271 143 287 145L275 148H135Z" fill="#2b2622"/><path d="M145 134H265" stroke="#4a403a" stroke-width="1.2"/><rect x="157" y="104" width="96" height="30" fill="url(#gold)"/><rect x="153" y="125" width="104" height="3" fill="#a8781f"/><rect x="157.0" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="176.2" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="195.4" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="214.6" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="233.8" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="253.0" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect class="sheen" x="157" y="104" width="96" height="30" fill="url(#sheen)"/><path d="M133 106Q149 104 155 95H255Q261 104 277 106L265 109H145Z" fill="#2b2622"/><rect x="175" y="71" width="60" height="24" fill="url(#gold)"/><path d="M183 91V81Q188 74 193 81V91Z" fill="#a8781f"/><path d="M199 91V81Q204 74 209 81V91Z" fill="#a8781f"/><path d="M215 91V81Q220 74 225 81V91Z" fill="#a8781f"/><rect class="sheen" x="175" y="71" width="60" height="24" fill="url(#sheen)"/><path d="M155 73Q169 71 177 63L205 43L233 63Q241 71 255 73L245 76H165Z" fill="#2b2622"/><path d="M205 43V35" stroke="#a8781f" stroke-width="1.6"/><path d="M200 34Q205 25 211 31Q207 33 210 35Z" fill="url(#gold)"/></g>
-  <!-- pond + reflection -->
-  <rect x="0" y="178" width="380" height="72" fill="url(#pond)"/>
-  <g class="reflection" filter="url(#ripple)" opacity=".42" transform="translate(0 356) scale(1 -1)"><path d="M70 182C68 159.0 76 142.9 72 113.0" stroke="#3b3631" stroke-width="3.7" fill="none"/><ellipse cx="60.8" cy="147.5" rx="18.4" ry="6.9" fill="#3f5b4c"/><ellipse cx="81.5" cy="136.0" rx="20.7" ry="7.5" fill="#3f5b4c"/><ellipse cx="67.7" cy="122.2" rx="16.1" ry="6.3" fill="#3f5b4c"/><ellipse cx="76.9" cy="110.7" rx="11.5" ry="5.2" fill="#3f5b4c"/><path d="M318 180C316 160.0 324 146.0 320 120.0" stroke="#3b3631" stroke-width="3.2" fill="none"/><ellipse cx="310.0" cy="150.0" rx="16.0" ry="6.0" fill="#47624f"/><ellipse cx="328.0" cy="140.0" rx="18.0" ry="6.5" fill="#47624f"/><ellipse cx="316.0" cy="128.0" rx="14.0" ry="5.5" fill="#47624f"/><ellipse cx="324.0" cy="118.0" rx="10.0" ry="4.5" fill="#47624f"/><path d="M352 184C350 168.0 358 156.8 354 136.0" stroke="#3b3631" stroke-width="2.6" fill="none"/><ellipse cx="345.6" cy="160.0" rx="12.8" ry="4.8" fill="#3a5446"/><ellipse cx="360.0" cy="152.0" rx="14.4" ry="5.2" fill="#3a5446"/><ellipse cx="350.4" cy="142.4" rx="11.2" ry="4.4" fill="#3a5446"/><ellipse cx="356.8" cy="134.4" rx="8.0" ry="3.6" fill="#3a5446"/><ellipse cx="120" cy="181" rx="28" ry="5" fill="#6d7a62"/><path d="M120 180C118 169.0 126 161.3 122 147.0" stroke="#3b3631" stroke-width="1.8" fill="none"/><ellipse cx="115.6" cy="163.5" rx="8.8" ry="3.3" fill="#4d6a55"/><ellipse cx="125.5" cy="158.0" rx="9.9" ry="3.6" fill="#4d6a55"/><ellipse cx="118.9" cy="151.4" rx="7.7" ry="3.0" fill="#4d6a55"/><ellipse cx="123.3" cy="145.9" rx="5.5" ry="2.5" fill="#4d6a55"/><rect x="147" y="144" width="116" height="34" fill="#efe8d8"/><rect x="147.0" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="163.4" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="179.8" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="196.2" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="212.6" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="229.0" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="245.4" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="261.8" y="144" width="3.4" height="34" fill="#6b5442"/><rect x="147" y="144" width="116" height="4" fill="#6b5442"/><rect x="147" y="170" width="116" height="8" fill="#8a6f58"/><path d="M123 145Q139 143 145 134H265Q271 143 287 145L275 148H135Z" fill="#2b2622"/><path d="M145 134H265" stroke="#4a403a" stroke-width="1.2"/><rect x="157" y="104" width="96" height="30" fill="url(#gold)"/><rect x="153" y="125" width="104" height="3" fill="#a8781f"/><rect x="157.0" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="176.2" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="195.4" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="214.6" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="233.8" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect x="253.0" y="104" width="2" height="21" fill="#a8781f" opacity=".7"/><rect class="sheen" x="157" y="104" width="96" height="30" fill="url(#sheen)"/><path d="M133 106Q149 104 155 95H255Q261 104 277 106L265 109H145Z" fill="#2b2622"/><rect x="175" y="71" width="60" height="24" fill="url(#gold)"/><path d="M183 91V81Q188 74 193 81V91Z" fill="#a8781f"/><path d="M199 91V81Q204 74 209 81V91Z" fill="#a8781f"/><path d="M215 91V81Q220 74 225 81V91Z" fill="#a8781f"/><rect class="sheen" x="175" y="71" width="60" height="24" fill="url(#sheen)"/><path d="M155 73Q169 71 177 63L205 43L233 63Q241 71 255 73L245 76H165Z" fill="#2b2622"/><path d="M205 43V35" stroke="#a8781f" stroke-width="1.6"/><path d="M200 34Q205 25 211 31Q207 33 210 35Z" fill="url(#gold)"/></g>
-  <path d="M30 192H120M200 200H330M90 212H170" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".8">
-    <animate attributeName="opacity" values=".2;.9;.2" dur="4s" repeatCount="indefinite"/></path>
-  <path d="M0 178H380" stroke="#8fa3a3" stroke-width=".8"/>
-</g></g>
-</svg><div class="eyebrow">// ACL SIG-FinTech · 12th edition</div>
+  <div class="scene" aria-hidden="true"><div class="art">
+    <picture><source type="image/webp" srcset="assets/kinkaku-rinpa-900.webp 900w, assets/kinkaku-rinpa-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 640px"><img class="base" src="assets/kinkaku-rinpa-1600.jpg" alt="" decoding="async" fetchpriority="high"></picture>
+    <img class="pond" src="assets/kinkaku-rinpa-900.webp" alt="" decoding="async">
+  </div></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="pond-ripple" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.09" numOctaves="2" seed="7"><animate attributeName="baseFrequency" values="0.006 0.09;0.008 0.12;0.006 0.09" dur="10s" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+  <div class="eyebrow">// ACL SIG-FinTech · 12th edition</div>
   <h1>The 12th Workshop on Financial Technology and Natural Language Processing</h1>
   <p class="event-line"><strong>FinNLP-2027 @ ACL-2027</strong> · August 17–22, 2027 · Kyoto, Japan</p>
   <div class="meta-pills">

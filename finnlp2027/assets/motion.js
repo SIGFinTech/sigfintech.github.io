@@ -1,4 +1,4 @@
-// FinNLP 2027 motion layer: sakura petals with depth and cursor wind, reactive branch,
+// FinNLP 2027 motion layer: fireflies over the Kinkaku-ji screen painting, gentle parallax,
 // headline + scroll reveals, magnetic CTA, tilting cards. No dependencies.
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -56,7 +56,7 @@
 
   if (!head || reduce) return;
 
-  // ---------- Kinkaku-ji scene: fireflies over the pond, layered parallax ----------
+  // ---------- Kinkaku-ji screen: fireflies over the pond, parallax ----------
   const scene = head.querySelector('.scene');
   const cv = document.createElement('canvas'); cv.className = 'petal-canvas'; cv.setAttribute('aria-hidden', 'true');
   head.prepend(cv);
@@ -83,11 +83,11 @@
     const r = head.getBoundingClientRect();
     for (let i = 0; i < 8; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
   });
-  const layers = scene ? [['.hill-far', .05, 5], ['.daimonji', .05, 5], ['.hill-near', .1, 9], ['.above', .16, 13]]
-    .map(([s, k, m]) => [scene.querySelector(s), k, m]).filter(l => l[0]) : [];
+  // the screen painting drifts gently with the cursor and scroll (it is scaled up in CSS so edges never show)
+  const layers = scene ? [['.art', .06, 12]].map(([s, k, m]) => [scene.querySelector(s), k, m]).filter(l => l[0]) : [];
   let mx = 0;
   head.addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; });
-  const parallax = () => layers.forEach(([el, k, m]) => { el.style.transform = `translate(${(-mx * m).toFixed(1)}px, ${(Math.min(scrollY, 500) * k).toFixed(1)}px)`; });
+  const parallax = () => layers.forEach(([el, k, m]) => { el.style.transform = `translate(${(-mx * m).toFixed(1)}px, ${(Math.min(scrollY, 300) * k).toFixed(1)}px)`; });
   addEventListener('scroll', parallax, { passive: true });
   new IntersectionObserver(([e]) => { run = e.isIntersecting; if (run) requestAnimationFrame(tick); }).observe(head);
   document.addEventListener('visibilitychange', () => { run = !document.hidden; if (run) requestAnimationFrame(tick); });

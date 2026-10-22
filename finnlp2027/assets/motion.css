@@ -1,16 +1,12 @@
 /* FinNLP 2027 motion layer. Everything here is progressive: without JS (no .m on <html>) the page is static. */
 
-/* ---------- embers canvas + Kyoto scene ---------- */
+/* ---------- fireflies canvas + Kinkaku-ji screen ---------- */
 .petal-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 header.hero > *:not(.scene):not(.petal-canvas),
 header.page-head > *:not(.scene):not(.petal-canvas) { position: relative; z-index: 1; }
 .scene { z-index: 0; }
-.m .scene .daimonji { animation: okuribi 3.4s ease-in-out infinite; }
-@keyframes okuribi { 0%, 100% { opacity: .82; } 40% { opacity: 1; } 55% { opacity: .7; } 70% { opacity: .95; } }
-.m .scene .hill-far, .m .scene .hill-near, .m .scene .above, .m .scene .daimonji { will-change: transform; }
-.m .scene .daimonji path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw-fire 1.6s cubic-bezier(.6, 0, .2, 1) forwards; }
-.m .scene .daimonji path:nth-child(2) { animation-delay: .35s; } .m .scene .daimonji path:nth-child(3) { animation-delay: .7s; }
-@keyframes draw-fire { to { stroke-dashoffset: 0; } }
+.m .scene .art { will-change: transform; animation: screen-in 1.6s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes screen-in { from { opacity: 0; scale: 1.12; } }
 
 /* ---------- headline reveal ---------- */
 .m .rv-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .06em; margin-bottom: -.06em; }
@@ -63,7 +59,8 @@ a.org:hover .avatar { transform: scale(1.07) rotate(-2deg); }
 
 @media (prefers-reduced-motion: reduce) {
   .petal-canvas { display: none; }
-  .m .scene .daimonji, .m .scene .daimonji path { animation: none; stroke-dashoffset: 0; }
+  .m .scene .art { animation: none; }
+  .scene .pond { display: none; }
   .m .rv-word > span, .m .rv-fade, .m .rv-item { transform: none !important; opacity: 1 !important; transition: none !important; }
   .m section.block > h2::after { transform: none; }
   a.org, .cta-card, a.committee, .hero-cta { transform: none !important; translate: none !important; }
