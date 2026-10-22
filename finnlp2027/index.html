@@ -279,6 +279,7 @@
     transition: border-color 0.18s;
   }
   a.org:hover .avatar { border-color: var(--accent); }
+  a.org .avatar.ini { display: inline-flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 1.05rem; letter-spacing: .02em; }
   a.org .info { min-width: 0; flex: 1; }
   a.org .name {
     font-weight: 600; color: var(--text);
@@ -678,21 +679,63 @@
 <section class="block" id="organizers">
   <h2>Organizers</h2>
 
-  <h3 class="sub">General Chair</h3>
   <div class="org-grid">
     <a class="org">
       <img class="avatar" src="assets/organizers/qianqian-xie.jpg" alt="Qianqian Xie" loading="lazy" width="56" height="56">
       <div class="info">
         <div class="name">Qianqian Xie</div>
-        <div class="aff">Wuhan University, China</div>
+        <div class="aff">School of Artificial Intelligence, Wuhan University</div>
       </div>
-      
     </a>
-  </div>
-
-  <div class="speakers-tba">
-    <div class="tba-tag">Coming soon</div>
-    <p>The full organizing committee will be announced soon.</p>
+    <a class="org">
+      <img class="avatar" src="assets/organizers/chung-chi-chen.jpg" alt="Chung-Chi Chen" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Chung-Chi Chen</div>
+        <div class="aff">Artificial Intelligence Research Center, AIST</div>
+      </div>
+    </a>
+    <a class="org">
+      <span class="avatar ini" aria-hidden="true">FZ</span>
+      <div class="info">
+        <div class="name">Fengbin Zhu</div>
+        <div class="aff">NExT Research Center, National University of Singapore</div>
+      </div>
+    </a>
+    <a class="org">
+      <span class="avatar ini" aria-hidden="true">HW</span>
+      <div class="info">
+        <div class="name">Hao Wang</div>
+        <div class="aff">School of Mathematics, Sichuan University</div>
+      </div>
+    </a>
+    <a class="org">
+      <span class="avatar ini" aria-hidden="true">SL</span>
+      <div class="info">
+        <div class="name">Shuoling Liu</div>
+        <div class="aff">E Fund Management Co., Ltd.</div>
+      </div>
+    </a>
+    <a class="org">
+      <span class="avatar ini" aria-hidden="true">TS</span>
+      <div class="info">
+        <div class="name">Tat-Seng Chua</div>
+        <div class="aff">NExT Research Center, National University of Singapore</div>
+      </div>
+    </a>
+    <a class="org">
+      <span class="avatar ini" aria-hidden="true">XL</span>
+      <div class="info">
+        <div class="name">Xue Liu</div>
+        <div class="aff">MBZUAI</div>
+      </div>
+    </a>
+    <a class="org">
+      <img class="avatar" src="assets/organizers/sophia-ananiadou.jpg" alt="Sophia Ananiadou" loading="lazy" width="56" height="56">
+      <div class="info">
+        <div class="name">Sophia Ananiadou</div>
+        <div class="aff">Department of Computer Science, University of Manchester</div>
+      </div>
+    </a>
   </div>
 </section>
 
