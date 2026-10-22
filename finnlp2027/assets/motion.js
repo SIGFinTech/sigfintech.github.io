@@ -56,93 +56,83 @@
 
   if (!head || reduce) return;
 
-  // ---------- petals ----------
-  const branch = head.querySelector('.sakura');
+  // ---------- Kyoto scene: Daimonji embers, parallax ridges, lanterns ----------
+  const scene = head.querySelector('.scene');
   const cv = document.createElement('canvas'); cv.className = 'petal-canvas'; cv.setAttribute('aria-hidden', 'true');
   head.prepend(cv);
   const ctx = cv.getContext('2d');
-  let W = 0, H = 0, dpr = 1;
-  const size = () => { dpr = Math.min(devicePixelRatio || 1, 2); W = head.clientWidth; H = head.clientHeight;
+  let W = 0, H = 0;
+  const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2); W = head.clientWidth; H = head.clientHeight;
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
-
-  const COLORS = [['#fbe3ea', '#f2a7bf'], ['#fdeef3', '#e98aa8'], ['#f8d4df', '#d96f92']];
-  const petals = [], MAX = innerWidth < 700 ? 14 : 30;
   const rnd = (a, b) => a + Math.random() * (b - a);
-  // spawn near the branch blossoms (in page coords)
-  const origin = () => {
-    if (branch) { const r = branch.getBoundingClientRect(), h = head.getBoundingClientRect();
-      return [r.left - h.left + rnd(.15, .95) * r.width, r.top - h.top + rnd(.1, .7) * r.height]; }
-    return [W * rnd(.6, 1), -10];
+  // where the 大 sits, in header pixels
+  const fire = () => {
+    const d = scene && scene.querySelector('.daimonji');
+    if (!d) return [W * .8, H * .5, 30];
+    const r = d.getBoundingClientRect(), h = head.getBoundingClientRect();
+    return [r.left - h.left + r.width / 2, r.top - h.top + r.height / 2, r.width / 2];
   };
+  const embers = [], MAX = innerWidth < 700 ? 22 : 46;
   const spawn = (x, y, burst = 0) => {
-    const z = rnd(.45, 1.25);
-    const [ox, oy] = x == null ? origin() : [x, y];
-    petals.push({ x: ox, y: oy, z, s: rnd(7, 11) * z, c: COLORS[(Math.random() * 3) | 0],
-      vx: rnd(-.6, .1) * z + burst * rnd(-2, 2), vy: rnd(.25, .6) * z + burst * rnd(-1.5, .5),
-      rot: rnd(0, 6.28), vr: rnd(-.03, .03), flip: rnd(0, 6.28), vf: rnd(.04, .09), sw: rnd(0, 6.28), life: 0 });
+    const [fx, fy, fr] = fire();
+    const z = rnd(.5, 1.2);
+    embers.push({ x: x ?? fx + rnd(-fr, fr), y: y ?? fy + rnd(-fr * .6, fr * .6), z, r: rnd(.6, 1.4) * z,
+      vx: rnd(-.15, .15) + burst * rnd(-1.6, 1.6), vy: -rnd(.25, .7) * z - burst * rnd(.4, 1.8),
+      life: 0, max: rnd(140, 260), ph: rnd(0, 6.28), hue: rnd(14, 38) });
   };
-
-  let wind = 0, windT = 0, px = -1, py = -1, last = 0, run = true;
+  let wind = 0, windT = 0, px = -1, py = -1, last = 0, run = true, acc = 0;
   head.addEventListener('pointermove', e => {
     const r = head.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-    if (px >= 0) windT += (x - px) * .012;
+    if (px >= 0) windT += (x - px) * .01;
     px = x; py = y;
+    // lanterns warm up as the cursor nears the pagoda
+    if (scene) { const pg = scene.querySelector('.pagoda').getBoundingClientRect();
+      scene.classList.toggle('lit', Math.hypot(e.clientX - (pg.left + pg.width / 2), e.clientY - (pg.top + pg.height / 2)) < 140); }
   });
-  head.addEventListener('pointerleave', () => { px = py = -1; });
+  head.addEventListener('pointerleave', () => { px = py = -1; scene && scene.classList.remove('lit'); });
   head.addEventListener('click', e => {
     if (e.target.closest('a, button')) return;
     const r = head.getBoundingClientRect();
-    for (let i = 0; i < 9; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
+    for (let i = 0; i < 18; i++) spawn(e.clientX - r.left, e.clientY - r.top, 1);
   });
-  if (branch) {
-    // a branch you can brush: it shivers and lets go of a few petals
-    const shake = () => { branch.classList.remove('gust'); void branch.offsetWidth; branch.classList.add('gust');
-      for (let i = 0; i < 6; i++) spawn(); windT -= .6; };
-    branch.style.pointerEvents = 'auto';
-    branch.addEventListener('pointerenter', shake);
-    branch.addEventListener('animationend', () => branch.classList.remove('gust'));
-  }
-  addEventListener('scroll', () => {
-    if (branch) branch.style.translate = `0 ${Math.min(scrollY, 400) * .18}px`;
-  }, { passive: true });
+  // gentle depth: layers drift at different rates with scroll and cursor
+  const layers = scene ? [['.ridge-far', .06, 6], ['.daimonji', .06, 6], ['.ridge-near', .12, 10], ['.town', .18, 14], ['.pagoda', .18, 14]]
+    .map(([s, k, m]) => [scene.querySelector(s), k, m]).filter(l => l[0]) : [];
+  let mx = 0;
+  head.addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; });
+  const parallax = () => layers.forEach(([el, k, m]) => { el.style.transform = `translate(${(-mx * m).toFixed(1)}px, ${(Math.min(scrollY, 500) * k).toFixed(1)}px)`; });
+  addEventListener('scroll', parallax, { passive: true });
   new IntersectionObserver(([e]) => { run = e.isIntersecting; if (run) requestAnimationFrame(tick); }).observe(head);
   document.addEventListener('visibilitychange', () => { run = !document.hidden; if (run) requestAnimationFrame(tick); });
 
-  const draw = p => {
-    ctx.save();
-    ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-    ctx.scale(Math.cos(p.flip) * .9 + .1 * Math.sign(Math.cos(p.flip) || 1), 1);   // 3D flutter
-    const s = p.s, g = ctx.createLinearGradient(-s, -s, s, s);
-    g.addColorStop(0, p.c[0]); g.addColorStop(1, p.c[1]);
-    ctx.globalAlpha = Math.min(1, p.life / 30) * (.35 + .55 * Math.min(p.z, 1));
-    ctx.fillStyle = g;
-    ctx.beginPath();                                   // notched sakura petal
-    ctx.moveTo(0, s); ctx.bezierCurveTo(-s * .95, s * .3, -s * .7, -s * .85, -s * .18, -s);
-    ctx.lineTo(0, -s * .72); ctx.lineTo(s * .18, -s);
-    ctx.bezierCurveTo(s * .7, -s * .85, s * .95, s * .3, 0, s); ctx.fill();
-    ctx.restore();
-  };
-  let acc = 0;
   function tick(t) {
     if (!run) return;
     const dt = Math.min(48, t - (last || t)); last = t;
-    windT *= .96; wind += ((-.15 + windT) - wind) * .05;
-    acc += dt; if (acc > 380 && petals.length < MAX) { acc = 0; spawn(); }
+    windT *= .95; wind += ((.05 + windT) - wind) * .05;
+    acc += dt; if (acc > 120 && embers.length < MAX) { acc = 0; spawn(); }
+    parallax();
     ctx.clearRect(0, 0, W, H);
-    petals.sort((a, b) => a.z - b.z);
-    for (let i = petals.length - 1; i >= 0; i--) {
-      const p = petals[i]; p.life++;
-      p.sw += .02; p.flip += p.vf; p.rot += p.vr;
-      p.vx += (wind * p.z - p.vx) * .02; p.vy += (.55 * p.z - p.vy) * .015;
-      if (px >= 0) { const dx = p.x - px, dy = p.y - py, d2 = dx * dx + dy * dy;      // cursor pushes petals aside
-        if (d2 < 6400) { const f = (1 - d2 / 6400) * .35; p.vx += dx / 80 * f; p.vy += dy / 80 * f; } }
-      p.x += (p.vx + Math.sin(p.sw) * .45 * p.z) * dt / 16; p.y += p.vy * dt / 16;
-      if (p.y > H + 20 || p.x < -30 || p.x > W + 30) { petals.splice(i, 1); continue; }
-      draw(p);
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = embers.length - 1; i >= 0; i--) {
+      const p = embers[i]; p.life += dt / 16; p.ph += .12;
+      p.vx += (wind * p.z - p.vx) * .03 + Math.sin(p.ph * .4) * .01;
+      p.vy += (-.45 * p.z - p.vy) * .01;
+      if (px >= 0) { const dx = p.x - px, dy = p.y - py, d2 = dx * dx + dy * dy;
+        if (d2 < 4900) { const f = (1 - d2 / 4900) * .25; p.vx += dx / 70 * f; p.vy += dy / 70 * f; } }
+      p.x += p.vx * dt / 16; p.y += p.vy * dt / 16;
+      const k = p.life / p.max;
+      if (k >= 1 || p.y < -10) { embers.splice(i, 1); continue; }
+      const flick = .65 + .35 * Math.sin(p.ph * 2.3), a = Math.sin(Math.PI * Math.min(1, k * 1.2)) * flick * (.45 + .5 * p.z);
+      const R = p.r * (2.2 - k);
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R * 2.4);
+      g.addColorStop(0, `hsla(${p.hue + 12}, 100%, 72%, ${a})`);
+      g.addColorStop(.35, `hsla(${p.hue}, 95%, 55%, ${a * .55})`);
+      g.addColorStop(1, `hsla(${p.hue - 8}, 90%, 45%, 0)`);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, R * 2.4, 0, 6.29); ctx.fill();
     }
+    ctx.globalCompositeOperation = 'source-over';
     requestAnimationFrame(tick);
   }
-  for (let i = 0; i < 6; i++) { spawn(); petals[i].y += rnd(0, H * .6); petals[i].life = 30; }
-  requestAnimationFrame(tick);
+  setTimeout(() => { for (let i = 0; i < 12; i++) spawn(); requestAnimationFrame(tick); }, 1600);   // after the 大 is drawn
 })();
